@@ -1,0 +1,35 @@
+Clientes : Lista doblemente enlazada por el DPI
+
+    (key: long DPI)
+    (string Nombres, string Apellidos, char Genero, int Telefono, string Direccion)
+
+Vehiculos : Arbol B de orden 5 por la Placa del Vehiculo
+    (key: string Placa)
+    (string Marca, int Modelo, double Precio)
+
+Rutas : Lista adyacencia para crear el grafo (mapa)
+    (string Origen, string Destino, int TiempoRuta)
+
+Viajes : Lista simple
+    - LugarOrigen -> string
+    - LugarDestino -> string
+    - Fecha -> string
+    - Cliente -> apuntador Lista Circular
+    - Vehiculo -> apuntador Arbol B
+    - Ruta_Tomada -> apuntador Lista simple
+
+
+    (Clientes, Vehiculos)
+Menu :
+    agregar (Archivo de entrada txt)
+    crear
+    Modificar (Ingresando llave)
+    Eliminar (Ingresando llave)
+    Mostrar Informacion (Ingresando llave)
+    Mostrar Estructura de Datos (Graphviz)
+
+
+    (Viajes)
+Menu:
+    crear
+    Mostrar Estructura de Datos (Graphviz)
