@@ -20,17 +20,78 @@
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QLabel" name="label">
+   <widget class="QPushButton" name="BT_abrir_clientes">
     <property name="geometry">
      <rect>
-      <x>310</x>
-      <y>80</y>
-      <width>181</width>
-      <height>71</height>
+      <x>30</x>
+      <y>30</y>
+      <width>111</width>
+      <height>34</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <pointsize>10</pointsize>
+      <italic>false</italic>
+      <bold>false</bold>
+     </font>
+    </property>
     <property name="text">
-     <string>Hola Interfaz</string>
+     <string>Abrir_Clientes</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="BT_abrir_vehiculos">
+    <property name="geometry">
+     <rect>
+      <x>160</x>
+      <y>30</y>
+      <width>111</width>
+      <height>34</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>10</pointsize>
+      <italic>false</italic>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="text">
+     <string>Abrir_Vehiculos</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="BT_abrir_rutas">
+    <property name="geometry">
+     <rect>
+      <x>290</x>
+      <y>30</y>
+      <width>111</width>
+      <height>34</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>10</pointsize>
+      <italic>false</italic>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="text">
+     <string>Abrir_Rutas</string>
+    </property>
+   </widget>
+   <widget class="QTextEdit" name="text_area">
+    <property name="geometry">
+     <rect>
+      <x>110</x>
+      <y>150</y>
+      <width>541</width>
+      <height>221</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(255, 255, 255);
+color: rgb(0, 0, 0);</string>
     </property>
    </widget>
   </widget>

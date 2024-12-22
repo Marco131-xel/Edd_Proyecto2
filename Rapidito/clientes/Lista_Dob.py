@@ -1,5 +1,6 @@
-from NodoLD import NodoLD
+from clientes.NodoLD import NodoLD
 from clientes.Clientes import Clientes
+import os
 
 
 class Lista_Dob:
@@ -115,3 +116,39 @@ class Lista_Dob:
         while aux is not None:
             print(aux.dato)
             aux = aux.siguiente
+
+    # Funcion para graficar Estrucutura
+    def graficar(self, filename='lista_doble'):
+        if self.vacia():
+            print(' ** La lista esta vacia, no hay nada que graficar ** ')
+            return
+        # Crear el codigo DOT
+        dot = ["digraph G {"]
+        dot.append("rankdir=LR;")
+        dot.append("node [shape=record];")
+
+        aux = self.primero
+        nodos = []
+        conexiones = []
+
+        i = 0
+        while aux is not None:
+            nodos.append(f'nodo{i} [label="{aux.dato}"];')
+            if aux.siguiente:
+                conexiones.append(f'nodo{i} -> nodo{i + 1};')
+                conexiones.append(f'nodo{i + 1} -> nodo{i};')
+            aux = aux.siguiente
+            i += 1
+
+        dot.extend(nodos)
+        dot.extend(conexiones)
+        dot.append("}")
+
+        # Guardar archivo DOT
+        dot_file = f'{filename}.dot'
+        with open(dot_file, "w") as file:
+            file.write("\n".join(dot))
+
+        # Generar imagen
+        os.system(f'dot -Tpng {dot_file} -o {filename}.png')
+        print(f'Grafico generado: {filename}.png')

@@ -1,5 +1,6 @@
 from vehiculos.NodoAB import NodoAB
 #from vehiculos.Vehiculos import Vehiculos
+import os
 
 class ArbolB:
     def __init__(self):
@@ -165,12 +166,46 @@ class ArbolB:
             else:
                 self.fusionar_nodos(nodo, indice - 1)
 
-        # Funcion para imprimir el arbol
-        def imprimir(self, nodo=None, nivel=0):
-            """Imprime el arbol B """
-            if nodo is None:
-                nodo = self.raiz
+    # Funcion para imprimir el arbol
+    def imprimir(self, nodo=None, nivel=0):
+        if nodo is None:
+            nodo = self.raiz
             print('Nivel', nivel, ':', nodo.claves)
+        if not nodo.hoja:
+            for hijo in nodo.hijos:
+                self.imprimir(hijo, nivel + 1)
+
+    # Funcion para graficar Estructura
+    def graficar(self, filename='arbol_b'):
+        if not self.raiz:
+            print('** El arbol esta vacio, no hay nada que graficar ** ')
+            return
+
+        # Crear el codigo DOT
+        dot = ["digraph G {"]
+        dot.append("node [shape=record];")
+
+        def recorrer_nodo(nodo, indice):
+            nodo_id = f"nodo{indice}"
+            claves_str = "|".join(str(clave) for clave in nodo.claves)
+            dot.append(f'{nodo_id} [label="<p0> |{claves_str}| <p{len(nodo.claves)}>"];')
+
             if not nodo.hoja:
-                for hijo in nodo.hijos:
-                    self.imprimir(hijo, nivel + 1)
+                for i, hijo in enumerate(nodo.hijos):
+                    hijo_id = recorrer_nodo(hijo, len(dot))
+                    dot.append(f"{nodo_id}:p{i} -> {hijo_id};")
+            return nodo_id
+
+        # Recorrer y construir el arbol en DOT
+        recorrer_nodo(self.raiz, 0)
+
+        dot.append("}")
+
+        # Guardar archivo DOT
+        dot_file = f"{filename}.dot"
+        with open(dot_file, "w") as file:
+            file.write("\n".join(dot))
+
+        # Generar imagen
+        os.system(f'dot -Tpng {dot_file} -o {filename}.png')
+        print(f'Grafico generado: {filename}.png')

@@ -1,4 +1,6 @@
 from rutas.Rutas import Ruta
+import os
+
 class Lista_Ady:
     def __init__(self):
         self.__adyacencia = {}
@@ -11,19 +13,38 @@ class Lista_Ady:
 
         # Agregar conexion desde el origen al destino
         if origen not in self.__adyacencia:
-            self.__adyacencia[origen] = ''
-        if destino not in self.__adyacencia[origen]:
-            self.__adyacencia[origen] += (',' + f'{destino}:{tiempo}' if self.__adyacencia[origen]
-                                          else f'{destino}:{tiempo}')
+            self.__adyacencia[origen] = {}
+        self.__adyacencia[origen][destino] = tiempo
 
         # Agregar la conexion inversa para grafos no dirigidos
         if destino not in self.__adyacencia:
-            self.__adyacencia[destino] = ''
-        if origen not in self.__adyacencia[destino]:
-            self.__adyacencia[destino] += (',' + f'{origen}:{tiempo}' if self.__adyacencia[destino]
-                                           else f'{origen}:{tiempo}')
+            self.__adyacencia[destino] = {}
+        self.__adyacencia[destino][origen] = tiempo
 
     # Funcion para mostrar la lista adyacencia
     def mostrar_adyacencia(self):
         for nodo, conexiones in self.__adyacencia.items():
             print(f'{nodo}: {conexiones}')
+
+    # Funcion para graficar Mapa
+    def graficar(self, filename="grafo"):
+        if not self.__adyacencia:
+            print("El grafo está vacío, no hay nada que graficar.")
+            return
+
+        # Crear el codigo DOT
+        dot = ["graph Rutas {"]
+        for origen, destinos in self.__adyacencia.items():
+            for destino, tiempo in destinos.items():
+                if origen < destino:  # Evitar duplicados en grafos no dirigidos
+                    dot.append(f'  "{origen}" -- "{destino}" [label="{tiempo}"];')
+        dot.append("}")
+
+        # Guardar archivo DOT
+        dot_file = f"{filename}.dot"
+        with open(dot_file, "w") as file:
+            file.write("\n".join(dot))
+
+        # Generar imagen PNG
+        os.system(f"dot -Tpng {dot_file} -o {filename}.png")
+        print(f"Gráfico generado: {filename}.png")
