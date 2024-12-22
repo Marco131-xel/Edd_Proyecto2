@@ -1,5 +1,5 @@
 from vehiculos.NodoAB import NodoAB
-from vehiculos.Vehiculos import Vehiculos
+#from vehiculos.Vehiculos import Vehiculos
 
 class ArbolB:
     def __init__(self):
@@ -15,10 +15,10 @@ class ArbolB:
             self.raiz = nuevo_nodo
             nuevo_nodo.hoja = False
             nuevo_nodo.hijos.append(nodo_raiz)
-            self._dividir_nodo(nuevo_nodo, 0)
-            self._insertar_no_lleno(nuevo_nodo, Vehiculos)
+            self.dividir_nodo(nuevo_nodo, 0)
+            self.insertar_no_lleno(nuevo_nodo, Vehiculos)
         else:
-            self._insertar_no_lleno(nodo_raiz, Vehiculos)
+            self.insertar_no_lleno(nodo_raiz, Vehiculos)
 
     # Funcion para buscar vehiculos por su placa
     def buscar(self, placa, nodo = None):
@@ -47,7 +47,7 @@ class ArbolB:
 
     # Funcion para eliminar un vehiculo por su placa
     def eliminar(self, placa):
-        self._eliminar_clave(self.raiz, placa)
+        self.eliminar_clave(self.raiz, placa)
         if len(self.raiz.claves) == 0 and not self.raiz.hoja:
             self.raiz = self.raiz.hijos[0]
 
@@ -59,7 +59,7 @@ class ArbolB:
         return 'vehiculo no encontrado'
 
     # Funcion para llenar el arbol vacio
-    def _insertar_no_lleno(self, nodo, Vehiculos):
+    def insertar_no_lleno(self, nodo, Vehiculos):
         if nodo.hoja:
             nodo.insertar_en_nodo(Vehiculos)
         else:
@@ -68,14 +68,14 @@ class ArbolB:
                 i -= 1
             i += 1
             if len(nodo.hijos[i].claves) == (2 * self.orden) - 1:
-                self._dividir_nodo(nodo, i)
+                self.dividir_nodo(nodo, i)
                 if Vehiculos.get_Placa() > nodo.claves[i].get_Placa():
                     i += 1
-            self._insertar_no_lleno(nodo.hijos[i], Vehiculos)
+            self.insertar_no_lleno(nodo.hijos[i], Vehiculos)
 
                 # METODOS AUXILIARES
     # Funcion para dividir un nodo hijo lleno de nodos y ajusta al nodo padre
-    def _dividir_nodo(self, nodo_padre, indice):
+    def dividir_nodo(self, nodo_padre, indice):
         orden = self.orden
         nodo_hijo = nodo_padre.hijos[indice]
         nuevo_nodo = NodoAB(orden)
@@ -92,23 +92,23 @@ class ArbolB:
             nodo_hijo.hijos = nodo_hijo.hijos[:orden]
 
     # Funcion eliminar clave
-    def _eliminar_clave(self, nodo, clave):
+    def eliminar_clave(self, nodo, clave):
         if clave in nodo.claves:
             if nodo.hoja:
                 nodo.claves.remove(clave)
             else:
                 indice = nodo.claves.index(clave)
                 if len(nodo.hijos[indice].claves) >= self.orden:
-                    predecesor = self._obtener_predecesor(nodo.hijos[indice])
+                    predecesor = self.obtener_predecesor(nodo.hijos[indice])
                     nodo.claves[indice] = predecesor
-                    self._eliminar_clave(nodo.hijos[indice], predecesor)
+                    self.eliminar_clave(nodo.hijos[indice], predecesor)
                 elif len(nodo.hijos[indice + 1].claves) >= self.orden:
-                    sucesor = self._obtener_sucesor(nodo.hijos[indice + 1])
+                    sucesor = self.obtener_sucesor(nodo.hijos[indice + 1])
                     nodo.claves[indice] = sucesor
-                    self._eliminar_clave(nodo.hijos[indice + 1], sucesor)
+                    self.eliminar_clave(nodo.hijos[indice + 1], sucesor)
                 else:
-                    self._fusionar_nodos(nodo, indice)
-                    self._eliminar_clave(nodo.hijos[indice], clave)
+                    self.fusionar_nodos(nodo, indice)
+                    self.eliminar_clave(nodo.hijos[indice], clave)
         else:
             if nodo.hoja:
                 return
@@ -116,22 +116,22 @@ class ArbolB:
             while indice < len(nodo.claves) and clave > nodo.claves[indice]:
                 indice += 1
             if len(nodo.hijos[indice].claves) < self.orden:
-                self._reforzar_hijo(nodo, indice)
-            self._eliminar_clave(nodo.hijos[indice], clave)
+                self.reforzar_hijo(nodo, indice)
+            self.eliminar_clave(nodo.hijos[indice], clave)
 
     # Funcion predecesor del nodo
-    def _obtener_predecesor(self, nodo):
+    def obtener_predecesor(self, nodo):
         while not nodo.hoja:
             nodo = nodo.hijos[-1]
         return nodo.claves[-1]
     # Funcion sucesor del nodo
-    def _obtener_sucesor(self, nodo):
+    def obtener_sucesor(self, nodo):
         while not nodo.hoja:
             nodo = nodo.hijos[0]
         return nodo.claves[0]
 
     # Funcion fusionar nodos
-    def _fusionar_nodos(self, nodo, indice):
+    def fusionar_nodos(self, nodo, indice):
         hijo_izq = nodo.hijos[indice]
         hijo_der = nodo.hijos[indice + 1]
         clave_media = nodo.claves.pop(indice)
@@ -142,7 +142,7 @@ class ArbolB:
         nodo.hijos.pop(indice + 1)
 
     # Funcion reforzar el nodo hijo
-    def _reforzar_hijo(self, nodo, indice):
+    def reforzar_hijo(self, nodo, indice):
         if indice > 0 and len(nodo.hijos[indice - 1].claves) >= self.orden:
             hijo = nodo.hijos[indice]
             hermano_izq = nodo.hijos[indice - 1]
@@ -161,9 +161,9 @@ class ArbolB:
                 hijo.hijos.append(hermano_der.hijos.pop(0))
         else:
             if indice < len(nodo.hijos) - 1:
-                self._fusionar_nodos(nodo, indice)
+                self.fusionar_nodos(nodo, indice)
             else:
-                self._fusionar_nodos(nodo, indice - 1)
+                self.fusionar_nodos(nodo, indice - 1)
 
         # Funcion para imprimir el arbol
         def imprimir(self, nodo=None, nivel=0):
