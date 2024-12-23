@@ -33,3 +33,10 @@ Menu :
 Menu:
     crear
     Mostrar Estructura de Datos (Graphviz)
+
+pyuic6 -x Interfaz.ui -o Interfaz.py
+
+colores verdes
+(0,153,0)
+color besh
+[255,255,204]

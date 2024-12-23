@@ -1,5 +1,4 @@
 from vehiculos.NodoAB import NodoAB
-#from vehiculos.Vehiculos import Vehiculos
 import os
 
 class ArbolB:

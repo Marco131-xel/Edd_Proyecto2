@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>800</width>
-    <height>600</height>
+    <width>1197</width>
+    <height>623</height>
    </rect>
   </property>
   <property name="font">
@@ -23,8 +23,8 @@
    <widget class="QPushButton" name="BT_abrir_clientes">
     <property name="geometry">
      <rect>
-      <x>30</x>
-      <y>30</y>
+      <x>10</x>
+      <y>10</y>
       <width>111</width>
       <height>34</height>
      </rect>
@@ -43,8 +43,8 @@
    <widget class="QPushButton" name="BT_abrir_vehiculos">
     <property name="geometry">
      <rect>
-      <x>160</x>
-      <y>30</y>
+      <x>140</x>
+      <y>10</y>
       <width>111</width>
       <height>34</height>
      </rect>
@@ -63,8 +63,8 @@
    <widget class="QPushButton" name="BT_abrir_rutas">
     <property name="geometry">
      <rect>
-      <x>290</x>
-      <y>30</y>
+      <x>260</x>
+      <y>10</y>
       <width>111</width>
       <height>34</height>
      </rect>
@@ -83,15 +83,570 @@
    <widget class="QTextEdit" name="text_area">
     <property name="geometry">
      <rect>
-      <x>110</x>
-      <y>150</y>
-      <width>541</width>
-      <height>221</height>
+      <x>20</x>
+      <y>60</y>
+      <width>651</width>
+      <height>491</height>
      </rect>
     </property>
     <property name="styleSheet">
      <string notr="true">background-color: rgb(255, 255, 255);
 color: rgb(0, 0, 0);</string>
+    </property>
+   </widget>
+   <widget class="QTabWidget" name="tabWidget">
+    <property name="geometry">
+     <rect>
+      <x>690</x>
+      <y>60</y>
+      <width>491</width>
+      <height>471</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>10</pointsize>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="currentIndex">
+     <number>0</number>
+    </property>
+    <widget class="QWidget" name="tab_cliente">
+     <attribute name="title">
+      <string>Clientes</string>
+     </attribute>
+     <widget class="QTabWidget" name="tabWidget_2">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>20</y>
+        <width>451</width>
+        <height>401</height>
+       </rect>
+      </property>
+      <property name="currentIndex">
+       <number>3</number>
+      </property>
+      <widget class="QWidget" name="tab_crear">
+       <attribute name="title">
+        <string>Crear</string>
+       </attribute>
+       <widget class="QLineEdit" name="crear_GENERO">
+        <property name="geometry">
+         <rect>
+          <x>310</x>
+          <y>40</y>
+          <width>113</width>
+          <height>32</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="crear_TELEFONO">
+        <property name="geometry">
+         <rect>
+          <x>310</x>
+          <y>100</y>
+          <width>113</width>
+          <height>32</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="crear_DIRECCION">
+        <property name="geometry">
+         <rect>
+          <x>90</x>
+          <y>210</y>
+          <width>331</width>
+          <height>32</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="crear_DPI">
+        <property name="geometry">
+         <rect>
+          <x>90</x>
+          <y>20</y>
+          <width>113</width>
+          <height>32</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="crear_NOMBRE">
+        <property name="geometry">
+         <rect>
+          <x>90</x>
+          <y>80</y>
+          <width>131</width>
+          <height>32</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="crear_APELLIDO">
+        <property name="geometry">
+         <rect>
+          <x>90</x>
+          <y>150</y>
+          <width>151</width>
+          <height>32</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="BT_crear_cliente">
+        <property name="geometry">
+         <rect>
+          <x>330</x>
+          <y>300</y>
+          <width>88</width>
+          <height>34</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Crear</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_2">
+        <property name="geometry">
+         <rect>
+          <x>30</x>
+          <y>30</y>
+          <width>31</width>
+          <height>18</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>DPI</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_3">
+        <property name="geometry">
+         <rect>
+          <x>20</x>
+          <y>90</y>
+          <width>58</width>
+          <height>18</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Nombre</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_4">
+        <property name="geometry">
+         <rect>
+          <x>20</x>
+          <y>150</y>
+          <width>58</width>
+          <height>18</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Apellido</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_5">
+        <property name="geometry">
+         <rect>
+          <x>240</x>
+          <y>40</y>
+          <width>58</width>
+          <height>18</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Genero</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_6">
+        <property name="geometry">
+         <rect>
+          <x>240</x>
+          <y>100</y>
+          <width>58</width>
+          <height>18</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Telefono</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_7">
+        <property name="geometry">
+         <rect>
+          <x>20</x>
+          <y>220</y>
+          <width>58</width>
+          <height>18</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Direccion</string>
+        </property>
+       </widget>
+       <widget class="QTextEdit" name="estado_crear">
+        <property name="geometry">
+         <rect>
+          <x>30</x>
+          <y>280</y>
+          <width>171</width>
+          <height>41</height>
+         </rect>
+        </property>
+       </widget>
+      </widget>
+      <widget class="QWidget" name="tab_modificar">
+       <attribute name="title">
+        <string>Modificar</string>
+       </attribute>
+       <widget class="QLineEdit" name="buscar_dpi_MOD">
+        <property name="geometry">
+         <rect>
+          <x>130</x>
+          <y>10</y>
+          <width>191</width>
+          <height>32</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label">
+        <property name="geometry">
+         <rect>
+          <x>30</x>
+          <y>20</y>
+          <width>81</width>
+          <height>18</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Buscar DPI</string>
+        </property>
+       </widget>
+       <widget class="QTextEdit" name="estado_mod">
+        <property name="geometry">
+         <rect>
+          <x>40</x>
+          <y>60</y>
+          <width>361</width>
+          <height>41</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="mod_NOMBRE">
+        <property name="geometry">
+         <rect>
+          <x>60</x>
+          <y>160</y>
+          <width>141</width>
+          <height>32</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="mod_APELLIDO">
+        <property name="geometry">
+         <rect>
+          <x>280</x>
+          <y>160</y>
+          <width>121</width>
+          <height>32</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="mod_TELEFONO">
+        <property name="geometry">
+         <rect>
+          <x>60</x>
+          <y>230</y>
+          <width>141</width>
+          <height>32</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="mod_GENERO">
+        <property name="geometry">
+         <rect>
+          <x>280</x>
+          <y>230</y>
+          <width>121</width>
+          <height>32</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="mod_DIRECCION">
+        <property name="geometry">
+         <rect>
+          <x>40</x>
+          <y>310</y>
+          <width>241</width>
+          <height>32</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="BT_guardar_mod">
+        <property name="geometry">
+         <rect>
+          <x>320</x>
+          <y>300</y>
+          <width>88</width>
+          <height>34</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Guardar</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_8">
+        <property name="geometry">
+         <rect>
+          <x>70</x>
+          <y>140</y>
+          <width>58</width>
+          <height>18</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Nombre</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_9">
+        <property name="geometry">
+         <rect>
+          <x>290</x>
+          <y>140</y>
+          <width>58</width>
+          <height>18</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Apellido</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_10">
+        <property name="geometry">
+         <rect>
+          <x>70</x>
+          <y>210</y>
+          <width>58</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Telefono</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_11">
+        <property name="geometry">
+         <rect>
+          <x>280</x>
+          <y>210</y>
+          <width>58</width>
+          <height>18</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Genero</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_12">
+        <property name="geometry">
+         <rect>
+          <x>60</x>
+          <y>287</y>
+          <width>71</width>
+          <height>21</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Direccion</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="BT_buscar_mod">
+        <property name="geometry">
+         <rect>
+          <x>357</x>
+          <y>10</y>
+          <width>71</width>
+          <height>34</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Buscar</string>
+        </property>
+       </widget>
+      </widget>
+      <widget class="QWidget" name="tab_eliminar">
+       <attribute name="title">
+        <string>Eliminar</string>
+       </attribute>
+       <widget class="QLabel" name="label_13">
+        <property name="geometry">
+         <rect>
+          <x>30</x>
+          <y>30</y>
+          <width>91</width>
+          <height>18</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Buscar DPI</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="BT_eliminar">
+        <property name="geometry">
+         <rect>
+          <x>320</x>
+          <y>300</y>
+          <width>88</width>
+          <height>34</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Eliminar</string>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="buscar_dpi_ELI">
+        <property name="geometry">
+         <rect>
+          <x>130</x>
+          <y>30</y>
+          <width>201</width>
+          <height>32</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QTextEdit" name="estado_eli">
+        <property name="geometry">
+         <rect>
+          <x>50</x>
+          <y>80</y>
+          <width>351</width>
+          <height>31</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QTextEdit" name="contenido_eliminado">
+        <property name="geometry">
+         <rect>
+          <x>50</x>
+          <y>150</y>
+          <width>351</width>
+          <height>131</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="BT_buscar_eli">
+        <property name="geometry">
+         <rect>
+          <x>347</x>
+          <y>30</y>
+          <width>81</width>
+          <height>34</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Buscar</string>
+        </property>
+       </widget>
+      </widget>
+      <widget class="QWidget" name="tab_mostrar">
+       <attribute name="title">
+        <string>Mostrar</string>
+       </attribute>
+       <widget class="QPushButton" name="BT_buscar_most">
+        <property name="geometry">
+         <rect>
+          <x>350</x>
+          <y>20</y>
+          <width>71</width>
+          <height>34</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Buscar</string>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="buscar_dpi_MOST">
+        <property name="geometry">
+         <rect>
+          <x>140</x>
+          <y>20</y>
+          <width>191</width>
+          <height>32</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_14">
+        <property name="geometry">
+         <rect>
+          <x>30</x>
+          <y>20</y>
+          <width>91</width>
+          <height>18</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Buscar DPI</string>
+        </property>
+       </widget>
+       <widget class="QTextEdit" name="contenido_mostrar">
+        <property name="geometry">
+         <rect>
+          <x>40</x>
+          <y>100</y>
+          <width>351</width>
+          <height>171</height>
+         </rect>
+        </property>
+       </widget>
+      </widget>
+     </widget>
+     <widget class="QPushButton" name="BT_graficar">
+      <property name="geometry">
+       <rect>
+        <x>370</x>
+        <y>10</y>
+        <width>71</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Grafica</string>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="tab_vehiculos">
+     <attribute name="title">
+      <string>Vehiculos</string>
+     </attribute>
+    </widget>
+    <widget class="QWidget" name="tab_viajes">
+     <attribute name="title">
+      <string>Viajes</string>
+     </attribute>
+    </widget>
+    <widget class="QWidget" name="tab_reportes">
+     <attribute name="title">
+      <string>Reportes</string>
+     </attribute>
+    </widget>
+   </widget>
+   <widget class="QPushButton" name="BT_mapa">
+    <property name="geometry">
+     <rect>
+      <x>40</x>
+      <y>570</y>
+      <width>88</width>
+      <height>34</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+      <italic>false</italic>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="text">
+     <string>Mapa</string>
     </property>
    </widget>
   </widget>
