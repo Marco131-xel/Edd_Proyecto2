@@ -2,6 +2,8 @@ import sys
 from PyQt6.QtWidgets import *
 from interfaz.Interfaz import Ui_MainWindow
 from interfaz.Funct_Cliente import Funct_Cliente
+from interfaz.Funct_Rutas import Funct_Rutas
+from interfaz.Funct_Vehiculos import Funct_Vehiculos
 
 #Iniciar mi interfaz
 class MainWindow(QMainWindow):
@@ -13,6 +15,8 @@ class MainWindow(QMainWindow):
 
         # Intanciasr funcionalidades de la interfaz
         self.funct_cliente = Funct_Cliente(self.ui)
+        self.funct_rutas = Funct_Rutas(self.ui)
+        self.funct_vehiculos = Funct_Vehiculos(self.ui)
         # Bloquear edicio text_Area
         self.ui.text_area.setReadOnly(True)
 

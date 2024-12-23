@@ -1,0 +1,18 @@
+graph Rutas {
+  "Guatemala" -- "Quetzaltenango" [label="58"];
+  "Escuintla" -- "Guatemala" [label="45"];
+  "Escuintla" -- "Zacapa" [label="72"];
+  "Quetzaltenango" -- "Totonicapán" [label="32"];
+  "Huehuetenango" -- "Sacatepéquez" [label="63"];
+  "Chimaltenango" -- "Huehuetenango" [label="67"];
+  "Alta Verapaz" -- "Baja Verapaz" [label="78"];
+  "Alta Verapaz" -- "Chimaltenango" [label="34"];
+  "Izabal" -- "Sacatepéquez" [label="54"];
+  "Jalapa" -- "Jutiapa" [label="62"];
+  "Jutiapa" -- "Petén" [label="46"];
+  "Chiquimula" -- "Zacapa" [label="49"];
+  "Quiché" -- "San Marcos" [label="88"];
+  "Petén" -- "Retalhuleu" [label="91"];
+  "Sololá" -- "Suchitepéquez" [label="73"];
+  "El Progreso" -- "Santa Rosa" [label="85"];
+}
