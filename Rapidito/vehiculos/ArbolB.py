@@ -36,12 +36,15 @@ class ArbolB:
         return None
 
     # Funcion para modificar un vehiculo por su placa
-    def modificar(self, placa, nueva_marca, nuevo_modelo, nuevo_precio):
-        Vehiculos = self.buscar(placa)
-        if Vehiculos:
-            Vehiculos.set_Marca(nueva_marca)
-            Vehiculos.set_Modelo(nuevo_modelo)
-            Vehiculos.set_Precio(nuevo_precio)
+    def modificar(self, placa, nueva_marca=None, nuevo_modelo=None, nuevo_precio=None):
+        vehiculo = self.buscar(placa)
+        if vehiculo:
+            if nueva_marca is not None:
+                vehiculo.set_Marca(nueva_marca)
+            if nuevo_modelo is not None:
+                vehiculo.set_Modelo(nuevo_modelo)
+            if nuevo_precio is not None:
+                vehiculo.set_Precio(nuevo_precio)
             return True
         return False
 
@@ -92,32 +95,35 @@ class ArbolB:
             nodo_hijo.hijos = nodo_hijo.hijos[:orden]
 
     # Funcion eliminar clave
-    def eliminar_clave(self, nodo, clave):
-        if clave in nodo.claves:
+    def eliminar_clave(self, nodo, placa):
+        # Busca el indice de la clave a eliminar
+        indice = next((i for i, v in enumerate(nodo.claves) if v.get_Placa() == placa), None)
+        if indice is not None:
             if nodo.hoja:
-                nodo.claves.remove(clave)
+                # Caso 1 nodo hoja
+                nodo.claves.pop(indice)
             else:
-                indice = nodo.claves.index(clave)
+                # Caso 2 nodo interno
                 if len(nodo.hijos[indice].claves) >= self.orden:
                     predecesor = self.obtener_predecesor(nodo.hijos[indice])
                     nodo.claves[indice] = predecesor
-                    self.eliminar_clave(nodo.hijos[indice], predecesor)
+                    self.eliminar_clave(nodo.hijos[indice], predecesor.get_Placa())
                 elif len(nodo.hijos[indice + 1].claves) >= self.orden:
                     sucesor = self.obtener_sucesor(nodo.hijos[indice + 1])
                     nodo.claves[indice] = sucesor
-                    self.eliminar_clave(nodo.hijos[indice + 1], sucesor)
+                    self.eliminar_clave(nodo.hijos[indice + 1], sucesor.get_Placa())
                 else:
                     self.fusionar_nodos(nodo, indice)
-                    self.eliminar_clave(nodo.hijos[indice], clave)
+                    self.eliminar_clave(nodo.hijos[indice], placa)
         else:
+            # Caso 3 la clave no esta en el nodo actual
             if nodo.hoja:
+                # No se puede eliminar porque no existe
                 return
-            indice = 0
-            while indice < len(nodo.claves) and clave > nodo.claves[indice]:
-                indice += 1
-            if len(nodo.hijos[indice].claves) < self.orden:
-                self.reforzar_hijo(nodo, indice)
-            self.eliminar_clave(nodo.hijos[indice], clave)
+            i = next((i for i, v in enumerate(nodo.claves) if placa < v.get_Placa()), len(nodo.claves))
+            if len(nodo.hijos[i].claves) < self.orden:
+                self.reforzar_hijo(nodo, i)
+            self.eliminar_clave(nodo.hijos[i], placa)
 
     # Funcion predecesor del nodo
     def obtener_predecesor(self, nodo):

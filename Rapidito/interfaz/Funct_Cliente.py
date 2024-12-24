@@ -58,7 +58,7 @@ class Funct_Cliente:
                             self.ui.text_area.append(f'Cargado: {cliente}')
                             self.lista_clientes.graficar("Lista_Dob")
                         else:
-                            self.ui.text_area.append(f'Línea inválida: {linea}')
+                            self.ui.text_area.append(f'Linea invalida: {linea}')
                 self.ui.text_area.append('Carga completada')
             except Exception as e:
                 self.ui.text_area.append(f'Error al leer el archivo: {e}')
@@ -186,9 +186,15 @@ class Funct_Cliente:
             cliente = nodo_cliente.dato  # Obtener cliente del nodo
             # Formatear los datos del cliente para mostrarlos en el QTextEdit
             cliente_info = (
-                f"DPI: {cliente.get_Dpi()}, Nombre: {cliente.get_Nombre()}, Apellido: {cliente.get_Apellido()}, Genero: {cliente.get_Genero()}, Telefono: {cliente.get_Telefono()}, Direccion: {cliente.get_Direccion()}"
+                f"DPI: {cliente.get_Dpi()}\n"
+                f"Nombre: {cliente.get_Nombre()}\n"
+                f"Apellido: {cliente.get_Apellido()}\n"
+                f"Genero: {cliente.get_Genero()}\n"
+                f"Telefono: {cliente.get_Telefono()}\n"
+                f"Direccion: {cliente.get_Direccion()}\n"
             )
-            self.ui.estado_eli.setPlainText(cliente_info)  # Mostrar los datos en el QTextEdit
+            self.ui.estado_eli.setPlainText('Cliente encontrado')
+            self.ui.contenido_eliminado.setPlainText(cliente_info)
             self.lista_clientes.mostrar_clientes(dpi)
         else:
             # Si no se encuentra, mostrar un mensaje de error
@@ -214,7 +220,7 @@ class Funct_Cliente:
                 f"Telefono: {cliente.get_Telefono()}\n"
                 f"Direccion: {cliente.get_Direccion()}\n"
             )
-            self.ui.contenido_eliminado.setPlainText(cliente_info)
+            self.ui.contenido_eliminado.clear()
             self.ui.estado_eli.setPlainText("Cliente eliminado")
             self.lista_clientes.mostrar_clientes(dpi)
             self.lista_clientes.eliminar_cliente(dpi)
@@ -250,7 +256,7 @@ class Funct_Cliente:
     def graficar_clientes(self):
         # Crear un QDialog sin un padre explícito
         dialog = QDialog(parent=None)
-        dialog.setWindowTitle("Grafica Estrucutura de Clientes")
+        dialog.setWindowTitle("Grafica Estructura de Clientes")
 
         # Crear un QLabel para mostrar la imagen
         label = QLabel(dialog)

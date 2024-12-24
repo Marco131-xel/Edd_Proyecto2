@@ -19,6 +19,7 @@ class MainWindow(QMainWindow):
         self.funct_vehiculos = Funct_Vehiculos(self.ui)
         # Bloquear edicio text_Area
         self.ui.text_area.setReadOnly(True)
+        self.ui.ESTADOS.setReadOnly(True)
 
 #iniciar la aplicacion
 def main():
