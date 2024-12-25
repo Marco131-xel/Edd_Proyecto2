@@ -18,25 +18,33 @@ class Lista_Dob:
     # Funcion para agregar un cliente a la lista
     def agregar_cliente(self, cliente):
         if not isinstance(cliente, Clientes):
-            print('Error: El dato deber ser una instancia de la clase Clientes')
+            print('Error: El dato debe ser una instancia de la clase Clientes')
             return
 
         nuevo = NodoLD(cliente)
         if self.vacia():
             self.primero = self.ultimo = nuevo
+            self.primero.siguiente = self.primero.anterior = self.primero
         else:
             nuevo.anterior = self.ultimo
+            nuevo.siguiente = self.primero
             self.ultimo.siguiente = nuevo
+            self.primero.anterior = nuevo
             self.ultimo = nuevo
         self.size += 1
 
     # Funcion para buscar un cliente en la lista por DPI
     def buscar_cliente(self, dpi):
+        if self.vacia():
+            return None
+
         aux = self.primero
-        while aux is not None:
+        while True:
             if aux.dato.get_Dpi() == dpi:
-                return  aux
+                return aux
             aux = aux.siguiente
+            if aux == self.primero:
+                break
         return None
 
     # Funcion para modificar un cliente en la lista por DPI
@@ -67,14 +75,21 @@ class Lista_Dob:
             print(f'No se encontro un cliente con DPI: {dpi}')
             return False
 
-        if nodo == self.primero: # es el primero
-            self.eliminar_inicio()
-        elif nodo == self.ultimo: # es el ultimo
-            self.eliminar_final()
-        else: # esta en el medio
+        if nodo == self.primero and nodo == self.ultimo:  # unico nodo
+            self.primero = self.ultimo = None
+        elif nodo == self.primero:  # primer nodo
+            self.primero = self.primero.siguiente
+            self.primero.anterior = self.ultimo
+            self.ultimo.siguiente = self.primero
+        elif nodo == self.ultimo:  # ultimo nodo
+            self.ultimo = self.ultimo.anterior
+            self.ultimo.siguiente = self.primero
+            self.primero.anterior = self.ultimo
+        else:  # nodo medio
             nodo.anterior.siguiente = nodo.siguiente
-            nodo.anterior.anterior = nodo.anterior
-            self.size -= 1
+            nodo.siguiente.anterior = nodo.anterior
+
+        self.size -= 1
         print(f'Cliente eliminado con DPI: {dpi}')
         return True
 
@@ -112,17 +127,23 @@ class Lista_Dob:
 
     # Funcion recorrer mostrar todos los clientes
     def recorrer(self):
+        if self.vacia():
+            print('La lista está vacía')
+            return
         aux = self.primero
-        while aux is not None:
+        while True:
             print(aux.dato)
             aux = aux.siguiente
+            if aux == self.primero:
+                break
 
     # Funcion para graficar Estrucutura
-    def graficar(self, filename='lista_doble'):
+    def graficar(self, filename='lista_circular_doble'):
         if self.vacia():
             print(' ** La lista esta vacia, no hay nada que graficar ** ')
             return
-        # Crear el codigo DOT
+
+        # crear codigo DOT
         dot = ["digraph G {"]
         dot.append("rankdir=LR;")
         dot.append("node [shape=record];")
@@ -132,13 +153,21 @@ class Lista_Dob:
         conexiones = []
 
         i = 0
-        while aux is not None:
+        while True:
             nodos.append(f'nodo{i} [label="{aux.dato}"];')
-            if aux.siguiente:
-                conexiones.append(f'nodo{i} -> nodo{i + 1};')
-                conexiones.append(f'nodo{i + 1} -> nodo{i};')
+            # siguiente nodo
+            conexiones.append(f'nodo{i} -> nodo{i + 1};')
+            conexiones.append(f'nodo{i + 1} -> nodo{i};')
+
             aux = aux.siguiente
             i += 1
+            # retornor al nodo inicial
+            if aux == self.primero:
+                break
+
+        # Hacer los enlaces circulares entre el ultimo y el primero
+        conexiones.append(f'nodo{i - 1} -> nodo0;')  # ultimo al primero
+        conexiones.append(f'nodo0 -> nodo{i - 1};')  # primero al ultimo
 
         dot.extend(nodos)
         dot.extend(conexiones)
