@@ -1,0 +1,131 @@
+from PyQt6.QtWidgets import *
+from PyQt6.QtGui import QPixmap
+from PyQt6.QtCore import Qt
+
+from clientes.Clientes import Clientes
+from clientes.Lista_Dob import Lista_Dob
+from vehiculos.Vehiculos import Vehiculos
+from vehiculos.ArbolB import ArbolB
+from rutas.Rutas import Ruta
+from rutas.Lista_Simp import Lista_Simp
+from viajes.Viajes import Viajes
+from viajes.Lista_Sviaje import Lista_Sviaje
+
+class Funct_Viajes:
+    def __init__(self, ui, lista_clientes, arbolito):
+        self.ui = ui
+
+        # Inciar Estructuras
+        self.lista_Dob = lista_clientes
+        self.arbol = arbolito
+        self.list_Simp = Lista_Simp()
+        self.lista_Sviaje = Lista_Sviaje()
+        # Iniciar Botones
+        self.ui.BT_CREAR_viaje.clicked.connect(self.crear_viajes)
+        self.ui.BT_buscar_DPI_viaje.clicked.connect(self.buscar_DPI)
+        self.ui.BT_buscar_RUTA_viaje.clicked.connect(self.buscar_RUTA)
+        self.ui.BT_buscar_PLACA_viaje.clicked.connect(self.buscar_PLACA)
+        # Boton para limpiar los campos de viaje
+        self.ui.BT_limpiar_viaje.clicked.connect(self.limpiar_contenido)
+        # Boton para graficar la estructura lista simple
+        self.ui.BT_graficar_viajes.clicked.connect(self.graficar_viajes)
+        # Bloquear edicio a estados
+        self.ui.espacio_DPI.setReadOnly(True)
+        self.ui.espacio_PLACA.setReadOnly(True)
+        self.ui.espacio_RUTA.setReadOnly(True)
+        self.ui.SUPER_ESTADO.setReadOnly(True)
+
+
+    # Funcion para crear viajes
+    def crear_viajes(self):
+        try:
+            int(self.ui.crear_ID.text())
+            int(self.ui.MI_DPI.text())
+        except ValueError:
+            self.ui.SUPER_ESTADO.setPlainText('PorFavor colocar numeros')
+            return
+
+        id = self.ui.crear_ID.text()
+        fecha = self.ui.crear_fecha.text()
+        cliente = self.ui.MI_DPI.text()
+        vehiculo = self.ui.MI_PLACA.text()
+        ruta = self.ui.MI_RUTA.text()
+
+        # Crear Viajes
+
+    # Funcion para graficar la estructura de viajes (Lista simple)
+    def graficar_viajes(self):
+        pass
+    # Funcion para buscar el DPI
+    def buscar_DPI(self):
+        try:
+            int(self.ui.MI_DPI.text())
+        except ValueError:
+            self.ui.SUPER_ESTADO.setPlainText('PorFavor colocar numeros')
+            return
+        dpi = self.ui.MI_DPI.text()
+        nodo_cliente = self.lista_Dob.buscar_cliente(dpi)
+
+        if nodo_cliente is not None:
+            cliente = nodo_cliente.dato
+            cliente_info = (
+                f'DPI: {cliente.get_Dpi()}, Nombre: {cliente.get_Nombre()}'
+            )
+            self.ui.espacio_DPI.setPlainText(cliente_info)
+        else:
+            self.ui.espacio_DPI.setPlainText('No se encontro DPI')
+
+    # Funcion para buscar la placa
+    def buscar_PLACA(self):
+        placa = self.ui.MI_PLACA.text()
+        vehiculo = self.arbol.buscar(placa)
+
+        if vehiculo is not None:
+            vehiculo_info = (
+                f'Placa: {vehiculo.get_Placa()}, Marca: {vehiculo.get_Marca()}'
+            )
+            self.ui.espacio_PLACA.setPlainText(vehiculo_info)
+        else:
+            self.ui.espacio_PLACA.setPlainText('No se encontro placa')
+
+    # Funcion para buscar la ruta
+    def buscar_RUTA(self):
+        pass
+    # Funcion para limpiar los campos que se ingresaron
+    def limpiar_contenido(self):
+        self.ui.crear_ID.clear()
+        self.ui.crear_FECHA.clear()
+        self.ui.MI_DPI.clear()
+        self.ui.MI_PLACA.clear()
+        self.ui.MI_RUTA.clear()
+        self.ui.espacio_DPI.clear()
+        self.ui.espacio_PLACA.clear()
+        self.ui.espacio_RUTA.clear()
+
+        """
+        Para recibir el contenido de id y fecha
+        crear_FECHA
+        crear_ID
+        
+        mis combox
+        combo_ORIGEN
+        combo_DESTINO
+        
+        para ingresar los datos placa dpi y ruta tomada
+        MI_DPI
+        MI_PLACA
+        MI_RUTA
+        
+        el espacio para regresar el dato encontrado
+        espacio_DPI
+        espacio_PLACA
+        espacio_RUTA
+        
+        los botones 
+        BT_CREAR_viaje
+        BT_buscar_DPI_viaje
+        BT_buscar_RUTA_viaje
+        BT_buscar_PLACA_viaje
+        BT_graficar_viajes
+        BT_limpiar_viaje
+        """

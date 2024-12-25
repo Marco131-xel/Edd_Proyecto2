@@ -1202,7 +1202,7 @@ color: rgb(0, 0, 0);</string>
        </rect>
       </property>
      </widget>
-     <widget class="QPushButton" name="BT_buscar_vehiculo_viaje">
+     <widget class="QPushButton" name="BT_buscar_PLACA_viaje">
       <property name="geometry">
        <rect>
         <x>410</x>
@@ -1348,7 +1348,7 @@ color: rgb(0, 0, 0);</string>
        <string>Ruta</string>
       </property>
      </widget>
-     <widget class="QPushButton" name="pushButton_3">
+     <widget class="QPushButton" name="BT_graficar_viajes">
       <property name="geometry">
        <rect>
         <x>390</x>
@@ -1374,7 +1374,7 @@ color: rgb(0, 0, 0);</string>
        </rect>
       </property>
      </widget>
-     <widget class="QPushButton" name="BT_buscar_ruta_viaje">
+     <widget class="QPushButton" name="BT_buscar_RUTA_viaje">
       <property name="geometry">
        <rect>
         <x>410</x>
@@ -1394,7 +1394,7 @@ color: rgb(0, 0, 0);</string>
      <widget class="QPushButton" name="BT_CREAR_viaje">
       <property name="geometry">
        <rect>
-        <x>70</x>
+        <x>270</x>
         <y>390</y>
         <width>88</width>
         <height>34</height>
@@ -1410,7 +1410,7 @@ color: rgb(0, 0, 0);</string>
      <widget class="QPushButton" name="BT_limpiar_viaje">
       <property name="geometry">
        <rect>
-        <x>260</x>
+        <x>380</x>
         <y>390</y>
         <width>88</width>
         <height>34</height>
@@ -1421,6 +1421,16 @@ color: rgb(0, 0, 0);</string>
       </property>
       <property name="text">
        <string>Limpiar</string>
+      </property>
+     </widget>
+     <widget class="QTextEdit" name="SUPER_ESTADO">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>400</y>
+        <width>221</width>
+        <height>31</height>
+       </rect>
       </property>
      </widget>
     </widget>

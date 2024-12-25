@@ -1,4 +1,4 @@
-from Rutas import Ruta
+from rutas.Rutas import Ruta
 
 class NodoLS:
     def __init__(self, ruta: Ruta):

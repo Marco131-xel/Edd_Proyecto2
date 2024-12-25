@@ -1,4 +1,4 @@
-from Nodoviaje import Nodoviaje
+from viajes.Nodoviaje import Nodoviaje
 import os
 
 class Lista_Sviaje:

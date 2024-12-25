@@ -140,10 +140,9 @@ class Lista_Dob:
     # Funcion para graficar Estrucutura
     def graficar(self, filename='lista_circular_doble'):
         if self.vacia():
-            print(' ** La lista esta vacia, no hay nada que graficar ** ')
+            print(' ** La lista está vacía, no hay nada que graficar ** ')
             return
 
-        # crear codigo DOT
         dot = ["digraph G {"]
         dot.append("rankdir=LR;")
         dot.append("node [shape=record];")
@@ -155,19 +154,22 @@ class Lista_Dob:
         i = 0
         while True:
             nodos.append(f'nodo{i} [label="{aux.dato}"];')
-            # siguiente nodo
-            conexiones.append(f'nodo{i} -> nodo{i + 1};')
-            conexiones.append(f'nodo{i + 1} -> nodo{i};')
+
+            # Crear conexiones solo si no es el ultimo nodo
+            if aux.siguiente != self.primero:
+                conexiones.append(f'nodo{i} -> nodo{i + 1};')
+                conexiones.append(f'nodo{i + 1} -> nodo{i};')
 
             aux = aux.siguiente
             i += 1
-            # retornor al nodo inicial
+            # Romper el ciclo al retornar al nodo inicial
             if aux == self.primero:
                 break
 
         # Hacer los enlaces circulares entre el ultimo y el primero
-        conexiones.append(f'nodo{i - 1} -> nodo0;')  # ultimo al primero
-        conexiones.append(f'nodo0 -> nodo{i - 1};')  # primero al ultimo
+        if i > 1:  # Si hay mas de un nodo
+            conexiones.append(f'nodo{i - 1} -> nodo0;')  # ultimo al primero
+            conexiones.append(f'nodo0 -> nodo{i - 1};')  # primero al ultimo
 
         dot.extend(nodos)
         dot.extend(conexiones)
@@ -177,7 +179,6 @@ class Lista_Dob:
         dot_file = f'{filename}.dot'
         with open(dot_file, "w") as file:
             file.write("\n".join(dot))
-
         # Generar imagen
         os.system(f'dot -Tpng {dot_file} -o {filename}.png')
-        print(f'Grafico generado: {filename}.png')
+        print(f'Gráfico generado: {filename}.png')

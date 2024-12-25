@@ -1,3 +1,4 @@
+from PyQt6.QtCore import Qt
 from PyQt6.QtWidgets import *
 from PyQt6.QtGui import QPixmap
 from vehiculos.Vehiculos import Vehiculos
@@ -48,6 +49,7 @@ class Funct_Vehiculos:
                             vehiculo = Vehiculos(placa, marca, modelo, precio)
                             self.arbol.insertar(vehiculo)
                             self.ui.text_area.append(f'Cargado: {vehiculo}')
+                            self.arbol.graficar("ArbolB")
                         else:
                             self.ui.text_area.append(f'Linea invalida: {linea}')
                 self.ui.text_area.append('Carga completada')
@@ -72,7 +74,7 @@ class Funct_Vehiculos:
         self.arbol.insertar(vehiculo)
         self.limpiar_campos_crear()
         self.ui.estado_CREAR_vehiculo.append('Vehiculo agregado')
-        #print(f'Vehiculo agregado: {vehiculo}')
+        self.arbol.graficar("ArbolB")
 
     # Funcion para buscar un vehiculo por su placa para modifcar
     def buscar_vehiculo_modificar(self):
@@ -122,6 +124,7 @@ class Funct_Vehiculos:
             self.ui.mod_MODELO.clear()
             self.ui.mod_PRECIO.clear()
             self.ui.estado_mod_vehiculo.setPlainText('Vehiculo Modificado')
+            self.arbol.graficar("ArbolB")
         else:
             self.ui.estado_mod_vehiculo.setPlainText('No se encontro el vehiculo')
 
@@ -153,6 +156,8 @@ class Funct_Vehiculos:
             self.arbol.eliminar(placa)
             self.ui.estado_eli_vehi.setPlainText('Vehiculo eliminado')
             self.ui.contenido_eli_vehi.clear()
+            self.ui.buscar_ELI_vehi.clear()
+            self.arbol.graficar("ArbolB")
         else:
             self.ui.estado_eli_vehi.setPlainText('No se encontro un vehiculo. No se pudo eliminar')
             self.ui.contenido_eli_vehi.clear()
@@ -199,9 +204,18 @@ class Funct_Vehiculos:
         dialog = QDialog(parent=None)
         dialog.setWindowTitle('Grafica Estructura de Vehiculos')
 
-        label = QLabel(dialog)
-        label.setPixmap(QPixmap("/home/marco/Documentos/Diciembre/edd/Edd_Proyecto2/Rapidito/ArbolB.png"))
-        label.setScaledContents(True)
+        label = QLabel()
+        pixmap = QPixmap("/home/marco/Documentos/Diciembre/edd/Edd_Proyecto2/Rapidito/ArbolB.png")
+        label.setPixmap(pixmap)
+
+        label.setAlignment(Qt.AlignmentFlag.AlignCenter)
+
+        scroll_area = QScrollArea()
+        scroll_area.setWidget(label)
+
+        layout = QVBoxLayout(dialog)
+        layout.addWidget(scroll_area)
 
         dialog.resize(1200, 600)
+
         dialog.exec()

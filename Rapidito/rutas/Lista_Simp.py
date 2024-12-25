@@ -1,4 +1,4 @@
-from NodoLS import NodoLS
+from rutas.NodoLS import NodoLS
 from rutas.Rutas import Ruta
 
 class Lista_Simp:

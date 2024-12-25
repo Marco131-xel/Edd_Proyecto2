@@ -1,3 +1,4 @@
+from PyQt6.QtCore import Qt
 from PyQt6.QtWidgets import *
 from PyQt6.QtGui import QPixmap
 from clientes.Clientes import Clientes
@@ -83,6 +84,7 @@ class Funct_Cliente:
         self.lista_clientes.agregar_cliente(cliente)
         self.limpiar_campos()
         self.ui.estado_crear.append('Cliente Agregado')
+        self.lista_clientes.graficar("Lista_Dob")
         print(f'cliente creado: {cliente}')
 
     # Funcion para buscar los clientes a modificar
@@ -138,6 +140,7 @@ class Funct_Cliente:
             )
             if modificado:
                 self.ui.estado_mod.setPlainText("Cliente modificado")
+                self.lista_clientes.graficar("Lista_Dob")
             else:
                 self.ui.estado_mod.setPlainText(f"No se encontro un cliente con el DPI: {dpi}")
         except Exception as e:
@@ -210,20 +213,12 @@ class Funct_Cliente:
         nodo_cliente = self.lista_clientes.buscar_cliente(dpi)
 
         if nodo_cliente is not None:
-            cliente = nodo_cliente.dato #Obtener cliente del nodo
-            # Formatear los datos del cliente para mostrar en el estado
-            cliente_info = (
-                f"DPI: {cliente.get_Dpi()}\n"
-                f"Nombre: {cliente.get_Nombre()}\n"
-                f"Apellido: {cliente.get_Apellido()}\n"
-                f"Genero: {cliente.get_Genero()}\n"
-                f"Telefono: {cliente.get_Telefono()}\n"
-                f"Direccion: {cliente.get_Direccion()}\n"
-            )
             self.ui.contenido_eliminado.clear()
+            self.ui.buscar_dpi_ELI.clear()
             self.ui.estado_eli.setPlainText("Cliente eliminado")
             self.lista_clientes.mostrar_clientes(dpi)
             self.lista_clientes.eliminar_cliente(dpi)
+            self.lista_clientes.graficar("Lista_Dob")
         else:
             # si no se encuetra mostrar mensaje de error
             self.ui.estado_eli.setPlainText("No se encontro un cliente con el DPI proporcionado")
@@ -254,15 +249,20 @@ class Funct_Cliente:
 
     # Función para mostrar la estructura de graphviz
     def graficar_clientes(self):
-        # Crear un QDialog sin un padre explícito
         dialog = QDialog(parent=None)
         dialog.setWindowTitle("Grafica Estructura de Clientes")
 
-        # Crear un QLabel para mostrar la imagen
-        label = QLabel(dialog)
-        label.setPixmap(QPixmap("/home/marco/Documentos/Diciembre/edd/Edd_Proyecto2/Rapidito/Lista_Dob.png"))
-        label.setScaledContents(True)
+        label = QLabel()
+        pixmap = QPixmap("/home/marco/Documentos/Diciembre/edd/Edd_Proyecto2/Rapidito/Lista_Dob.png")
+        label.setPixmap(pixmap)
 
-        # Configurar el tamaño del diálogo
+        label.setAlignment(Qt.AlignmentFlag.AlignCenter)
+
+        scroll_area = QScrollArea()
+        scroll_area.setWidget(label)
+
+        layout = QVBoxLayout(dialog)
+        layout.addWidget(scroll_area)
+
         dialog.resize(1200, 600)
         dialog.exec()
