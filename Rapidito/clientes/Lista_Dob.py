@@ -140,12 +140,17 @@ class Lista_Dob:
     # Funcion para graficar Estrucutura
     def graficar(self, filename='lista_circular_doble'):
         if self.vacia():
-            print(' ** La lista está vacía, no hay nada que graficar ** ')
+            print(' ** La lista esta vacia, no hay nada que graficar ** ')
             return
 
         dot = ["digraph G {"]
+
+        # Establecer el color de fondo y color de los nodos
+        dot.append('bgcolor="#17202a";')  # Fondo oscuro
+        dot.append('node [shape=record, style=filled, fillcolor="#145a32", fontcolor=white];')
+        dot.append('edge [color=white];')
+
         dot.append("rankdir=LR;")
-        dot.append("node [shape=record];")
 
         aux = self.primero
         nodos = []
@@ -174,7 +179,6 @@ class Lista_Dob:
         dot.extend(nodos)
         dot.extend(conexiones)
         dot.append("}")
-
         # Guardar archivo DOT
         dot_file = f'{filename}.dot'
         with open(dot_file, "w") as file:

@@ -185,10 +185,11 @@ class ArbolB:
         if not self.raiz:
             print('** El arbol esta vacio, no hay nada que graficar ** ')
             return
-
-        # Crear el codigo DOT
+        # Crear codigo DOT
         dot = ["digraph G {"]
-        dot.append("node [shape=record];")
+        dot.append('bgcolor="#17202a";')
+        dot.append('node [shape=record, style=filled, fillcolor="#145a32", fontcolor="white"];')
+        dot.append('edge [color="white"];')
 
         def recorrer_nodo(nodo, indice):
             nodo_id = f"nodo{indice}"
@@ -200,17 +201,15 @@ class ArbolB:
                     hijo_id = recorrer_nodo(hijo, len(dot))
                     dot.append(f"{nodo_id}:p{i} -> {hijo_id};")
             return nodo_id
-
         # Recorrer y construir el arbol en DOT
         recorrer_nodo(self.raiz, 0)
-
         dot.append("}")
-
         # Guardar archivo DOT
         dot_file = f"{filename}.dot"
         with open(dot_file, "w") as file:
             file.write("\n".join(dot))
-
         # Generar imagen
         os.system(f'dot -Tpng {dot_file} -o {filename}.png')
-        print(f'Grafico generado: {filename}.png')
+        print(f'Gráfico generado: {filename}.png')
+
+
