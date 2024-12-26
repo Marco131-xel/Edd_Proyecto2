@@ -50,15 +50,30 @@ class Funct_Viajes:
         fecha = self.ui.crear_FECHA.text()
         origen = self.ui.combo_ORIGEN.currentText()
         destino = self.ui.combo_DESTINO.currentText()
-        cliente = self.ui.MI_DPI.text()
-        vehiculo = self.ui.MI_PLACA.text()
+        dpi = self.ui.MI_DPI.text()
+        placa = self.ui.MI_PLACA.text()
         ruta = self.ui.MI_RUTA.text()
         # Validar origen y destino
         if not origen or not destino:
             self.ui.SUPER_ESTADO.setPlainText('Selecciona origen y destino')
             return
+        # Crear Nodos
+        nodo_cliente = self.lista_Dob.buscar_cliente(dpi)
+        if nodo_cliente is None:
+            self.ui.SUPER_ESTADO.setPlainText('No se encontro DPI')
+            return
+        cliente = nodo_cliente.dato
+
+        dato_cliente = {'DPI': cliente.get_Dpi(), 'Nombre': cliente.get_Nombre()}
+
+        vehiculo = self.arbol.buscar(placa)
+        if vehiculo is None:
+            self.ui.SUPER_ESTADO.setPlainText('No se encontro Placa')
+            return
+
+        dato_vehiculo = {'Placa': vehiculo.get_Placa(),'Marca': vehiculo.get_Marca()}
         # Crear Viajes
-        viajes = Viajes(id, origen, destino, fecha, cliente, vehiculo, ruta)
+        viajes = Viajes(id, origen, destino, fecha, dato_cliente, dato_vehiculo, ruta)
         self.lista_Sviaje.crear_viaje(viajes)
         self.ui.SUPER_ESTADO.setPlainText('Viaje Creado')
         self.lista_Sviaje.graficar('Lista_Viajes')

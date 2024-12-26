@@ -185,15 +185,21 @@ class ArbolB:
         if not self.raiz:
             print('** El arbol esta vacio, no hay nada que graficar ** ')
             return
+
         # Crear codigo DOT
         dot = ["digraph G {"]
+
         dot.append('bgcolor="#17202a";')
         dot.append('node [shape=record, style=filled, fillcolor="#145a32", fontcolor="white"];')
         dot.append('edge [color="white"];')
 
         def recorrer_nodo(nodo, indice):
             nodo_id = f"nodo{indice}"
-            claves_str = "|".join(str(clave) for clave in nodo.claves)
+
+            # Generar Placa y Marca
+            claves_str = "|".join(f"Placa: {clave.get_Placa()} - Marca: {clave.get_Marca()}" for clave in nodo.claves)
+
+            # Crear el nodo con sus atributos
             dot.append(f'{nodo_id} [label="<p0> |{claves_str}| <p{len(nodo.claves)}>"];')
 
             if not nodo.hoja:
@@ -201,15 +207,17 @@ class ArbolB:
                     hijo_id = recorrer_nodo(hijo, len(dot))
                     dot.append(f"{nodo_id}:p{i} -> {hijo_id};")
             return nodo_id
+
         # Recorrer y construir el arbol en DOT
         recorrer_nodo(self.raiz, 0)
+
         dot.append("}")
+
         # Guardar archivo DOT
         dot_file = f"{filename}.dot"
         with open(dot_file, "w") as file:
             file.write("\n".join(dot))
+
         # Generar imagen
         os.system(f'dot -Tpng {dot_file} -o {filename}.png')
-        print(f'Gráfico generado: {filename}.png')
-
-
+        print(f'Grafico generado: {filename}.png')

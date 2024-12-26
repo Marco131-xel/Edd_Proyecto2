@@ -72,11 +72,13 @@ class Lista_Sviaje:
 
     # Funcion para graficar la Estructura con Graphviz
     def graficar(self, filename='lista_viajes'):
+        import os
+
         if self.vacia():
             print(' ** La lista está vacía, no hay nada que graficar ** ')
             return
 
-        # Crear codigo DOT
+        # Crear código DOT
         dot = ["digraph G {"]
         dot.append('rankdir=LR;')
         dot.append('bgcolor="#17202a";')
@@ -89,18 +91,26 @@ class Lista_Sviaje:
         i = 0
 
         while aux is not None:
-            # Crear nodo con viaje, cliente, vehiculo y ruta
+            # Formatear cliente y vehículo
+            cliente = aux.viaje.get_Cliente()
+            vehiculo = aux.viaje.get_Vehiculo()
+
+            cliente_info = f"DPI: {cliente['DPI']}\\nNombre: {cliente['Nombre']}"
+            vehiculo_info = f"Placa: {vehiculo['Placa']}\\nMarca: {vehiculo['Marca']}"
+
+            # Crear nodo con los datos formateados
             nodos.append(
                 f'nodo{i} [label="'
                 f'ID: {aux.viaje.get_ID()}\\n'
                 f'Origen: {aux.viaje.get_LugarOrigen()}\\n'
                 f'Destino: {aux.viaje.get_LugarDestino()}\\n'
                 f'Fecha: {aux.viaje.get_Fecha()}\\n'
-                f'Cliente: {aux.viaje.get_Cliente()}\\n'
-                f'Vehiculo: {aux.viaje.get_Vehiculo()}\\n'
+                f'Cliente: {cliente_info}\\n'
+                f'Vehiculo: {vehiculo_info}\\n'
                 f'Ruta: {aux.viaje.get_Ruta_Tomada()}"];'
             )
-            # Crear conexion al siguiente nodo
+
+            # Crear conexión al siguiente nodo
             if aux.siguiente is not None:
                 conexiones.append(f'nodo{i} -> nodo{i + 1};')
 

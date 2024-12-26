@@ -59,10 +59,12 @@ class Viajes:
 
     # ToString
     def __str__(self) -> str:
+        cliente_info = f"DPI: {self.__cliente['DPI']}, Nombre: {self.__cliente['Nombre']}"
+        vehiculo_info = f"Placa: {self.__vehiculo['Placa']}, Marca: {self.__vehiculo['Marca']}"
         return (f'Id: {self.__ID}, '
                 f'Lugar Origen: {self.__lugarOrigen}, '
                 f'Lugar Destino: {self.__lugarDestino}, '
                 f'Fecha: {self.__fecha}, '
-                f'Cliente: {self.__cliente}, '
-                f'Vehiculo: {self.__vehiculo}, '
+                f'Cliente: {cliente_info}, '
+                f'Vehiculo: {vehiculo_info}, '
                 f'Ruta Tomada: {self.__ruta_tomada}')

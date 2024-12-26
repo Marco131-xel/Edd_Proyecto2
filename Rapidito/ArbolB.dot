@@ -2,9 +2,9 @@ digraph G {
 bgcolor="#17202a";
 node [shape=record, style=filled, fillcolor="#145a32", fontcolor="white"];
 edge [color="white"];
-nodo0 [label="<p0> |Placa: mpc136, Marca: Honda, Modelo: 2012, Precio: 35000.00| <p1>"];
-nodo5 [label="<p0> |Placa: btr634, Marca: Toyota, Modelo: 2005, Precio: 20000.00|Placa: dsp781, Marca: Ford, Modelo: 2010, Precio: 28000.00|Placa: ghj678, Marca: BMW, Modelo: 2021, Precio: 95000.00|Placa: jhs533, Marca: Nissan, Modelo: 2000, Precio: 15000.00|Placa: kpl892, Marca: Chevrolet, Modelo: 2018, Precio: 72000.00| <p5>"];
+nodo0 [label="<p0> |Placa: mpc136 - Marca: Honda| <p1>"];
+nodo5 [label="<p0> |Placa: 789ghfg - Marca: tesla|Placa: btr634 - Marca: Toyota|Placa: dsp781 - Marca: Ford|Placa: ghj678 - Marca: BMW|Placa: jhs533 - Marca: Nissan|Placa: kpl892 - Marca: Chevrolet| <p6>"];
 nodo0:p0 -> nodo5;
-nodo7 [label="<p0> |Placa: mrt456, Marca: Kia, Modelo: 2015, Precio: 31000.00|Placa: nxt789, Marca: Volkswagen, Modelo: 2020, Precio: 67000.00|Placa: plc147, Marca: Mazda, Modelo: 2019, Precio: 85000.00|Placa: qws123, Marca: Hyundai, Modelo: 2022, Precio: 45000.00|Placa: tgh901, Marca: Mercedes, Modelo: 2016, Precio: 87000.00|Placa: vfr345, Marca: Jeep, Modelo: 2013, Precio: 40000.00|Placa: zxc012, Marca: Subaru, Modelo: 2017, Precio: 53000.00| <p7>"];
+nodo7 [label="<p0> |Placa: mrt456 - Marca: Kia|Placa: nxt789 - Marca: Volkswagen|Placa: plc147 - Marca: Mazda|Placa: qws123 - Marca: Hyundai|Placa: tgh901 - Marca: Mercedes|Placa: vfr345 - Marca: Jeep|Placa: zxc012 - Marca: Subaru| <p7>"];
 nodo0:p1 -> nodo7;
 }

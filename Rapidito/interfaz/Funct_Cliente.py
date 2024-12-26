@@ -232,6 +232,7 @@ class Funct_Cliente:
         self.ui.crear_GENERO.clear()
         self.ui.crear_TELEFONO.clear()
         self.ui.crear_DIRECCION.clear()
+        self.ui.estado_crear.clear()
 
     # Limpiar contenido de clientes
     def limpiar_clientes(self):

@@ -145,8 +145,7 @@ class Lista_Dob:
 
         dot = ["digraph G {"]
 
-        # Establecer el color de fondo y color de los nodos
-        dot.append('bgcolor="#17202a";')  # Fondo oscuro
+        dot.append('bgcolor="#17202a";')
         dot.append('node [shape=record, style=filled, fillcolor="#145a32", fontcolor=white];')
         dot.append('edge [color=white];')
 
@@ -158,7 +157,8 @@ class Lista_Dob:
 
         i = 0
         while True:
-            nodos.append(f'nodo{i} [label="{aux.dato}"];')
+            cliente = aux.dato
+            nodos.append(f'nodo{i} [label="{cliente.get_Dpi()} - {cliente.get_Nombre()}"];')
 
             # Crear conexiones solo si no es el ultimo nodo
             if aux.siguiente != self.primero:
@@ -172,17 +172,19 @@ class Lista_Dob:
                 break
 
         # Hacer los enlaces circulares entre el ultimo y el primero
-        if i > 1:  # Si hay mas de un nodo
+        if i > 1:  # Si hay más de un nodo
             conexiones.append(f'nodo{i - 1} -> nodo0;')  # ultimo al primero
             conexiones.append(f'nodo0 -> nodo{i - 1};')  # primero al ultimo
 
         dot.extend(nodos)
         dot.extend(conexiones)
         dot.append("}")
+
         # Guardar archivo DOT
         dot_file = f'{filename}.dot'
         with open(dot_file, "w") as file:
             file.write("\n".join(dot))
+
         # Generar imagen
         os.system(f'dot -Tpng {dot_file} -o {filename}.png')
-        print(f'Gráfico generado: {filename}.png')
+        print(f'Grafico generado: {filename}.png')
