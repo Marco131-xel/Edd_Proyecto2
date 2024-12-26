@@ -23,22 +23,22 @@ class Lista_Sviaje:
     def buscar_viaje(self, ID):
         aux = self.primero
         while aux is not None:
-            if aux.Viajes.get_ID() == ID:
-                return  aux.Viajes
-            aux = aux.Siguiente
+            if aux.viaje.get_ID() == ID:
+                return aux.viaje
+            aux = aux.siguiente
         return None
 
     # Funcion para modificar un viaje por el ID
     def modificar_viaje(self, ID, nuevo_viaje):
         aux = self.primero
         while aux is not None:
-            if aux.Viajes.get_ID() == ID:
-                aux.Viajes = nuevo_viaje
+            if aux.viaje.get_ID() == ID:
+                aux.viaje = nuevo_viaje
                 return True
-            aux = aux.Siguiente
+            aux = aux.siguiente
         return False
 
-    # Fucnion para mostrar un viaje por ID
+    # Funcion para mostrar un viaje por ID
     def mostrar_viaje(self, ID):
         viaje = self.buscar_viaje(ID)
         if viaje is not None:
@@ -51,24 +51,24 @@ class Lista_Sviaje:
         if self.vacia():
             return False
 
-        if self.primero.Viajes.get_ID() == ID:
-            self.primero = self.primero.Siguiente
+        if self.primero.viaje.get_ID() == ID:
+            self.primero = self.primero.siguiente
             return True
 
         aux = self.primero
         while aux.siguiente is not None:
-            if aux.siguiente.Viajes.get_ID() == ID:
-                aux.siguiente = aux.siguiente.Siguiente
+            if aux.siguiente.viaje.get_ID() == ID:
+                aux.siguiente = aux.siguiente.siguiente
                 return True
-            aux = aux.Siguiente
+            aux = aux.siguiente
         return False
 
     # Funcion para mostrar todos los viajes
     def mostrar_todos(self):
         aux = self.primero
         while aux is not None:
-            print(aux.Viajes)
-            aux = aux.Siguiente
+            print(aux.viaje)
+            aux = aux.siguiente
 
     # Funcion para graficar la Estructura con Graphviz
     def graficar(self, filename='lista_viajes'):
@@ -76,10 +76,12 @@ class Lista_Sviaje:
             print(' ** La lista está vacía, no hay nada que graficar ** ')
             return
 
-        # Crear código DOT
+        # Crear codigo DOT
         dot = ["digraph G {"]
-        dot.append("rankdir=LR;")
-        dot.append("node [shape=record];")
+        dot.append('rankdir=LR;')
+        dot.append('bgcolor="#17202a";')
+        dot.append('node [shape=record, style=filled, fillcolor="#145a32", fontcolor="white"];')
+        dot.append('edge [color="white"];')
 
         aux = self.primero
         nodos = []
@@ -87,11 +89,18 @@ class Lista_Sviaje:
         i = 0
 
         while aux is not None:
-            # Crear nodo con información del viaje
+            # Crear nodo con viaje, cliente, vehiculo y ruta
             nodos.append(
-                f'nodo{i} [label="ID: {aux.viaje.get_ID()}\\nOrigen: {aux.viaje.get_LugarOrigen()}\\nDestino: {aux.viaje.get_LugarDestino()}\\nFecha: {aux.viaje.get_Fecha()}"];'
+                f'nodo{i} [label="'
+                f'ID: {aux.viaje.get_ID()}\\n'
+                f'Origen: {aux.viaje.get_LugarOrigen()}\\n'
+                f'Destino: {aux.viaje.get_LugarDestino()}\\n'
+                f'Fecha: {aux.viaje.get_Fecha()}\\n'
+                f'Cliente: {aux.viaje.get_Cliente()}\\n'
+                f'Vehiculo: {aux.viaje.get_Vehiculo()}\\n'
+                f'Ruta: {aux.viaje.get_Ruta_Tomada()}"];'
             )
-            # Crear conexión al siguiente nodo
+            # Crear conexion al siguiente nodo
             if aux.siguiente is not None:
                 conexiones.append(f'nodo{i} -> nodo{i + 1};')
 

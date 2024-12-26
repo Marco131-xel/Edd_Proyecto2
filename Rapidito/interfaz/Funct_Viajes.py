@@ -58,11 +58,30 @@ class Funct_Viajes:
             self.ui.SUPER_ESTADO.setPlainText('Selecciona origen y destino')
             return
         # Crear Viajes
-
-
+        viajes = Viajes(id, origen, destino, fecha, cliente, vehiculo, ruta)
+        self.lista_Sviaje.crear_viaje(viajes)
+        self.ui.SUPER_ESTADO.setPlainText('Viaje Creado')
+        self.lista_Sviaje.graficar('Lista_Viajes')
     # Funcion para graficar la estructura de viajes (Lista simple)
     def graficar_viajes(self):
-        pass
+        dialog = QDialog(parent=None)
+        dialog.setWindowTitle('Grafica Estructura Viajes')
+
+        label = QLabel()
+        pixmap = QPixmap("/home/marco/Documentos/Diciembre/edd/Edd_Proyecto2/Rapidito/Lista_Viajes.png")
+        label.setPixmap(pixmap)
+
+        label.setAlignment(Qt.AlignmentFlag.AlignCenter)
+
+        scroll = QScrollArea()
+        scroll.setWidget(label)
+
+        layout = QVBoxLayout(dialog)
+        layout.addWidget(scroll)
+
+        dialog.resize(1200, 600)
+        dialog.exec()
+
     # Funcion para buscar el DPI
     def buscar_DPI(self):
         try:
@@ -97,7 +116,8 @@ class Funct_Viajes:
 
     # Funcion para buscar la ruta
     def buscar_RUTA(self):
-        pass
+        id = self.ui.crear_ID.text()
+        self.lista_Sviaje.mostrar_viaje(id)
     # Funcion para limpiar los campos que se ingresaron
     def limpiar_contenido(self):
         self.ui.crear_ID.clear()
