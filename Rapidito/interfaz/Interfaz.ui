@@ -19,6 +19,9 @@
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">background-color: rgb(23, 32, 42);</string>
+  </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QPushButton" name="BT_abrir_clientes">
     <property name="geometry">
@@ -90,14 +93,14 @@
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: rgb(31, 31, 31);
-color: rgb(170, 0, 255);</string>
+     <string notr="true">color: rgb(255, 255, 255);
+background-color: rgb(46, 64, 83);</string>
     </property>
    </widget>
    <widget class="QTabWidget" name="tabWidget">
     <property name="geometry">
      <rect>
-      <x>860</x>
+      <x>840</x>
       <y>70</y>
       <width>491</width>
       <height>481</height>
@@ -141,6 +144,10 @@ color: rgb(170, 0, 255);</string>
           <height>32</height>
          </rect>
         </property>
+        <property name="styleSheet">
+         <string notr="true">color: rgb(255, 255, 255);
+background-color: rgb(46, 64, 83);</string>
+        </property>
        </widget>
        <widget class="QLineEdit" name="crear_TELEFONO">
         <property name="geometry">
@@ -150,6 +157,10 @@ color: rgb(170, 0, 255);</string>
           <width>113</width>
           <height>32</height>
          </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">color: rgb(255, 255, 255);
+background-color: rgb(46, 64, 83);</string>
         </property>
        </widget>
        <widget class="QLineEdit" name="crear_DIRECCION">
@@ -161,6 +172,10 @@ color: rgb(170, 0, 255);</string>
           <height>32</height>
          </rect>
         </property>
+        <property name="styleSheet">
+         <string notr="true">color: rgb(255, 255, 255);
+background-color: rgb(46, 64, 83);</string>
+        </property>
        </widget>
        <widget class="QLineEdit" name="crear_DPI">
         <property name="geometry">
@@ -170,6 +185,10 @@ color: rgb(170, 0, 255);</string>
           <width>113</width>
           <height>32</height>
          </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">color: rgb(255, 255, 255);
+background-color: rgb(46, 64, 83);</string>
         </property>
        </widget>
        <widget class="QLineEdit" name="crear_NOMBRE">
@@ -181,6 +200,10 @@ color: rgb(170, 0, 255);</string>
           <height>32</height>
          </rect>
         </property>
+        <property name="styleSheet">
+         <string notr="true">color: rgb(255, 255, 255);
+background-color: rgb(46, 64, 83);</string>
+        </property>
        </widget>
        <widget class="QLineEdit" name="crear_APELLIDO">
         <property name="geometry">
@@ -190,6 +213,10 @@ color: rgb(170, 0, 255);</string>
           <width>151</width>
           <height>32</height>
          </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">color: rgb(255, 255, 255);
+background-color: rgb(46, 64, 83);</string>
         </property>
        </widget>
        <widget class="QPushButton" name="BT_crear_cliente">
@@ -295,6 +322,20 @@ color: rgb(170, 0, 255);</string>
           <height>41</height>
          </rect>
         </property>
+        <property name="styleSheet">
+         <string notr="true">color: rgb(255, 255, 255);
+background-color: rgb(46, 64, 83);</string>
+        </property>
+        <property name="html">
+         <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;meta charset=&quot;utf-8&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+hr { height: 1px; border-width: 0; }
+li.unchecked::marker { content: &quot;\2610&quot;; }
+li.checked::marker { content: &quot;\2612&quot;; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Noto Sans'; font-size:10pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p align=&quot;center&quot; style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
        </widget>
       </widget>
       <widget class="QWidget" name="tab_modificar">
@@ -309,6 +350,10 @@ color: rgb(170, 0, 255);</string>
           <width>191</width>
           <height>32</height>
          </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">color: rgb(255, 255, 255);
+background-color: rgb(46, 64, 83);</string>
         </property>
        </widget>
        <widget class="QLabel" name="label">
@@ -333,6 +378,20 @@ color: rgb(170, 0, 255);</string>
           <height>61</height>
          </rect>
         </property>
+        <property name="styleSheet">
+         <string notr="true">color: rgb(255, 255, 255);
+background-color: rgb(46, 64, 83);</string>
+        </property>
+        <property name="html">
+         <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;meta charset=&quot;utf-8&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+hr { height: 1px; border-width: 0; }
+li.unchecked::marker { content: &quot;\2610&quot;; }
+li.checked::marker { content: &quot;\2612&quot;; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Noto Sans'; font-size:10pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p align=&quot;center&quot; style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
        </widget>
        <widget class="QLineEdit" name="mod_NOMBRE">
         <property name="geometry">
@@ -342,6 +401,10 @@ color: rgb(170, 0, 255);</string>
           <width>141</width>
           <height>32</height>
          </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">color: rgb(255, 255, 255);
+background-color: rgb(46, 64, 83);</string>
         </property>
        </widget>
        <widget class="QLineEdit" name="mod_APELLIDO">
@@ -353,6 +416,10 @@ color: rgb(170, 0, 255);</string>
           <height>32</height>
          </rect>
         </property>
+        <property name="styleSheet">
+         <string notr="true">color: rgb(255, 255, 255);
+background-color: rgb(46, 64, 83);</string>
+        </property>
        </widget>
        <widget class="QLineEdit" name="mod_TELEFONO">
         <property name="geometry">
@@ -362,6 +429,10 @@ color: rgb(170, 0, 255);</string>
           <width>141</width>
           <height>32</height>
          </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">color: rgb(255, 255, 255);
+background-color: rgb(46, 64, 83);</string>
         </property>
        </widget>
        <widget class="QLineEdit" name="mod_GENERO">
@@ -373,6 +444,10 @@ color: rgb(170, 0, 255);</string>
           <height>32</height>
          </rect>
         </property>
+        <property name="styleSheet">
+         <string notr="true">color: rgb(255, 255, 255);
+background-color: rgb(46, 64, 83);</string>
+        </property>
        </widget>
        <widget class="QLineEdit" name="mod_DIRECCION">
         <property name="geometry">
@@ -382,6 +457,10 @@ color: rgb(170, 0, 255);</string>
           <width>241</width>
           <height>32</height>
          </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">color: rgb(255, 255, 255);
+background-color: rgb(46, 64, 83);</string>
         </property>
        </widget>
        <widget class="QPushButton" name="BT_guardar_mod">
@@ -541,6 +620,10 @@ color: rgb(0, 0, 0);</string>
           <height>32</height>
          </rect>
         </property>
+        <property name="styleSheet">
+         <string notr="true">color: rgb(255, 255, 255);
+background-color: rgb(46, 64, 83);</string>
+        </property>
        </widget>
        <widget class="QTextEdit" name="estado_eli">
         <property name="geometry">
@@ -551,6 +634,20 @@ color: rgb(0, 0, 0);</string>
           <height>41</height>
          </rect>
         </property>
+        <property name="styleSheet">
+         <string notr="true">color: rgb(255, 255, 255);
+background-color: rgb(46, 64, 83);</string>
+        </property>
+        <property name="html">
+         <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;meta charset=&quot;utf-8&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+hr { height: 1px; border-width: 0; }
+li.unchecked::marker { content: &quot;\2610&quot;; }
+li.checked::marker { content: &quot;\2612&quot;; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Noto Sans'; font-size:10pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p align=&quot;center&quot; style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
        </widget>
        <widget class="QTextEdit" name="contenido_eliminado">
         <property name="geometry">
@@ -560,6 +657,10 @@ color: rgb(0, 0, 0);</string>
           <width>351</width>
           <height>151</height>
          </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">color: rgb(255, 255, 255);
+background-color: rgb(46, 64, 83);</string>
         </property>
        </widget>
        <widget class="QPushButton" name="BT_buscar_eli">
@@ -608,6 +709,10 @@ color: rgb(0, 0, 0);</string>
           <height>32</height>
          </rect>
         </property>
+        <property name="styleSheet">
+         <string notr="true">color: rgb(255, 255, 255);
+background-color: rgb(46, 64, 83);</string>
+        </property>
        </widget>
        <widget class="QLabel" name="label_14">
         <property name="geometry">
@@ -630,6 +735,10 @@ color: rgb(0, 0, 0);</string>
           <width>351</width>
           <height>171</height>
          </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">color: rgb(255, 255, 255);
+background-color: rgb(46, 64, 83);</string>
         </property>
        </widget>
        <widget class="QPushButton" name="BT_limpiar_cliente">
@@ -697,6 +806,10 @@ color: rgb(0, 0, 0);</string>
           <height>32</height>
          </rect>
         </property>
+        <property name="styleSheet">
+         <string notr="true">color: rgb(255, 255, 255);
+background-color: rgb(46, 64, 83);</string>
+        </property>
        </widget>
        <widget class="QLineEdit" name="crear_MARCA">
         <property name="geometry">
@@ -706,6 +819,10 @@ color: rgb(0, 0, 0);</string>
           <width>131</width>
           <height>32</height>
          </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">color: rgb(255, 255, 255);
+background-color: rgb(46, 64, 83);</string>
         </property>
        </widget>
        <widget class="QLineEdit" name="crear_MODELO">
@@ -717,6 +834,10 @@ color: rgb(0, 0, 0);</string>
           <height>32</height>
          </rect>
         </property>
+        <property name="styleSheet">
+         <string notr="true">color: rgb(255, 255, 255);
+background-color: rgb(46, 64, 83);</string>
+        </property>
        </widget>
        <widget class="QLineEdit" name="crear_PRECIO">
         <property name="geometry">
@@ -726,6 +847,10 @@ color: rgb(0, 0, 0);</string>
           <width>131</width>
           <height>32</height>
          </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">color: rgb(255, 255, 255);
+background-color: rgb(46, 64, 83);</string>
         </property>
        </widget>
        <widget class="QLabel" name="label_15">
@@ -789,6 +914,20 @@ color: rgb(0, 0, 0);</string>
           <height>41</height>
          </rect>
         </property>
+        <property name="styleSheet">
+         <string notr="true">color: rgb(255, 255, 255);
+background-color: rgb(46, 64, 83);</string>
+        </property>
+        <property name="html">
+         <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;meta charset=&quot;utf-8&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+hr { height: 1px; border-width: 0; }
+li.unchecked::marker { content: &quot;\2610&quot;; }
+li.checked::marker { content: &quot;\2612&quot;; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Noto Sans'; font-size:10pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p align=&quot;center&quot; style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
        </widget>
        <widget class="QPushButton" name="BT_crear_vehiculos">
         <property name="geometry">
@@ -819,6 +958,10 @@ color: rgb(0, 0, 0);</string>
           <width>181</width>
           <height>32</height>
          </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">color: rgb(255, 255, 255);
+background-color: rgb(46, 64, 83);</string>
         </property>
        </widget>
        <widget class="QPushButton" name="BT_buscar_mod_vehiculo">
@@ -892,6 +1035,20 @@ color: rgb(0, 0, 0);</string>
           <height>41</height>
          </rect>
         </property>
+        <property name="styleSheet">
+         <string notr="true">color: rgb(255, 255, 255);
+background-color: rgb(46, 64, 83);</string>
+        </property>
+        <property name="html">
+         <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;meta charset=&quot;utf-8&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+hr { height: 1px; border-width: 0; }
+li.unchecked::marker { content: &quot;\2610&quot;; }
+li.checked::marker { content: &quot;\2612&quot;; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Noto Sans'; font-size:10pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p align=&quot;center&quot; style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
        </widget>
        <widget class="QLineEdit" name="mod_MARCA">
         <property name="geometry">
@@ -901,6 +1058,10 @@ color: rgb(0, 0, 0);</string>
           <width>141</width>
           <height>32</height>
          </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">color: rgb(255, 255, 255);
+background-color: rgb(46, 64, 83);</string>
         </property>
        </widget>
        <widget class="QLineEdit" name="mod_MODELO">
@@ -912,6 +1073,10 @@ color: rgb(0, 0, 0);</string>
           <height>32</height>
          </rect>
         </property>
+        <property name="styleSheet">
+         <string notr="true">color: rgb(255, 255, 255);
+background-color: rgb(46, 64, 83);</string>
+        </property>
        </widget>
        <widget class="QLineEdit" name="mod_PRECIO">
         <property name="geometry">
@@ -921,6 +1086,10 @@ color: rgb(0, 0, 0);</string>
           <width>151</width>
           <height>32</height>
          </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">color: rgb(255, 255, 255);
+background-color: rgb(46, 64, 83);</string>
         </property>
        </widget>
        <widget class="QLabel" name="label_20">
@@ -976,6 +1145,10 @@ color: rgb(0, 0, 0);</string>
           <height>32</height>
          </rect>
         </property>
+        <property name="styleSheet">
+         <string notr="true">color: rgb(255, 255, 255);
+background-color: rgb(46, 64, 83);</string>
+        </property>
        </widget>
        <widget class="QTextEdit" name="estado_eli_vehi">
         <property name="geometry">
@@ -985,6 +1158,20 @@ color: rgb(0, 0, 0);</string>
           <width>311</width>
           <height>41</height>
          </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">color: rgb(255, 255, 255);
+background-color: rgb(46, 64, 83);</string>
+        </property>
+        <property name="html">
+         <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;meta charset=&quot;utf-8&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+hr { height: 1px; border-width: 0; }
+li.unchecked::marker { content: &quot;\2610&quot;; }
+li.checked::marker { content: &quot;\2612&quot;; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Noto Sans'; font-size:10pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p align=&quot;center&quot; style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
         </property>
        </widget>
        <widget class="QLabel" name="label_23">
@@ -1008,6 +1195,10 @@ color: rgb(0, 0, 0);</string>
           <width>321</width>
           <height>161</height>
          </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">color: rgb(255, 255, 255);
+background-color: rgb(46, 64, 83);</string>
         </property>
        </widget>
        <widget class="QPushButton" name="BT_eliminar_vehi">
@@ -1099,6 +1290,10 @@ color: rgb(0, 0, 0);</string>
           <height>221</height>
          </rect>
         </property>
+        <property name="styleSheet">
+         <string notr="true">color: rgb(255, 255, 255);
+background-color: rgb(46, 64, 83);</string>
+        </property>
        </widget>
        <widget class="QLineEdit" name="buscar_MOST_vehi">
         <property name="geometry">
@@ -1108,6 +1303,10 @@ color: rgb(0, 0, 0);</string>
           <width>191</width>
           <height>32</height>
          </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">color: rgb(255, 255, 255);
+background-color: rgb(46, 64, 83);</string>
         </property>
        </widget>
       </widget>
@@ -1168,6 +1367,10 @@ color: rgb(0, 0, 0);</string>
         <height>32</height>
        </rect>
       </property>
+      <property name="styleSheet">
+       <string notr="true">color: rgb(255, 255, 255);
+background-color: rgb(46, 64, 83);</string>
+      </property>
      </widget>
      <widget class="QLabel" name="label_27">
       <property name="geometry">
@@ -1191,6 +1394,10 @@ color: rgb(0, 0, 0);</string>
         <height>32</height>
        </rect>
       </property>
+      <property name="styleSheet">
+       <string notr="true">color: rgb(255, 255, 255);
+background-color: rgb(46, 64, 83);</string>
+      </property>
      </widget>
      <widget class="QComboBox" name="combo_DESTINO">
       <property name="geometry">
@@ -1200,6 +1407,10 @@ color: rgb(0, 0, 0);</string>
         <width>181</width>
         <height>32</height>
        </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: rgb(255, 255, 255);
+background-color: rgb(46, 64, 83);</string>
       </property>
      </widget>
      <widget class="QPushButton" name="BT_buscar_PLACA_viaje">
@@ -1258,6 +1469,10 @@ color: rgb(0, 0, 0);</string>
         <height>32</height>
        </rect>
       </property>
+      <property name="styleSheet">
+       <string notr="true">color: rgb(255, 255, 255);
+background-color: rgb(46, 64, 83);</string>
+      </property>
      </widget>
      <widget class="QLineEdit" name="MI_DPI">
       <property name="geometry">
@@ -1268,6 +1483,10 @@ color: rgb(0, 0, 0);</string>
         <height>32</height>
        </rect>
       </property>
+      <property name="styleSheet">
+       <string notr="true">color: rgb(255, 255, 255);
+background-color: rgb(46, 64, 83);</string>
+      </property>
      </widget>
      <widget class="QLineEdit" name="MI_PLACA">
       <property name="geometry">
@@ -1277,6 +1496,10 @@ color: rgb(0, 0, 0);</string>
         <width>113</width>
         <height>32</height>
        </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: rgb(255, 255, 255);
+background-color: rgb(46, 64, 83);</string>
       </property>
      </widget>
      <widget class="QLabel" name="label_29">
@@ -1314,6 +1537,10 @@ color: rgb(0, 0, 0);</string>
         <height>41</height>
        </rect>
       </property>
+      <property name="styleSheet">
+       <string notr="true">color: rgb(255, 255, 255);
+background-color: rgb(46, 64, 83);</string>
+      </property>
      </widget>
      <widget class="QTextEdit" name="espacio_PLACA">
       <property name="geometry">
@@ -1324,6 +1551,10 @@ color: rgb(0, 0, 0);</string>
         <height>41</height>
        </rect>
       </property>
+      <property name="styleSheet">
+       <string notr="true">color: rgb(255, 255, 255);
+background-color: rgb(46, 64, 83);</string>
+      </property>
      </widget>
      <widget class="QLineEdit" name="MI_RUTA">
       <property name="geometry">
@@ -1333,6 +1564,10 @@ color: rgb(0, 0, 0);</string>
         <width>113</width>
         <height>32</height>
        </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: rgb(255, 255, 255);
+background-color: rgb(46, 64, 83);</string>
       </property>
      </widget>
      <widget class="QLabel" name="label_31">
@@ -1372,6 +1607,10 @@ color: rgb(0, 0, 0);</string>
         <width>231</width>
         <height>41</height>
        </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: rgb(255, 255, 255);
+background-color: rgb(46, 64, 83);</string>
       </property>
      </widget>
      <widget class="QPushButton" name="BT_buscar_RUTA_viaje">
@@ -1432,6 +1671,20 @@ color: rgb(0, 0, 0);</string>
         <height>31</height>
        </rect>
       </property>
+      <property name="styleSheet">
+       <string notr="true">color: rgb(255, 255, 255);
+background-color: rgb(46, 64, 83);</string>
+      </property>
+      <property name="html">
+       <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;meta charset=&quot;utf-8&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+hr { height: 1px; border-width: 0; }
+li.unchecked::marker { content: &quot;\2610&quot;; }
+li.checked::marker { content: &quot;\2612&quot;; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Noto Sans'; font-size:10pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p align=&quot;center&quot; style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
      </widget>
     </widget>
     <widget class="QWidget" name="tab_reportes">
@@ -1465,13 +1718,13 @@ color: rgb(0, 0, 0);</string>
      <rect>
       <x>390</x>
       <y>10</y>
-      <width>301</width>
-      <height>41</height>
+      <width>311</width>
+      <height>51</height>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: rgb(0, 0, 0);
-color: rgb(255, 255, 255);</string>
+     <string notr="true">color: rgb(255, 255, 255);
+background-color: rgb(46, 64, 83);</string>
     </property>
    </widget>
   </widget>

@@ -17,7 +17,7 @@ class Funct_Rutas:
     # Funcion para cargar el archivo de entrada
     def abrir_rutas(self):
         # Abrir un cuadro de diálogo para seleccionar el archivo
-        archivo, _ = QFileDialog.getOpenFileName(self.ui.BT_abrir_rutas, "Seleccionar archivo", "",
+        archivo, _ = QFileDialog.getOpenFileName(self.ui.BT_abrir_rutas, "Seleccionar archivo Rutas", "",
                                                  "Archivos de texto (*.txt)")
         if archivo:
             try:
@@ -33,11 +33,19 @@ class Funct_Rutas:
                             ruta = Ruta(origen, destino, tiempo)
                             self.lista_adyacencia.agregar_ruta(ruta)
                             self.lista_adyacencia.graficar("Mapa")
+
+                            # Crear comboBox
+                            if origen not in [self.ui.combo_ORIGEN.itemText(i)
+                                              for i in range(self.ui.combo_ORIGEN.count())]:
+                                self.ui.combo_ORIGEN.addItem(origen)
+                            if destino not in [self.ui.combo_DESTINO.itemText(i)
+                                               for i in range(self.ui.combo_DESTINO.count())]:
+                                self.ui.combo_DESTINO.addItem(destino)
                         else:
-                            self.ui.text_area.append(f'Linea invalida: {linea}')
-                self.ui.text_area.append('Carga completada')
+                            self.ui.ESTADOS.append(f'Linea invalida Rutas: {linea}')
+                self.ui.ESTADOS.append('Carga completada Rutas')
             except Exception as e:
-                self.ui.text_area.append(f'Error al leer el archivo: {e}')
+                self.ui.ESTADOS.append(f'Error al leer el archivo Rutas: {e}')
 
     # Funcion para abrir el mapa en la interfaz
     def abrir_mapa(self):

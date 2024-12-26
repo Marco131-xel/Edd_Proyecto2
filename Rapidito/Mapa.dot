@@ -1,4 +1,7 @@
 graph Rutas {
+  bgcolor="#17202a";
+  node [style=filled, fillcolor="#145a32", fontcolor="white", shape=circle, width=1.4, fixedsize=true];
+  edge [color="white", fontcolor="white"];
   "Guatemala" -- "Quetzaltenango" [label="58"];
   "Escuintla" -- "Guatemala" [label="45"];
   "Escuintla" -- "Zacapa" [label="72"];

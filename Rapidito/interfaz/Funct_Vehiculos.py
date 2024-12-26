@@ -32,7 +32,7 @@ class Funct_Vehiculos:
 
     # Funcion para abrir el archivo de entrada vehiculos
     def abrir_vehiculos(self):
-        archivo, _ = QFileDialog.getOpenFileName(self.ui.BT_abrir_vehiculos, "Seleccionar archivo", "",
+        archivo, _ = QFileDialog.getOpenFileName(self.ui.BT_abrir_vehiculos, "Seleccionar archivo Vehiculos", "",
                                                  "Archivos de texto (*.txt)")
         if archivo:
             try:
@@ -48,13 +48,13 @@ class Funct_Vehiculos:
 
                             vehiculo = Vehiculos(placa, marca, modelo, precio)
                             self.arbol.insertar(vehiculo)
-                            self.ui.text_area.append(f'Cargado: {vehiculo}')
+                            #self.ui.text_area.append(f'Cargado: {vehiculo}')
                             self.arbol.graficar("ArbolB")
                         else:
-                            self.ui.text_area.append(f'Linea invalida: {linea}')
-                self.ui.text_area.append('Carga completada')
+                            self.ui.ESTADOS.append(f'Linea invalida Vehiculos: {linea}')
+                self.ui.ESTADOS.append('Carga completada Vehiculos')
             except Exception as e:
-                self.ui.text_area.append(f'Error al leer el archivo: {e}')
+                self.ui.ESTADOS.append(f'Error al leer el archivo Vehiculos: {e}')
 
     # Funcion para crear un vehiculo
     def crear_vehiculo(self):

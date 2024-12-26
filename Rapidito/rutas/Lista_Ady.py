@@ -31,20 +31,21 @@ class Lista_Ady:
         if not self.__adyacencia:
             print("El grafo está vacío, no hay nada que graficar.")
             return
-
-        # Crear el codigo DOT
-        dot = ["graph Rutas {"]
+        dot = [
+            "graph Rutas {",
+            '  bgcolor="#17202a";',
+            '  node [style=filled, fillcolor="#145a32", fontcolor="white", shape=circle, width=1.4, fixedsize=true];',
+            '  edge [color="white", fontcolor="white"];',
+        ]
         for origen, destinos in self.__adyacencia.items():
             for destino, tiempo in destinos.items():
-                if origen < destino:  # Evitar duplicados en grafos no dirigidos
+                if origen < destino:
                     dot.append(f'  "{origen}" -- "{destino}" [label="{tiempo}"];')
         dot.append("}")
 
-        # Guardar archivo DOT
         dot_file = f"{filename}.dot"
         with open(dot_file, "w") as file:
             file.write("\n".join(dot))
 
-        # Generar imagen PNG
         os.system(f"dot -Tpng {dot_file} -o {filename}.png")
-        print(f"Gráfico generado: {filename}.png")
+        print(f"Grafico generado: {filename}.png")

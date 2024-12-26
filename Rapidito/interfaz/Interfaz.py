@@ -17,6 +17,7 @@ class Ui_MainWindow(object):
         font.setPointSize(18)
         font.setBold(True)
         MainWindow.setFont(font)
+        MainWindow.setStyleSheet("background-color: rgb(23, 32, 42);")
         self.centralwidget = QtWidgets.QWidget(parent=MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.BT_abrir_clientes = QtWidgets.QPushButton(parent=self.centralwidget)
@@ -45,11 +46,11 @@ class Ui_MainWindow(object):
         self.BT_abrir_rutas.setObjectName("BT_abrir_rutas")
         self.text_area = QtWidgets.QTextEdit(parent=self.centralwidget)
         self.text_area.setGeometry(QtCore.QRect(20, 70, 811, 481))
-        self.text_area.setStyleSheet("background-color: rgb(31, 31, 31);\n"
-"color: rgb(170, 0, 255);")
+        self.text_area.setStyleSheet("color: rgb(255, 255, 255);\n"
+"background-color: rgb(46, 64, 83);")
         self.text_area.setObjectName("text_area")
         self.tabWidget = QtWidgets.QTabWidget(parent=self.centralwidget)
-        self.tabWidget.setGeometry(QtCore.QRect(860, 70, 491, 481))
+        self.tabWidget.setGeometry(QtCore.QRect(840, 70, 491, 481))
         font = QtGui.QFont()
         font.setPointSize(10)
         font.setBold(True)
@@ -64,21 +65,33 @@ class Ui_MainWindow(object):
         self.tab_crear.setObjectName("tab_crear")
         self.crear_GENERO = QtWidgets.QLineEdit(parent=self.tab_crear)
         self.crear_GENERO.setGeometry(QtCore.QRect(310, 40, 113, 32))
+        self.crear_GENERO.setStyleSheet("color: rgb(255, 255, 255);\n"
+"background-color: rgb(46, 64, 83);")
         self.crear_GENERO.setObjectName("crear_GENERO")
         self.crear_TELEFONO = QtWidgets.QLineEdit(parent=self.tab_crear)
         self.crear_TELEFONO.setGeometry(QtCore.QRect(310, 100, 113, 32))
+        self.crear_TELEFONO.setStyleSheet("color: rgb(255, 255, 255);\n"
+"background-color: rgb(46, 64, 83);")
         self.crear_TELEFONO.setObjectName("crear_TELEFONO")
         self.crear_DIRECCION = QtWidgets.QLineEdit(parent=self.tab_crear)
         self.crear_DIRECCION.setGeometry(QtCore.QRect(90, 210, 331, 32))
+        self.crear_DIRECCION.setStyleSheet("color: rgb(255, 255, 255);\n"
+"background-color: rgb(46, 64, 83);")
         self.crear_DIRECCION.setObjectName("crear_DIRECCION")
         self.crear_DPI = QtWidgets.QLineEdit(parent=self.tab_crear)
         self.crear_DPI.setGeometry(QtCore.QRect(90, 20, 113, 32))
+        self.crear_DPI.setStyleSheet("color: rgb(255, 255, 255);\n"
+"background-color: rgb(46, 64, 83);")
         self.crear_DPI.setObjectName("crear_DPI")
         self.crear_NOMBRE = QtWidgets.QLineEdit(parent=self.tab_crear)
         self.crear_NOMBRE.setGeometry(QtCore.QRect(90, 80, 131, 32))
+        self.crear_NOMBRE.setStyleSheet("color: rgb(255, 255, 255);\n"
+"background-color: rgb(46, 64, 83);")
         self.crear_NOMBRE.setObjectName("crear_NOMBRE")
         self.crear_APELLIDO = QtWidgets.QLineEdit(parent=self.tab_crear)
         self.crear_APELLIDO.setGeometry(QtCore.QRect(90, 150, 151, 32))
+        self.crear_APELLIDO.setStyleSheet("color: rgb(255, 255, 255);\n"
+"background-color: rgb(46, 64, 83);")
         self.crear_APELLIDO.setObjectName("crear_APELLIDO")
         self.BT_crear_cliente = QtWidgets.QPushButton(parent=self.tab_crear)
         self.BT_crear_cliente.setGeometry(QtCore.QRect(330, 300, 88, 34))
@@ -104,33 +117,49 @@ class Ui_MainWindow(object):
         self.label_7.setObjectName("label_7")
         self.estado_crear = QtWidgets.QTextEdit(parent=self.tab_crear)
         self.estado_crear.setGeometry(QtCore.QRect(30, 280, 171, 41))
+        self.estado_crear.setStyleSheet("color: rgb(255, 255, 255);\n"
+"background-color: rgb(46, 64, 83);")
         self.estado_crear.setObjectName("estado_crear")
         self.tabWidget_2.addTab(self.tab_crear, "")
         self.tab_modificar = QtWidgets.QWidget()
         self.tab_modificar.setObjectName("tab_modificar")
         self.buscar_dpi_MOD = QtWidgets.QLineEdit(parent=self.tab_modificar)
         self.buscar_dpi_MOD.setGeometry(QtCore.QRect(130, 10, 191, 32))
+        self.buscar_dpi_MOD.setStyleSheet("color: rgb(255, 255, 255);\n"
+"background-color: rgb(46, 64, 83);")
         self.buscar_dpi_MOD.setObjectName("buscar_dpi_MOD")
         self.label = QtWidgets.QLabel(parent=self.tab_modificar)
         self.label.setGeometry(QtCore.QRect(30, 20, 81, 18))
         self.label.setObjectName("label")
         self.estado_mod = QtWidgets.QTextEdit(parent=self.tab_modificar)
         self.estado_mod.setGeometry(QtCore.QRect(30, 60, 391, 61))
+        self.estado_mod.setStyleSheet("color: rgb(255, 255, 255);\n"
+"background-color: rgb(46, 64, 83);")
         self.estado_mod.setObjectName("estado_mod")
         self.mod_NOMBRE = QtWidgets.QLineEdit(parent=self.tab_modificar)
         self.mod_NOMBRE.setGeometry(QtCore.QRect(50, 150, 141, 32))
+        self.mod_NOMBRE.setStyleSheet("color: rgb(255, 255, 255);\n"
+"background-color: rgb(46, 64, 83);")
         self.mod_NOMBRE.setObjectName("mod_NOMBRE")
         self.mod_APELLIDO = QtWidgets.QLineEdit(parent=self.tab_modificar)
         self.mod_APELLIDO.setGeometry(QtCore.QRect(280, 150, 121, 32))
+        self.mod_APELLIDO.setStyleSheet("color: rgb(255, 255, 255);\n"
+"background-color: rgb(46, 64, 83);")
         self.mod_APELLIDO.setObjectName("mod_APELLIDO")
         self.mod_TELEFONO = QtWidgets.QLineEdit(parent=self.tab_modificar)
         self.mod_TELEFONO.setGeometry(QtCore.QRect(50, 210, 141, 32))
+        self.mod_TELEFONO.setStyleSheet("color: rgb(255, 255, 255);\n"
+"background-color: rgb(46, 64, 83);")
         self.mod_TELEFONO.setObjectName("mod_TELEFONO")
         self.mod_GENERO = QtWidgets.QLineEdit(parent=self.tab_modificar)
         self.mod_GENERO.setGeometry(QtCore.QRect(280, 210, 121, 32))
+        self.mod_GENERO.setStyleSheet("color: rgb(255, 255, 255);\n"
+"background-color: rgb(46, 64, 83);")
         self.mod_GENERO.setObjectName("mod_GENERO")
         self.mod_DIRECCION = QtWidgets.QLineEdit(parent=self.tab_modificar)
         self.mod_DIRECCION.setGeometry(QtCore.QRect(40, 280, 241, 32))
+        self.mod_DIRECCION.setStyleSheet("color: rgb(255, 255, 255);\n"
+"background-color: rgb(46, 64, 83);")
         self.mod_DIRECCION.setObjectName("mod_DIRECCION")
         self.BT_guardar_mod = QtWidgets.QPushButton(parent=self.tab_modificar)
         self.BT_guardar_mod.setGeometry(QtCore.QRect(320, 260, 88, 34))
@@ -172,12 +201,18 @@ class Ui_MainWindow(object):
         self.BT_eliminar.setObjectName("BT_eliminar")
         self.buscar_dpi_ELI = QtWidgets.QLineEdit(parent=self.tab_eliminar)
         self.buscar_dpi_ELI.setGeometry(QtCore.QRect(130, 30, 201, 32))
+        self.buscar_dpi_ELI.setStyleSheet("color: rgb(255, 255, 255);\n"
+"background-color: rgb(46, 64, 83);")
         self.buscar_dpi_ELI.setObjectName("buscar_dpi_ELI")
         self.estado_eli = QtWidgets.QTextEdit(parent=self.tab_eliminar)
         self.estado_eli.setGeometry(QtCore.QRect(50, 80, 351, 41))
+        self.estado_eli.setStyleSheet("color: rgb(255, 255, 255);\n"
+"background-color: rgb(46, 64, 83);")
         self.estado_eli.setObjectName("estado_eli")
         self.contenido_eliminado = QtWidgets.QTextEdit(parent=self.tab_eliminar)
         self.contenido_eliminado.setGeometry(QtCore.QRect(50, 150, 351, 151))
+        self.contenido_eliminado.setStyleSheet("color: rgb(255, 255, 255);\n"
+"background-color: rgb(46, 64, 83);")
         self.contenido_eliminado.setObjectName("contenido_eliminado")
         self.BT_buscar_eli = QtWidgets.QPushButton(parent=self.tab_eliminar)
         self.BT_buscar_eli.setGeometry(QtCore.QRect(347, 30, 81, 34))
@@ -192,12 +227,16 @@ class Ui_MainWindow(object):
         self.BT_buscar_most.setObjectName("BT_buscar_most")
         self.buscar_dpi_MOST = QtWidgets.QLineEdit(parent=self.tab_mostrar)
         self.buscar_dpi_MOST.setGeometry(QtCore.QRect(140, 20, 191, 32))
+        self.buscar_dpi_MOST.setStyleSheet("color: rgb(255, 255, 255);\n"
+"background-color: rgb(46, 64, 83);")
         self.buscar_dpi_MOST.setObjectName("buscar_dpi_MOST")
         self.label_14 = QtWidgets.QLabel(parent=self.tab_mostrar)
         self.label_14.setGeometry(QtCore.QRect(30, 20, 91, 18))
         self.label_14.setObjectName("label_14")
         self.contenido_mostrar = QtWidgets.QTextEdit(parent=self.tab_mostrar)
         self.contenido_mostrar.setGeometry(QtCore.QRect(40, 100, 351, 171))
+        self.contenido_mostrar.setStyleSheet("color: rgb(255, 255, 255);\n"
+"background-color: rgb(46, 64, 83);")
         self.contenido_mostrar.setObjectName("contenido_mostrar")
         self.BT_limpiar_cliente = QtWidgets.QPushButton(parent=self.tab_mostrar)
         self.BT_limpiar_cliente.setGeometry(QtCore.QRect(330, 300, 88, 34))
@@ -219,15 +258,23 @@ class Ui_MainWindow(object):
         self.tab.setObjectName("tab")
         self.crear_PLACA = QtWidgets.QLineEdit(parent=self.tab)
         self.crear_PLACA.setGeometry(QtCore.QRect(50, 60, 141, 32))
+        self.crear_PLACA.setStyleSheet("color: rgb(255, 255, 255);\n"
+"background-color: rgb(46, 64, 83);")
         self.crear_PLACA.setObjectName("crear_PLACA")
         self.crear_MARCA = QtWidgets.QLineEdit(parent=self.tab)
         self.crear_MARCA.setGeometry(QtCore.QRect(280, 60, 131, 32))
+        self.crear_MARCA.setStyleSheet("color: rgb(255, 255, 255);\n"
+"background-color: rgb(46, 64, 83);")
         self.crear_MARCA.setObjectName("crear_MARCA")
         self.crear_MODELO = QtWidgets.QLineEdit(parent=self.tab)
         self.crear_MODELO.setGeometry(QtCore.QRect(50, 150, 141, 32))
+        self.crear_MODELO.setStyleSheet("color: rgb(255, 255, 255);\n"
+"background-color: rgb(46, 64, 83);")
         self.crear_MODELO.setObjectName("crear_MODELO")
         self.crear_PRECIO = QtWidgets.QLineEdit(parent=self.tab)
         self.crear_PRECIO.setGeometry(QtCore.QRect(280, 150, 131, 32))
+        self.crear_PRECIO.setStyleSheet("color: rgb(255, 255, 255);\n"
+"background-color: rgb(46, 64, 83);")
         self.crear_PRECIO.setObjectName("crear_PRECIO")
         self.label_15 = QtWidgets.QLabel(parent=self.tab)
         self.label_15.setGeometry(QtCore.QRect(60, 30, 58, 18))
@@ -243,6 +290,8 @@ class Ui_MainWindow(object):
         self.label_18.setObjectName("label_18")
         self.estado_CREAR_vehiculo = QtWidgets.QTextEdit(parent=self.tab)
         self.estado_CREAR_vehiculo.setGeometry(QtCore.QRect(30, 260, 191, 41))
+        self.estado_CREAR_vehiculo.setStyleSheet("color: rgb(255, 255, 255);\n"
+"background-color: rgb(46, 64, 83);")
         self.estado_CREAR_vehiculo.setObjectName("estado_CREAR_vehiculo")
         self.BT_crear_vehiculos = QtWidgets.QPushButton(parent=self.tab)
         self.BT_crear_vehiculos.setGeometry(QtCore.QRect(290, 260, 88, 34))
@@ -253,6 +302,8 @@ class Ui_MainWindow(object):
         self.tab_3.setObjectName("tab_3")
         self.buscar_MOD_vehi = QtWidgets.QLineEdit(parent=self.tab_3)
         self.buscar_MOD_vehi.setGeometry(QtCore.QRect(120, 20, 181, 32))
+        self.buscar_MOD_vehi.setStyleSheet("color: rgb(255, 255, 255);\n"
+"background-color: rgb(46, 64, 83);")
         self.buscar_MOD_vehi.setObjectName("buscar_MOD_vehi")
         self.BT_buscar_mod_vehiculo = QtWidgets.QPushButton(parent=self.tab_3)
         self.BT_buscar_mod_vehiculo.setGeometry(QtCore.QRect(340, 20, 88, 34))
@@ -272,15 +323,23 @@ class Ui_MainWindow(object):
         self.label_19.setObjectName("label_19")
         self.estado_mod_vehiculo = QtWidgets.QTextEdit(parent=self.tab_3)
         self.estado_mod_vehiculo.setGeometry(QtCore.QRect(30, 82, 381, 41))
+        self.estado_mod_vehiculo.setStyleSheet("color: rgb(255, 255, 255);\n"
+"background-color: rgb(46, 64, 83);")
         self.estado_mod_vehiculo.setObjectName("estado_mod_vehiculo")
         self.mod_MARCA = QtWidgets.QLineEdit(parent=self.tab_3)
         self.mod_MARCA.setGeometry(QtCore.QRect(50, 180, 141, 32))
+        self.mod_MARCA.setStyleSheet("color: rgb(255, 255, 255);\n"
+"background-color: rgb(46, 64, 83);")
         self.mod_MARCA.setObjectName("mod_MARCA")
         self.mod_MODELO = QtWidgets.QLineEdit(parent=self.tab_3)
         self.mod_MODELO.setGeometry(QtCore.QRect(280, 180, 141, 32))
+        self.mod_MODELO.setStyleSheet("color: rgb(255, 255, 255);\n"
+"background-color: rgb(46, 64, 83);")
         self.mod_MODELO.setObjectName("mod_MODELO")
         self.mod_PRECIO = QtWidgets.QLineEdit(parent=self.tab_3)
         self.mod_PRECIO.setGeometry(QtCore.QRect(50, 280, 151, 32))
+        self.mod_PRECIO.setStyleSheet("color: rgb(255, 255, 255);\n"
+"background-color: rgb(46, 64, 83);")
         self.mod_PRECIO.setObjectName("mod_PRECIO")
         self.label_20 = QtWidgets.QLabel(parent=self.tab_3)
         self.label_20.setGeometry(QtCore.QRect(290, 150, 58, 18))
@@ -296,15 +355,21 @@ class Ui_MainWindow(object):
         self.tab_2.setObjectName("tab_2")
         self.buscar_ELI_vehi = QtWidgets.QLineEdit(parent=self.tab_2)
         self.buscar_ELI_vehi.setGeometry(QtCore.QRect(120, 30, 191, 32))
+        self.buscar_ELI_vehi.setStyleSheet("color: rgb(255, 255, 255);\n"
+"background-color: rgb(46, 64, 83);")
         self.buscar_ELI_vehi.setObjectName("buscar_ELI_vehi")
         self.estado_eli_vehi = QtWidgets.QTextEdit(parent=self.tab_2)
         self.estado_eli_vehi.setGeometry(QtCore.QRect(50, 80, 311, 41))
+        self.estado_eli_vehi.setStyleSheet("color: rgb(255, 255, 255);\n"
+"background-color: rgb(46, 64, 83);")
         self.estado_eli_vehi.setObjectName("estado_eli_vehi")
         self.label_23 = QtWidgets.QLabel(parent=self.tab_2)
         self.label_23.setGeometry(QtCore.QRect(20, 30, 91, 18))
         self.label_23.setObjectName("label_23")
         self.contenido_eli_vehi = QtWidgets.QTextEdit(parent=self.tab_2)
         self.contenido_eli_vehi.setGeometry(QtCore.QRect(40, 140, 321, 161))
+        self.contenido_eli_vehi.setStyleSheet("color: rgb(255, 255, 255);\n"
+"background-color: rgb(46, 64, 83);")
         self.contenido_eli_vehi.setObjectName("contenido_eli_vehi")
         self.BT_eliminar_vehi = QtWidgets.QPushButton(parent=self.tab_2)
         self.BT_eliminar_vehi.setGeometry(QtCore.QRect(340, 320, 88, 34))
@@ -330,9 +395,13 @@ class Ui_MainWindow(object):
         self.BT_limpiar_mos_vehi.setObjectName("BT_limpiar_mos_vehi")
         self.contenido_most_vehi = QtWidgets.QTextEdit(parent=self.tab_4)
         self.contenido_most_vehi.setGeometry(QtCore.QRect(40, 80, 361, 221))
+        self.contenido_most_vehi.setStyleSheet("color: rgb(255, 255, 255);\n"
+"background-color: rgb(46, 64, 83);")
         self.contenido_most_vehi.setObjectName("contenido_most_vehi")
         self.buscar_MOST_vehi = QtWidgets.QLineEdit(parent=self.tab_4)
         self.buscar_MOST_vehi.setGeometry(QtCore.QRect(120, 20, 191, 32))
+        self.buscar_MOST_vehi.setStyleSheet("color: rgb(255, 255, 255);\n"
+"background-color: rgb(46, 64, 83);")
         self.buscar_MOST_vehi.setObjectName("buscar_MOST_vehi")
         self.tabWidget_3.addTab(self.tab_4, "")
         self.BT_graficar_vehiculo = QtWidgets.QPushButton(parent=self.tab_vehiculos)
@@ -350,15 +419,21 @@ class Ui_MainWindow(object):
         self.label_26.setObjectName("label_26")
         self.combo_ORIGEN = QtWidgets.QComboBox(parent=self.tab_viajes)
         self.combo_ORIGEN.setGeometry(QtCore.QRect(20, 100, 191, 32))
+        self.combo_ORIGEN.setStyleSheet("color: rgb(255, 255, 255);\n"
+"background-color: rgb(46, 64, 83);")
         self.combo_ORIGEN.setObjectName("combo_ORIGEN")
         self.label_27 = QtWidgets.QLabel(parent=self.tab_viajes)
         self.label_27.setGeometry(QtCore.QRect(20, 20, 41, 18))
         self.label_27.setObjectName("label_27")
         self.crear_ID = QtWidgets.QLineEdit(parent=self.tab_viajes)
         self.crear_ID.setGeometry(QtCore.QRect(60, 10, 61, 32))
+        self.crear_ID.setStyleSheet("color: rgb(255, 255, 255);\n"
+"background-color: rgb(46, 64, 83);")
         self.crear_ID.setObjectName("crear_ID")
         self.combo_DESTINO = QtWidgets.QComboBox(parent=self.tab_viajes)
         self.combo_DESTINO.setGeometry(QtCore.QRect(250, 100, 181, 32))
+        self.combo_DESTINO.setStyleSheet("color: rgb(255, 255, 255);\n"
+"background-color: rgb(46, 64, 83);")
         self.combo_DESTINO.setObjectName("combo_DESTINO")
         self.BT_buscar_PLACA_viaje = QtWidgets.QPushButton(parent=self.tab_viajes)
         self.BT_buscar_PLACA_viaje.setGeometry(QtCore.QRect(410, 250, 61, 34))
@@ -375,12 +450,18 @@ class Ui_MainWindow(object):
         self.label_28.setObjectName("label_28")
         self.crear_FECHA = QtWidgets.QLineEdit(parent=self.tab_viajes)
         self.crear_FECHA.setGeometry(QtCore.QRect(240, 10, 113, 32))
+        self.crear_FECHA.setStyleSheet("color: rgb(255, 255, 255);\n"
+"background-color: rgb(46, 64, 83);")
         self.crear_FECHA.setObjectName("crear_FECHA")
         self.MI_DPI = QtWidgets.QLineEdit(parent=self.tab_viajes)
         self.MI_DPI.setGeometry(QtCore.QRect(20, 180, 113, 32))
+        self.MI_DPI.setStyleSheet("color: rgb(255, 255, 255);\n"
+"background-color: rgb(46, 64, 83);")
         self.MI_DPI.setObjectName("MI_DPI")
         self.MI_PLACA = QtWidgets.QLineEdit(parent=self.tab_viajes)
         self.MI_PLACA.setGeometry(QtCore.QRect(20, 260, 113, 32))
+        self.MI_PLACA.setStyleSheet("color: rgb(255, 255, 255);\n"
+"background-color: rgb(46, 64, 83);")
         self.MI_PLACA.setObjectName("MI_PLACA")
         self.label_29 = QtWidgets.QLabel(parent=self.tab_viajes)
         self.label_29.setGeometry(QtCore.QRect(70, 150, 31, 18))
@@ -390,12 +471,18 @@ class Ui_MainWindow(object):
         self.label_30.setObjectName("label_30")
         self.espacio_DPI = QtWidgets.QTextEdit(parent=self.tab_viajes)
         self.espacio_DPI.setGeometry(QtCore.QRect(160, 170, 231, 41))
+        self.espacio_DPI.setStyleSheet("color: rgb(255, 255, 255);\n"
+"background-color: rgb(46, 64, 83);")
         self.espacio_DPI.setObjectName("espacio_DPI")
         self.espacio_PLACA = QtWidgets.QTextEdit(parent=self.tab_viajes)
         self.espacio_PLACA.setGeometry(QtCore.QRect(160, 250, 231, 41))
+        self.espacio_PLACA.setStyleSheet("color: rgb(255, 255, 255);\n"
+"background-color: rgb(46, 64, 83);")
         self.espacio_PLACA.setObjectName("espacio_PLACA")
         self.MI_RUTA = QtWidgets.QLineEdit(parent=self.tab_viajes)
         self.MI_RUTA.setGeometry(QtCore.QRect(20, 340, 113, 32))
+        self.MI_RUTA.setStyleSheet("color: rgb(255, 255, 255);\n"
+"background-color: rgb(46, 64, 83);")
         self.MI_RUTA.setObjectName("MI_RUTA")
         self.label_31 = QtWidgets.QLabel(parent=self.tab_viajes)
         self.label_31.setGeometry(QtCore.QRect(50, 310, 41, 18))
@@ -406,6 +493,8 @@ class Ui_MainWindow(object):
         self.BT_graficar_viajes.setObjectName("BT_graficar_viajes")
         self.espacio_RUTA = QtWidgets.QTextEdit(parent=self.tab_viajes)
         self.espacio_RUTA.setGeometry(QtCore.QRect(160, 330, 231, 41))
+        self.espacio_RUTA.setStyleSheet("color: rgb(255, 255, 255);\n"
+"background-color: rgb(46, 64, 83);")
         self.espacio_RUTA.setObjectName("espacio_RUTA")
         self.BT_buscar_RUTA_viaje = QtWidgets.QPushButton(parent=self.tab_viajes)
         self.BT_buscar_RUTA_viaje.setGeometry(QtCore.QRect(410, 330, 61, 34))
@@ -422,6 +511,8 @@ class Ui_MainWindow(object):
         self.BT_limpiar_viaje.setObjectName("BT_limpiar_viaje")
         self.SUPER_ESTADO = QtWidgets.QTextEdit(parent=self.tab_viajes)
         self.SUPER_ESTADO.setGeometry(QtCore.QRect(20, 400, 221, 31))
+        self.SUPER_ESTADO.setStyleSheet("color: rgb(255, 255, 255);\n"
+"background-color: rgb(46, 64, 83);")
         self.SUPER_ESTADO.setObjectName("SUPER_ESTADO")
         self.tabWidget.addTab(self.tab_viajes, "")
         self.tab_reportes = QtWidgets.QWidget()
@@ -436,9 +527,9 @@ class Ui_MainWindow(object):
         self.BT_mapa.setFont(font)
         self.BT_mapa.setObjectName("BT_mapa")
         self.ESTADOS = QtWidgets.QTextEdit(parent=self.centralwidget)
-        self.ESTADOS.setGeometry(QtCore.QRect(390, 10, 301, 41))
-        self.ESTADOS.setStyleSheet("background-color: rgb(0, 0, 0);\n"
-"color: rgb(255, 255, 255);")
+        self.ESTADOS.setGeometry(QtCore.QRect(390, 10, 311, 51))
+        self.ESTADOS.setStyleSheet("color: rgb(255, 255, 255);\n"
+"background-color: rgb(46, 64, 83);")
         self.ESTADOS.setObjectName("ESTADOS")
         MainWindow.setCentralWidget(self.centralwidget)
 
@@ -461,8 +552,24 @@ class Ui_MainWindow(object):
         self.label_5.setText(_translate("MainWindow", "Genero"))
         self.label_6.setText(_translate("MainWindow", "Telefono"))
         self.label_7.setText(_translate("MainWindow", "Direccion"))
+        self.estado_crear.setHtml(_translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><meta charset=\"utf-8\" /><style type=\"text/css\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"hr { height: 1px; border-width: 0; }\n"
+"li.unchecked::marker { content: \"\\2610\"; }\n"
+"li.checked::marker { content: \"\\2612\"; }\n"
+"</style></head><body style=\" font-family:\'Noto Sans\'; font-size:10pt; font-weight:400; font-style:normal;\">\n"
+"<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p></body></html>"))
         self.tabWidget_2.setTabText(self.tabWidget_2.indexOf(self.tab_crear), _translate("MainWindow", "Crear"))
         self.label.setText(_translate("MainWindow", "Buscar DPI"))
+        self.estado_mod.setHtml(_translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><meta charset=\"utf-8\" /><style type=\"text/css\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"hr { height: 1px; border-width: 0; }\n"
+"li.unchecked::marker { content: \"\\2610\"; }\n"
+"li.checked::marker { content: \"\\2612\"; }\n"
+"</style></head><body style=\" font-family:\'Noto Sans\'; font-size:10pt; font-weight:400; font-style:normal;\">\n"
+"<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p></body></html>"))
         self.BT_guardar_mod.setText(_translate("MainWindow", "Guardar"))
         self.label_8.setText(_translate("MainWindow", "Nombre"))
         self.label_9.setText(_translate("MainWindow", "Apellido"))
@@ -474,6 +581,14 @@ class Ui_MainWindow(object):
         self.tabWidget_2.setTabText(self.tabWidget_2.indexOf(self.tab_modificar), _translate("MainWindow", "Modificar"))
         self.label_13.setText(_translate("MainWindow", "Buscar DPI"))
         self.BT_eliminar.setText(_translate("MainWindow", "Eliminar"))
+        self.estado_eli.setHtml(_translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><meta charset=\"utf-8\" /><style type=\"text/css\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"hr { height: 1px; border-width: 0; }\n"
+"li.unchecked::marker { content: \"\\2610\"; }\n"
+"li.checked::marker { content: \"\\2612\"; }\n"
+"</style></head><body style=\" font-family:\'Noto Sans\'; font-size:10pt; font-weight:400; font-style:normal;\">\n"
+"<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p></body></html>"))
         self.BT_buscar_eli.setText(_translate("MainWindow", "Buscar"))
         self.tabWidget_2.setTabText(self.tabWidget_2.indexOf(self.tab_eliminar), _translate("MainWindow", "Eliminar"))
         self.BT_buscar_most.setText(_translate("MainWindow", "Buscar"))
@@ -486,16 +601,40 @@ class Ui_MainWindow(object):
         self.label_16.setText(_translate("MainWindow", "Marca"))
         self.label_17.setText(_translate("MainWindow", "Modelo"))
         self.label_18.setText(_translate("MainWindow", "Precio"))
+        self.estado_CREAR_vehiculo.setHtml(_translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><meta charset=\"utf-8\" /><style type=\"text/css\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"hr { height: 1px; border-width: 0; }\n"
+"li.unchecked::marker { content: \"\\2610\"; }\n"
+"li.checked::marker { content: \"\\2612\"; }\n"
+"</style></head><body style=\" font-family:\'Noto Sans\'; font-size:10pt; font-weight:400; font-style:normal;\">\n"
+"<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p></body></html>"))
         self.BT_crear_vehiculos.setText(_translate("MainWindow", "Crear"))
         self.tabWidget_3.setTabText(self.tabWidget_3.indexOf(self.tab), _translate("MainWindow", "Crear"))
         self.BT_buscar_mod_vehiculo.setText(_translate("MainWindow", "Buscar"))
         self.BT_guardar_vehi.setText(_translate("MainWindow", "Guardar"))
         self.BT_limpiar_mod_vehi.setText(_translate("MainWindow", "Limpiar"))
         self.label_19.setText(_translate("MainWindow", "Buscar Placa"))
+        self.estado_mod_vehiculo.setHtml(_translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><meta charset=\"utf-8\" /><style type=\"text/css\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"hr { height: 1px; border-width: 0; }\n"
+"li.unchecked::marker { content: \"\\2610\"; }\n"
+"li.checked::marker { content: \"\\2612\"; }\n"
+"</style></head><body style=\" font-family:\'Noto Sans\'; font-size:10pt; font-weight:400; font-style:normal;\">\n"
+"<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p></body></html>"))
         self.label_20.setText(_translate("MainWindow", "Modelo"))
         self.label_21.setText(_translate("MainWindow", "Marca"))
         self.label_22.setText(_translate("MainWindow", "Precio"))
         self.tabWidget_3.setTabText(self.tabWidget_3.indexOf(self.tab_3), _translate("MainWindow", "Modificar"))
+        self.estado_eli_vehi.setHtml(_translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><meta charset=\"utf-8\" /><style type=\"text/css\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"hr { height: 1px; border-width: 0; }\n"
+"li.unchecked::marker { content: \"\\2610\"; }\n"
+"li.checked::marker { content: \"\\2612\"; }\n"
+"</style></head><body style=\" font-family:\'Noto Sans\'; font-size:10pt; font-weight:400; font-style:normal;\">\n"
+"<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p></body></html>"))
         self.label_23.setText(_translate("MainWindow", "Buscar Placa"))
         self.BT_eliminar_vehi.setText(_translate("MainWindow", "Eliminar"))
         self.BT_buscar_eli_vehi.setText(_translate("MainWindow", "Buscar"))
@@ -519,6 +658,14 @@ class Ui_MainWindow(object):
         self.BT_buscar_RUTA_viaje.setText(_translate("MainWindow", "Buscar"))
         self.BT_CREAR_viaje.setText(_translate("MainWindow", "Crear"))
         self.BT_limpiar_viaje.setText(_translate("MainWindow", "Limpiar"))
+        self.SUPER_ESTADO.setHtml(_translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><meta charset=\"utf-8\" /><style type=\"text/css\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"hr { height: 1px; border-width: 0; }\n"
+"li.unchecked::marker { content: \"\\2610\"; }\n"
+"li.checked::marker { content: \"\\2612\"; }\n"
+"</style></head><body style=\" font-family:\'Noto Sans\'; font-size:10pt; font-weight:400; font-style:normal;\">\n"
+"<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p></body></html>"))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_viajes), _translate("MainWindow", "Viajes"))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_reportes), _translate("MainWindow", "Reportes"))
         self.BT_mapa.setText(_translate("MainWindow", "Mapa"))

@@ -45,13 +45,20 @@ class Funct_Viajes:
             self.ui.SUPER_ESTADO.setPlainText('PorFavor colocar numeros')
             return
 
+        #  Obtener los datos
         id = self.ui.crear_ID.text()
-        fecha = self.ui.crear_fecha.text()
+        fecha = self.ui.crear_FECHA.text()
+        origen = self.ui.combo_ORIGEN.currentText()
+        destino = self.ui.combo_DESTINO.currentText()
         cliente = self.ui.MI_DPI.text()
         vehiculo = self.ui.MI_PLACA.text()
         ruta = self.ui.MI_RUTA.text()
-
+        # Validar origen y destino
+        if not origen or not destino:
+            self.ui.SUPER_ESTADO.setPlainText('Selecciona origen y destino')
+            return
         # Crear Viajes
+
 
     # Funcion para graficar la estructura de viajes (Lista simple)
     def graficar_viajes(self):
@@ -101,31 +108,3 @@ class Funct_Viajes:
         self.ui.espacio_DPI.clear()
         self.ui.espacio_PLACA.clear()
         self.ui.espacio_RUTA.clear()
-
-        """
-        Para recibir el contenido de id y fecha
-        crear_FECHA
-        crear_ID
-        
-        mis combox
-        combo_ORIGEN
-        combo_DESTINO
-        
-        para ingresar los datos placa dpi y ruta tomada
-        MI_DPI
-        MI_PLACA
-        MI_RUTA
-        
-        el espacio para regresar el dato encontrado
-        espacio_DPI
-        espacio_PLACA
-        espacio_RUTA
-        
-        los botones 
-        BT_CREAR_viaje
-        BT_buscar_DPI_viaje
-        BT_buscar_RUTA_viaje
-        BT_buscar_PLACA_viaje
-        BT_graficar_viajes
-        BT_limpiar_viaje
-        """

@@ -38,7 +38,7 @@ class Funct_Cliente:
 
     def abrir_clientes(self):
         # Abrir un cuadro de diálogo para seleccionar el archivo
-        archivo, _ = QFileDialog.getOpenFileName(self.ui.BT_abrir_clientes, "Seleccionar archivo", "",
+        archivo, _ = QFileDialog.getOpenFileName(self.ui.BT_abrir_clientes, "Seleccionar archivo Clientes", "",
                                                  "Archivos de texto (*.txt)")
         if archivo:
             try:
@@ -56,13 +56,14 @@ class Funct_Cliente:
 
                             cliente = Clientes(dpi, nombre, apellido, genero, telefono, direccion)
                             self.lista_clientes.agregar_cliente(cliente)
-                            self.ui.text_area.append(f'Cargado: {cliente}')
+                            #self.ui.text_area.append(f'Cargado: {cliente}')
                             self.lista_clientes.graficar("Lista_Dob")
                         else:
-                            self.ui.text_area.append(f'Linea invalida: {linea}')
-                self.ui.text_area.append('Carga completada')
+                            self.ui.ESTADOS.append(f'Linea invalida Clientes: {linea}')
+                            self.ui.ESTADOS.clear()
+                self.ui.ESTADOS.append('Carga completada Clientes')
             except Exception as e:
-                self.ui.text_area.append(f'Error al leer el archivo: {e}')
+                self.ui.ESTADOS.append(f'Error al leer el archivo Clientes: {e}')
 
     # Funcion para crear clientes en la interfaz
     def crear_cliente(self):
