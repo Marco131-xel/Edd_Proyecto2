@@ -52,6 +52,10 @@ class Funct_Viajes:
         if not origen or not destino:
             self.ui.SUPER_ESTADO.setPlainText('Selecciona origen y destino')
             return
+        # Verificar si ya existe un viaje con el mismo id
+        if self.lista_Sviaje.buscar_viaje(id):
+            self.ui.SUPER_ESTADO.setPlainText('Error: Ya existe un viaje con este ID')
+            return
         # Crear Nodos
         nodo_cliente = self.lista_Dob.buscar_cliente(dpi)
         if nodo_cliente is None:
@@ -62,6 +66,10 @@ class Funct_Viajes:
         dato_cliente = {'DPI': cliente.get_Dpi(), 'Nombre': cliente.get_Nombre()}
 
         vehiculo = self.arbol.buscar(placa)
+        # Verificar Ruta
+        if not ruta:
+            self.ui.SUPER_ESTADO.setPlainText('Selecciona una ruta')
+            return
         if vehiculo is None:
             self.ui.SUPER_ESTADO.setPlainText('No se encontro Placa')
             return
@@ -70,6 +78,7 @@ class Funct_Viajes:
         # Crear Viajes
         viajes = Viajes(id, origen, destino, fecha, dato_cliente, dato_vehiculo, ruta)
         self.lista_Sviaje.crear_viaje(viajes)
+        self.limpiar_contenido()
         self.ui.SUPER_ESTADO.setPlainText('Viaje Creado')
         self.lista_Sviaje.graficar('Lista_Viajes')
 
@@ -180,9 +189,9 @@ class Funct_Viajes:
         self.ui.crear_FECHA.clear()
         self.ui.MI_DPI.clear()
         self.ui.MI_PLACA.clear()
-        self.ui.MI_RUTA.clear()
         self.ui.espacio_DPI.clear()
         self.ui.espacio_PLACA.clear()
+        self.ui.comboRutaTomada.clear()
     # Funcion para graficar la rutas movidas
     def graficar_ruta(self, ruta, filename):
         if not ruta:
