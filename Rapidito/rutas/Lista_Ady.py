@@ -26,6 +26,10 @@ class Lista_Ady:
         for nodo, conexiones in self.__adyacencia.items():
             print(f'{nodo}: {conexiones}')
 
+    # Metodo para obtener la lista
+    def obtener_adyacencia(self):
+        return self.__adyacencia
+
     # Funcion para graficar Mapa
     def graficar(self, filename="grafo"):
         if not self.__adyacencia:

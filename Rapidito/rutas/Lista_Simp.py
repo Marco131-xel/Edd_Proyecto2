@@ -88,3 +88,9 @@ class Lista_Simp:
             rutas.append(str(aux.ruta))
             aux = aux.siquiente
         return ' -> '.join(rutas)
+
+    def __iter__(self):
+        actual = self.primero
+        while actual is not None:
+            yield actual.ruta
+            actual = actual.siquiente

@@ -784,7 +784,7 @@ color: rgb(0, 0, 0);</string>
      <widget class="QTabWidget" name="tabWidget_3">
       <property name="geometry">
        <rect>
-        <x>20</x>
+        <x>10</x>
         <y>20</y>
         <width>451</width>
         <height>401</height>
@@ -1691,6 +1691,448 @@ li.checked::marker { content: &quot;\2612&quot;; }
      <attribute name="title">
       <string>Reportes</string>
      </attribute>
+     <widget class="QTabWidget" name="tabWidget_4">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>10</y>
+        <width>481</width>
+        <height>431</height>
+       </rect>
+      </property>
+      <property name="currentIndex">
+       <number>0</number>
+      </property>
+      <widget class="QWidget" name="tab_Top1">
+       <attribute name="title">
+        <string>Top Viajes</string>
+       </attribute>
+       <widget class="QTableWidget" name="Table_Viajes">
+        <property name="geometry">
+         <rect>
+          <x>40</x>
+          <y>50</y>
+          <width>401</width>
+          <height>192</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">color: rgb(255, 255, 255);
+background-color: rgb(46, 64, 83);</string>
+        </property>
+        <column>
+         <property name="text">
+          <string>Id</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>Origen</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>Destino</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>Tiempo</string>
+         </property>
+        </column>
+       </widget>
+       <widget class="QPushButton" name="BT_ver_topviajes">
+        <property name="geometry">
+         <rect>
+          <x>60</x>
+          <y>310</y>
+          <width>88</width>
+          <height>34</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(46, 64, 83);</string>
+        </property>
+        <property name="text">
+         <string>Ver</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="graficar_topviajes">
+        <property name="geometry">
+         <rect>
+          <x>180</x>
+          <y>310</y>
+          <width>88</width>
+          <height>34</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(255, 85, 0);</string>
+        </property>
+        <property name="text">
+         <string>Graficar</string>
+        </property>
+       </widget>
+       <widget class="QTextEdit" name="estado_topviajes">
+        <property name="geometry">
+         <rect>
+          <x>290</x>
+          <y>310</y>
+          <width>151</width>
+          <height>41</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">color: rgb(255, 255, 255);
+background-color: rgb(46, 64, 83);</string>
+        </property>
+       </widget>
+      </widget>
+      <widget class="QWidget" name="tab_Top2">
+       <attribute name="title">
+        <string>Top Ganancias</string>
+       </attribute>
+       <widget class="QTableWidget" name="Table_ganancias">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>20</y>
+          <width>451</width>
+          <height>261</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">color: rgb(255, 255, 255);
+background-color: rgb(46, 64, 83);</string>
+        </property>
+        <column>
+         <property name="text">
+          <string>Id</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>Origen</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>Destino</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>Tiempo</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>Precio</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>Total</string>
+         </property>
+        </column>
+       </widget>
+       <widget class="QTextEdit" name="estado_topganancias">
+        <property name="geometry">
+         <rect>
+          <x>310</x>
+          <y>320</y>
+          <width>141</width>
+          <height>41</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">color: rgb(255, 255, 255);
+background-color: rgb(46, 64, 83);</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="BT_ver_topganancias">
+        <property name="geometry">
+         <rect>
+          <x>40</x>
+          <y>320</y>
+          <width>88</width>
+          <height>34</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(46, 64, 83);</string>
+        </property>
+        <property name="text">
+         <string>Ver</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="graficar_topganancias">
+        <property name="geometry">
+         <rect>
+          <x>170</x>
+          <y>320</y>
+          <width>88</width>
+          <height>34</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(255, 85, 0);</string>
+        </property>
+        <property name="text">
+         <string>Graficar</string>
+        </property>
+       </widget>
+      </widget>
+      <widget class="QWidget" name="tab_Top3">
+       <attribute name="title">
+        <string>Top clientes</string>
+       </attribute>
+       <widget class="QTableWidget" name="Table_clientes">
+        <property name="geometry">
+         <rect>
+          <x>40</x>
+          <y>50</y>
+          <width>401</width>
+          <height>192</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">color: rgb(255, 255, 255);
+background-color: rgb(46, 64, 83);</string>
+        </property>
+        <column>
+         <property name="text">
+          <string>Id</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>DPI</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>Nombre</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>Viajes</string>
+         </property>
+        </column>
+       </widget>
+       <widget class="QTextEdit" name="estado_topclientes">
+        <property name="geometry">
+         <rect>
+          <x>300</x>
+          <y>320</y>
+          <width>141</width>
+          <height>41</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">color: rgb(255, 255, 255);
+background-color: rgb(46, 64, 83);</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="BT_ver_topclientes">
+        <property name="geometry">
+         <rect>
+          <x>40</x>
+          <y>320</y>
+          <width>88</width>
+          <height>34</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(46, 64, 83);</string>
+        </property>
+        <property name="text">
+         <string>Ver</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="graficar_topclientes">
+        <property name="geometry">
+         <rect>
+          <x>150</x>
+          <y>320</y>
+          <width>88</width>
+          <height>34</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(255, 85, 0);</string>
+        </property>
+        <property name="text">
+         <string>Graficar</string>
+        </property>
+       </widget>
+      </widget>
+      <widget class="QWidget" name="tab_Top4">
+       <attribute name="title">
+        <string>Top Vehiculos</string>
+       </attribute>
+       <widget class="QTableWidget" name="Table_vehiculos">
+        <property name="geometry">
+         <rect>
+          <x>40</x>
+          <y>40</y>
+          <width>401</width>
+          <height>192</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">color: rgb(255, 255, 255);
+background-color: rgb(46, 64, 83);</string>
+        </property>
+        <column>
+         <property name="text">
+          <string>Id</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>Placa</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>Marca</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>Viajes</string>
+         </property>
+        </column>
+       </widget>
+       <widget class="QPushButton" name="BT_ver_topvehiculos">
+        <property name="geometry">
+         <rect>
+          <x>30</x>
+          <y>310</y>
+          <width>88</width>
+          <height>34</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(46, 64, 83);</string>
+        </property>
+        <property name="text">
+         <string>Ver</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="graficar_topvehiculos">
+        <property name="geometry">
+         <rect>
+          <x>140</x>
+          <y>310</y>
+          <width>88</width>
+          <height>34</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(255, 85, 0);</string>
+        </property>
+        <property name="text">
+         <string>Graficar</string>
+        </property>
+       </widget>
+       <widget class="QTextEdit" name="estado_topvehiculos">
+        <property name="geometry">
+         <rect>
+          <x>270</x>
+          <y>310</y>
+          <width>161</width>
+          <height>41</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">color: rgb(255, 255, 255);
+background-color: rgb(46, 64, 83);</string>
+        </property>
+       </widget>
+      </widget>
+      <widget class="QWidget" name="tab_Top5">
+       <attribute name="title">
+        <string>Ruta Viaje</string>
+       </attribute>
+       <widget class="QPushButton" name="BT_buscar_rutaviaje">
+        <property name="geometry">
+         <rect>
+          <x>250</x>
+          <y>20</y>
+          <width>88</width>
+          <height>34</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">color: rgb(255, 255, 255);
+background-color: rgb(0, 0, 255);</string>
+        </property>
+        <property name="text">
+         <string>Buscar</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="graficar_rutaviaje">
+        <property name="geometry">
+         <rect>
+          <x>60</x>
+          <y>330</y>
+          <width>88</width>
+          <height>34</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(255, 85, 0);</string>
+        </property>
+        <property name="text">
+         <string>Graficar</string>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="obtener_id">
+        <property name="geometry">
+         <rect>
+          <x>90</x>
+          <y>20</y>
+          <width>113</width>
+          <height>32</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">color: rgb(255, 255, 255);
+background-color: rgb(46, 64, 83);</string>
+        </property>
+       </widget>
+       <widget class="QTextEdit" name="estado_rutaviaje">
+        <property name="geometry">
+         <rect>
+          <x>280</x>
+          <y>320</y>
+          <width>161</width>
+          <height>41</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">color: rgb(255, 255, 255);
+background-color: rgb(46, 64, 83);</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_32">
+        <property name="geometry">
+         <rect>
+          <x>40</x>
+          <y>30</y>
+          <width>21</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>ID</string>
+        </property>
+       </widget>
+      </widget>
+     </widget>
     </widget>
    </widget>
    <widget class="QPushButton" name="BT_mapa">

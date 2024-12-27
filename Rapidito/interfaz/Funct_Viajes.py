@@ -6,18 +6,19 @@ from clientes.Clientes import Clientes
 from clientes.Lista_Dob import Lista_Dob
 from vehiculos.Vehiculos import Vehiculos
 from vehiculos.ArbolB import ArbolB
-from rutas.Rutas import Ruta
+from rutas.Grafo import Grafo
 from rutas.Lista_Simp import Lista_Simp
 from viajes.Viajes import Viajes
 from viajes.Lista_Sviaje import Lista_Sviaje
 
 class Funct_Viajes:
-    def __init__(self, ui, lista_clientes, arbolito):
+    def __init__(self, ui, lista_clientes, arbolito, lista_adyacencia):
         self.ui = ui
 
         # Inciar Estructuras
         self.lista_Dob = lista_clientes
         self.arbol = arbolito
+        self.adyacencia = lista_adyacencia
         self.list_Simp = Lista_Simp()
         self.lista_Sviaje = Lista_Sviaje()
         # Iniciar Botones
@@ -77,6 +78,25 @@ class Funct_Viajes:
         self.lista_Sviaje.crear_viaje(viajes)
         self.ui.SUPER_ESTADO.setPlainText('Viaje Creado')
         self.lista_Sviaje.graficar('Lista_Viajes')
+        # PRUEBAS ---------
+        self.adyacencia.mostrar_adyacencia()
+        grafo = Grafo(self.adyacencia.obtener_adyacencia())
+        rutas = grafo.encontrar_rutas(origen, destino)
+        tiempos = grafo.calcular_tiempos(rutas)
+        # Obtener ruta más corta y más larga
+        min_ruta, max_ruta = grafo.obtener_ruta_min_max(tiempos)
+
+        # Mostrar resultados
+        print("Ruta más corta:")
+        for nodo in min_ruta[0]:
+            print(nodo)
+        print(f"Tiempo total: {min_ruta[1]}")
+
+        print("\nRuta más larga:")
+        for nodo in max_ruta[0]:
+            print(nodo)
+        print(f"Tiempo total: {max_ruta[1]}")
+
     # Funcion para graficar la estructura de viajes (Lista simple)
     def graficar_viajes(self):
         dialog = QDialog(parent=None)

@@ -18,7 +18,8 @@ class MainWindow(QMainWindow):
         self.funct_cliente = Funct_Cliente(self.ui)
         self.funct_rutas = Funct_Rutas(self.ui)
         self.funct_vehiculos = Funct_Vehiculos(self.ui)
-        self.funct_viajes = Funct_Viajes(self.ui,self.funct_cliente.lista_clientes, self.funct_vehiculos.arbol)
+        self.funct_viajes = Funct_Viajes(self.ui,self.funct_cliente.lista_clientes, self.funct_vehiculos.arbol,
+                                         self.funct_rutas.lista_adyacencia)
         # Bloquear edicio text_Area
         self.ui.text_area.setReadOnly(True)
         self.ui.ESTADOS.setReadOnly(True)
