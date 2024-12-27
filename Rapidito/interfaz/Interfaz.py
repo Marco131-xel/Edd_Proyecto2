@@ -479,28 +479,13 @@ class Ui_MainWindow(object):
         self.espacio_PLACA.setStyleSheet("color: rgb(255, 255, 255);\n"
 "background-color: rgb(46, 64, 83);")
         self.espacio_PLACA.setObjectName("espacio_PLACA")
-        self.MI_RUTA = QtWidgets.QLineEdit(parent=self.tab_viajes)
-        self.MI_RUTA.setGeometry(QtCore.QRect(20, 340, 113, 32))
-        self.MI_RUTA.setStyleSheet("color: rgb(255, 255, 255);\n"
-"background-color: rgb(46, 64, 83);")
-        self.MI_RUTA.setObjectName("MI_RUTA")
         self.label_31 = QtWidgets.QLabel(parent=self.tab_viajes)
-        self.label_31.setGeometry(QtCore.QRect(50, 310, 41, 18))
+        self.label_31.setGeometry(QtCore.QRect(60, 330, 41, 18))
         self.label_31.setObjectName("label_31")
         self.BT_graficar_viajes = QtWidgets.QPushButton(parent=self.tab_viajes)
         self.BT_graficar_viajes.setGeometry(QtCore.QRect(390, 10, 88, 34))
         self.BT_graficar_viajes.setStyleSheet("background-color: rgb(255, 85, 0);")
         self.BT_graficar_viajes.setObjectName("BT_graficar_viajes")
-        self.espacio_RUTA = QtWidgets.QTextEdit(parent=self.tab_viajes)
-        self.espacio_RUTA.setGeometry(QtCore.QRect(160, 330, 231, 41))
-        self.espacio_RUTA.setStyleSheet("color: rgb(255, 255, 255);\n"
-"background-color: rgb(46, 64, 83);")
-        self.espacio_RUTA.setObjectName("espacio_RUTA")
-        self.BT_buscar_RUTA_viaje = QtWidgets.QPushButton(parent=self.tab_viajes)
-        self.BT_buscar_RUTA_viaje.setGeometry(QtCore.QRect(410, 330, 61, 34))
-        self.BT_buscar_RUTA_viaje.setStyleSheet("background-color: rgb(255, 255, 255);\n"
-"color: rgb(0, 0, 0);")
-        self.BT_buscar_RUTA_viaje.setObjectName("BT_buscar_RUTA_viaje")
         self.BT_CREAR_viaje = QtWidgets.QPushButton(parent=self.tab_viajes)
         self.BT_CREAR_viaje.setGeometry(QtCore.QRect(270, 390, 88, 34))
         self.BT_CREAR_viaje.setStyleSheet("background-color: rgb(85, 170, 0);")
@@ -514,6 +499,16 @@ class Ui_MainWindow(object):
         self.SUPER_ESTADO.setStyleSheet("color: rgb(255, 255, 255);\n"
 "background-color: rgb(46, 64, 83);")
         self.SUPER_ESTADO.setObjectName("SUPER_ESTADO")
+        self.comboRutaTomada = QtWidgets.QComboBox(parent=self.tab_viajes)
+        self.comboRutaTomada.setGeometry(QtCore.QRect(130, 330, 241, 32))
+        self.comboRutaTomada.setStyleSheet("color: rgb(255, 255, 255);\n"
+"background-color: rgb(46, 64, 83);")
+        self.comboRutaTomada.setObjectName("comboRutaTomada")
+        self.BT_buscar_RUTA_viaje = QtWidgets.QPushButton(parent=self.tab_viajes)
+        self.BT_buscar_RUTA_viaje.setGeometry(QtCore.QRect(390, 330, 61, 34))
+        self.BT_buscar_RUTA_viaje.setStyleSheet("background-color: rgb(255, 255, 255);\n"
+"color: rgb(0, 0, 0);")
+        self.BT_buscar_RUTA_viaje.setObjectName("BT_buscar_RUTA_viaje")
         self.tabWidget.addTab(self.tab_viajes, "")
         self.tab_reportes = QtWidgets.QWidget()
         self.tab_reportes.setObjectName("tab_reportes")
@@ -812,7 +807,6 @@ class Ui_MainWindow(object):
         self.label_30.setText(_translate("MainWindow", "Placa"))
         self.label_31.setText(_translate("MainWindow", "Ruta"))
         self.BT_graficar_viajes.setText(_translate("MainWindow", "Graficar"))
-        self.BT_buscar_RUTA_viaje.setText(_translate("MainWindow", "Buscar"))
         self.BT_CREAR_viaje.setText(_translate("MainWindow", "Crear"))
         self.BT_limpiar_viaje.setText(_translate("MainWindow", "Limpiar"))
         self.SUPER_ESTADO.setHtml(_translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
@@ -823,6 +817,7 @@ class Ui_MainWindow(object):
 "li.checked::marker { content: \"\\2612\"; }\n"
 "</style></head><body style=\" font-family:\'Noto Sans\'; font-size:10pt; font-weight:400; font-style:normal;\">\n"
 "<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p></body></html>"))
+        self.BT_buscar_RUTA_viaje.setText(_translate("MainWindow", "Buscar"))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_viajes), _translate("MainWindow", "Viajes"))
         item = self.Table_Viajes.horizontalHeaderItem(0)
         item.setText(_translate("MainWindow", "Id"))

@@ -3,5 +3,9 @@ rankdir=LR;
 bgcolor="#17202a";
 node [shape=record, style=filled, fillcolor="#145a32", fontcolor="white"];
 edge [color="white"];
-nodo0 [label="ID: 13\nOrigen: Quetzaltenango\nDestino: Petén\nFecha: 26/12/24\nCliente: DPI: 3357975470901\nNombre:  Marco\nVehiculo: Placa: jhs533\nMarca: Nissan\nRuta: ojala si"];
+nodo0 [label="ID: 05\nOrigen: Guatemala\nDestino: Santa Rosa\nFecha: 26/12/24\nCliente: DPI: 3357975470901\nNombre:  Marco\nVehiculo: Placa: jhs533\nMarca: Nissan\nRuta: Ruta mas corta: 30 minutos"];
+nodo1 [label="ID: 06\nOrigen: Quetzaltenango\nDestino: Totonicapán\nFecha: 26/12/24\nCliente: DPI: 1234567890123\nNombre:  Juan\nVehiculo: Placa: ghj678\nMarca: BMW\nRuta: Ruta mas corta: 10 minutos"];
+nodo2 [label="ID: 07\nOrigen: Totonicapán\nDestino: Guatemala\nFecha: 26/12/24\nCliente: DPI: 8888\nNombre: Paola\nVehiculo: Placa: pl1307\nMarca: tesla\nRuta: Ruta mas larga: 100 minutos"];
+nodo0 -> nodo1;
+nodo1 -> nodo2;
 }

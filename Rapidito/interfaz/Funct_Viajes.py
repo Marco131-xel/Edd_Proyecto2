@@ -1,11 +1,7 @@
 from PyQt6.QtWidgets import *
 from PyQt6.QtGui import QPixmap
 from PyQt6.QtCore import Qt
-
-from clientes.Clientes import Clientes
-from clientes.Lista_Dob import Lista_Dob
-from vehiculos.Vehiculos import Vehiculos
-from vehiculos.ArbolB import ArbolB
+import os
 from rutas.Grafo import Grafo
 from rutas.Lista_Simp import Lista_Simp
 from viajes.Viajes import Viajes
@@ -33,9 +29,7 @@ class Funct_Viajes:
         # Bloquear edicio a estados
         self.ui.espacio_DPI.setReadOnly(True)
         self.ui.espacio_PLACA.setReadOnly(True)
-        self.ui.espacio_RUTA.setReadOnly(True)
         self.ui.SUPER_ESTADO.setReadOnly(True)
-
 
     # Funcion para crear viajes
     def crear_viajes(self):
@@ -53,7 +47,7 @@ class Funct_Viajes:
         destino = self.ui.combo_DESTINO.currentText()
         dpi = self.ui.MI_DPI.text()
         placa = self.ui.MI_PLACA.text()
-        ruta = self.ui.MI_RUTA.text()
+        ruta = self.ui.comboRutaTomada.currentText()
         # Validar origen y destino
         if not origen or not destino:
             self.ui.SUPER_ESTADO.setPlainText('Selecciona origen y destino')
@@ -78,24 +72,6 @@ class Funct_Viajes:
         self.lista_Sviaje.crear_viaje(viajes)
         self.ui.SUPER_ESTADO.setPlainText('Viaje Creado')
         self.lista_Sviaje.graficar('Lista_Viajes')
-        # PRUEBAS ---------
-        self.adyacencia.mostrar_adyacencia()
-        grafo = Grafo(self.adyacencia.obtener_adyacencia())
-        rutas = grafo.encontrar_rutas(origen, destino)
-        tiempos = grafo.calcular_tiempos(rutas)
-        # Obtener ruta más corta y más larga
-        min_ruta, max_ruta = grafo.obtener_ruta_min_max(tiempos)
-
-        # Mostrar resultados
-        print("Ruta más corta:")
-        for nodo in min_ruta[0]:
-            print(nodo)
-        print(f"Tiempo total: {min_ruta[1]}")
-
-        print("\nRuta más larga:")
-        for nodo in max_ruta[0]:
-            print(nodo)
-        print(f"Tiempo total: {max_ruta[1]}")
 
     # Funcion para graficar la estructura de viajes (Lista simple)
     def graficar_viajes(self):
@@ -105,15 +81,12 @@ class Funct_Viajes:
         label = QLabel()
         pixmap = QPixmap("/home/marco/Documentos/Diciembre/edd/Edd_Proyecto2/Rapidito/Lista_Viajes.png")
         label.setPixmap(pixmap)
-
         label.setAlignment(Qt.AlignmentFlag.AlignCenter)
 
         scroll = QScrollArea()
         scroll.setWidget(label)
-
         layout = QVBoxLayout(dialog)
         layout.addWidget(scroll)
-
         dialog.resize(1200, 600)
         dialog.exec()
 
@@ -151,8 +124,56 @@ class Funct_Viajes:
 
     # Funcion para buscar la ruta
     def buscar_RUTA(self):
-        id = self.ui.crear_ID.text()
-        self.lista_Sviaje.mostrar_viaje(id)
+        origen = self.ui.combo_ORIGEN.currentText()
+        destino = self.ui.combo_DESTINO.currentText()
+
+        # Obtener rutas desde el grafo
+        grafo = Grafo(self.adyacencia.obtener_adyacencia())
+        rutas = grafo.encontrar_rutas(origen, destino)
+
+        # Verificar si no existen rutas
+        if not rutas:
+            self.ui.SUPER_ESTADO.setPlainText('No existe una ruta seleccionada')
+            return
+
+        # Calcular tiempos para las rutas encontradas
+        tiempos = grafo.calcular_tiempos(rutas)
+        min_ruta, max_ruta = grafo.obtener_ruta_min_max(tiempos)
+
+        # Calcular el tiempo promedio
+        tiempos_totales = [tiempo[1] for tiempo in tiempos]
+        promedio_tiempo = sum(tiempos_totales) / len(tiempos_totales)
+
+        # Encontrar la ruta intermedia
+        ruta_intermedia = min(tiempos, key=lambda x: abs(x[1] - promedio_tiempo))
+
+        # Mostrar rutas en el comboBox
+        self.ui.comboRutaTomada.clear()
+        self.ui.SUPER_ESTADO.clear()
+        self.ui.comboRutaTomada.addItem(f"Corta: {min_ruta[1]} segundos")
+        self.ui.comboRutaTomada.addItem(f"Intermedia: {ruta_intermedia[1]} segundos")
+        self.ui.comboRutaTomada.addItem(f"Larga: {max_ruta[1]} segundos")
+
+        # Graficar las rutas
+        self.graficar_ruta(min_ruta[0], "ruta_mas_corta")
+        self.graficar_ruta(ruta_intermedia[0], "ruta_intermedia")
+        self.graficar_ruta(max_ruta[0], "ruta_mas_larga")
+
+        # Mostrar detalles de las rutas en consola
+        print("Ruta mas corta:")
+        for nodo in min_ruta[0]:
+            print(nodo)
+        print(f"Tiempo total: {min_ruta[1]}")
+
+        print("\nRuta intermedia:")
+        for nodo in ruta_intermedia[0]:
+            print(nodo)
+        print(f"Tiempo total: {ruta_intermedia[1]}")
+
+        print("\nRuta mas larga:")
+        for nodo in max_ruta[0]:
+            print(nodo)
+        print(f"Tiempo total: {max_ruta[1]}")
     # Funcion para limpiar los campos que se ingresaron
     def limpiar_contenido(self):
         self.ui.crear_ID.clear()
@@ -162,4 +183,41 @@ class Funct_Viajes:
         self.ui.MI_RUTA.clear()
         self.ui.espacio_DPI.clear()
         self.ui.espacio_PLACA.clear()
-        self.ui.espacio_RUTA.clear()
+    # Funcion para graficar la rutas movidas
+    def graficar_ruta(self, ruta, filename):
+        if not ruta:
+            print("No hay ruta para graficar.")
+            return
+
+        dot = [
+            "graph Ruta {",
+            '  bgcolor="#17202a";',
+            '  node [style=filled, fillcolor="#145a32", fontcolor="white", shape=circle, width=1.4, fixedsize=true];',
+            '  edge [color="white", fontcolor="white"];',
+        ]
+
+        aux = ruta.primero
+        while aux is not None and aux.siquiente is not None:
+            origen = aux.ruta.get_Origen()
+            destino = aux.siquiente.ruta.get_Origen()
+            tiempo = aux.siquiente.ruta.get_Tiempo()
+
+            # Asegurarse de que tiempo sea un numero y mayor que 0
+            try:
+                tiempo = int(tiempo)
+                if destino and tiempo > 0:
+                    dot.append(f'  "{origen}" -- "{destino}" [label="{tiempo} segundos"];')
+                else:
+                    print(f"Conexion invalida: origen={origen}, destino={destino}, tiempo={tiempo}")
+            except ValueError:
+                print(f"Valor no valido para tiempo: {tiempo} (origen={origen}, destino={destino})")
+            aux = aux.siquiente
+
+        dot.append("}")
+        # Guardar archivo DOT
+        dot_file = f"{filename}.dot"
+        with open(dot_file, "w") as file:
+            file.write("\n".join(dot))
+        # Generar imagen PNG usando dot
+        os.system(f"dot -Tpng {dot_file} -o {filename}.png")
+        print(f"Grafico generado: {filename}.png")

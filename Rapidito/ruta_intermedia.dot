@@ -1,0 +1,7 @@
+graph Ruta {
+  bgcolor="#17202a";
+  node [style=filled, fillcolor="#145a32", fontcolor="white", shape=circle, width=1.4, fixedsize=true];
+  edge [color="white", fontcolor="white"];
+  "Quetzaltenango" -- "Quetzaltenango" [label="58 segundos"];
+  "Guatemala" -- "Guatemala" [label="45 segundos"];
+}

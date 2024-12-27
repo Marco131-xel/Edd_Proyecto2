@@ -102,11 +102,11 @@ class Lista_Sviaje:
             nodos.append(
                 f'nodo{i} [label="'
                 f'ID: {aux.viaje.get_ID()}\\n'
-                f'Origen: {aux.viaje.get_LugarOrigen()}\\n'
-                f'Destino: {aux.viaje.get_LugarDestino()}\\n'
                 f'Fecha: {aux.viaje.get_Fecha()}\\n'
                 f'Cliente: {cliente_info}\\n'
                 f'Vehiculo: {vehiculo_info}\\n'
+                f'Origen: {aux.viaje.get_LugarOrigen()}\\n'
+                f'Destino: {aux.viaje.get_LugarDestino()}\\n'
                 f'Ruta: {aux.viaje.get_Ruta_Tomada()}"];'
             )
 
