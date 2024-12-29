@@ -1,18 +1,23 @@
+from PyQt6.QtCore import Qt
 from PyQt6.QtWidgets import *
-from PyQt6.QtGui import QTextCursor
+from PyQt6.QtGui import QTextCursor, QPainter
+from PyQt6.QtGui import QPixmap
 from rutas.Rutas import Ruta
 from rutas.Lista_Ady import Lista_Ady
 
 class Funct_Rutas:
     def __init__(self, ui):
         self.ui = ui
-
+        self.zoom_factor = 1.0
         # Iniciar lista adycencia
         self.lista_adyacencia = Lista_Ady()
         # Conectar el boton para abrir rutas
         self.ui.BT_abrir_rutas.clicked.connect(self.abrir_rutas)
         # Conectar el boton para el mapa
         self.ui.BT_mapa.clicked.connect(self.abrir_mapa)
+        # Botones zoom
+        self.ui.BT_zoom_mas.clicked.connect(self.zoom_in)
+        self.ui.BT_zoom_menos.clicked.connect(self.zoom_out)
 
     # Funcion para cargar el archivo de entrada
     def abrir_rutas(self):
@@ -50,16 +55,26 @@ class Funct_Rutas:
     # Funcion para abrir el mapa en la interfaz
     def abrir_mapa(self):
         ruta_imagen = "/home/marco/Documentos/Diciembre/edd/Edd_Proyecto2/Rapidito/Mapa.png"
-        # Crear HTML para insertar la imagen
-        html = f"""
-                <html>
-                    <body>
-                        <img src="file://{ruta_imagen}" alt="Mapa" style="width: 100%; height: auto;">
-                    </body>
-                </html>
-                """
-        # Establecer el contenido en text_area
-        self.ui.text_area.setHtml(html)
-        cursor = self.ui.text_area.textCursor()
-        cursor.movePosition(QTextCursor.MoveOperation.End)
-        self.ui.text_area.setTextCursor(cursor)
+
+        # Cargar imagen
+        pixmap = QPixmap(ruta_imagen)
+        if pixmap.isNull():
+            self.ui.ESTADOS.append("Error: No se pudo cargar el mapa.")
+            return
+
+        self.scene = QGraphicsScene()
+        self.scene.addPixmap(pixmap)
+
+        self.ui.text_area.setScene(self.scene)
+        self.ui.text_area.setRenderHint(QPainter.RenderHint.Antialiasing)
+        self.ui.text_area.fitInView(self.scene.sceneRect(), Qt.AspectRatioMode.KeepAspectRatio)
+        self.zoom_factor = 1.0
+        self.ui.ESTADOS.append("Mapa cargado")
+
+    def zoom_in(self):
+        self.zoom_factor *= 1.2
+        self.ui.text_area.scale(1.2, 1.2)
+
+    def zoom_out(self):
+        self.zoom_factor /= 1.2
+        self.ui.text_area.scale(1 / 1.2, 1 / 1.2)

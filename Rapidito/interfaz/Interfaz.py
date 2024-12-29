@@ -44,11 +44,6 @@ class Ui_MainWindow(object):
         font.setItalic(False)
         self.BT_abrir_rutas.setFont(font)
         self.BT_abrir_rutas.setObjectName("BT_abrir_rutas")
-        self.text_area = QtWidgets.QTextEdit(parent=self.centralwidget)
-        self.text_area.setGeometry(QtCore.QRect(20, 70, 811, 481))
-        self.text_area.setStyleSheet("color: rgb(255, 255, 255);\n"
-"background-color: rgb(46, 64, 83);")
-        self.text_area.setObjectName("text_area")
         self.tabWidget = QtWidgets.QTabWidget(parent=self.centralwidget)
         self.tabWidget.setGeometry(QtCore.QRect(840, 70, 491, 481))
         font = QtGui.QFont()
@@ -704,7 +699,7 @@ class Ui_MainWindow(object):
         self.tabWidget_4.addTab(self.tab_Top5, "")
         self.tabWidget.addTab(self.tab_reportes, "")
         self.BT_mapa = QtWidgets.QPushButton(parent=self.centralwidget)
-        self.BT_mapa.setGeometry(QtCore.QRect(40, 570, 88, 34))
+        self.BT_mapa.setGeometry(QtCore.QRect(180, 580, 88, 34))
         font = QtGui.QFont()
         font.setPointSize(12)
         font.setBold(True)
@@ -716,6 +711,27 @@ class Ui_MainWindow(object):
         self.ESTADOS.setStyleSheet("color: rgb(255, 255, 255);\n"
 "background-color: rgb(46, 64, 83);")
         self.ESTADOS.setObjectName("ESTADOS")
+        self.BT_zoom_mas = QtWidgets.QPushButton(parent=self.centralwidget)
+        self.BT_zoom_mas.setGeometry(QtCore.QRect(400, 580, 88, 34))
+        font = QtGui.QFont()
+        font.setPointSize(12)
+        font.setBold(True)
+        font.setItalic(False)
+        self.BT_zoom_mas.setFont(font)
+        self.BT_zoom_mas.setObjectName("BT_zoom_mas")
+        self.BT_zoom_menos = QtWidgets.QPushButton(parent=self.centralwidget)
+        self.BT_zoom_menos.setGeometry(QtCore.QRect(500, 580, 88, 34))
+        font = QtGui.QFont()
+        font.setPointSize(12)
+        font.setBold(True)
+        font.setItalic(False)
+        self.BT_zoom_menos.setFont(font)
+        self.BT_zoom_menos.setObjectName("BT_zoom_menos")
+        self.text_area = QtWidgets.QGraphicsView(parent=self.centralwidget)
+        self.text_area.setGeometry(QtCore.QRect(20, 80, 781, 461))
+        self.text_area.setStyleSheet("color: rgb(255, 255, 255);\n"
+"background-color: rgb(46, 64, 83);")
+        self.text_area.setObjectName("text_area")
         MainWindow.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(MainWindow)
@@ -905,6 +921,8 @@ class Ui_MainWindow(object):
         self.tabWidget_4.setTabText(self.tabWidget_4.indexOf(self.tab_Top5), _translate("MainWindow", "Ruta Viaje"))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_reportes), _translate("MainWindow", "Reportes"))
         self.BT_mapa.setText(_translate("MainWindow", "Mapa"))
+        self.BT_zoom_mas.setText(_translate("MainWindow", "Zoom +"))
+        self.BT_zoom_menos.setText(_translate("MainWindow", "- Zoom"))
 
 
 if __name__ == "__main__":

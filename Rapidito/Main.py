@@ -23,8 +23,7 @@ class MainWindow(QMainWindow):
                                          self.funct_rutas.lista_adyacencia)
         self.funct_reportes = Funct_Reportes(self.ui, self.funct_cliente.lista_clientes, self.funct_vehiculos.arbol,
                                              self.funct_rutas.lista_adyacencia, self.funct_viajes.lista_Sviaje)
-        # Bloquear edicio text_Area
-        self.ui.text_area.setReadOnly(True)
+        # Bloquear edicion
         self.ui.ESTADOS.setReadOnly(True)
 
 #iniciar la aplicacion

@@ -33,23 +33,27 @@ class Lista_Ady:
     # Funcion para graficar Mapa
     def graficar(self, filename="grafo"):
         if not self.__adyacencia:
-            print("El grafo está vacío, no hay nada que graficar.")
+            print("El grafo está vacio, no hay nada que graficar.")
             return
         dot = [
             "graph Rutas {",
             '  bgcolor="#17202a";',
             '  node [style=filled, fillcolor="#145a32", fontcolor="white", shape=circle, width=1.4, fixedsize=true];',
             '  edge [color="white", fontcolor="white"];',
+            '  splines=true;',
+            '  overlap=false;',
+            '  layout=neato;',
         ]
         for origen, destinos in self.__adyacencia.items():
             for destino, tiempo in destinos.items():
                 if origen < destino:
-                    dot.append(f'  "{origen}" -- "{destino}" [label="{tiempo}"];')
-        dot.append("}")
+                    dot.append(f'  "{origen}" -- "{destino}" [label="{tiempo}", fontsize=10, fontcolor="green"];')
 
+        dot.append("}")
         dot_file = f"{filename}.dot"
         with open(dot_file, "w") as file:
             file.write("\n".join(dot))
 
+        # Crear el grafico PNG
         os.system(f"dot -Tpng {dot_file} -o {filename}.png")
         print(f"Grafico generado: {filename}.png")

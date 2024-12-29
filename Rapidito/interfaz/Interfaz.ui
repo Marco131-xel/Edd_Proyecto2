@@ -83,20 +83,6 @@
      <string>Abrir_Rutas</string>
     </property>
    </widget>
-   <widget class="QTextEdit" name="text_area">
-    <property name="geometry">
-     <rect>
-      <x>20</x>
-      <y>70</y>
-      <width>811</width>
-      <height>481</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">color: rgb(255, 255, 255);
-background-color: rgb(46, 64, 83);</string>
-    </property>
-   </widget>
    <widget class="QTabWidget" name="tabWidget">
     <property name="geometry">
      <rect>
@@ -2187,8 +2173,8 @@ background-color: rgb(46, 64, 83);</string>
    <widget class="QPushButton" name="BT_mapa">
     <property name="geometry">
      <rect>
-      <x>40</x>
-      <y>570</y>
+      <x>180</x>
+      <y>580</y>
       <width>88</width>
       <height>34</height>
      </rect>
@@ -2211,6 +2197,60 @@ background-color: rgb(46, 64, 83);</string>
       <y>10</y>
       <width>311</width>
       <height>51</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: rgb(255, 255, 255);
+background-color: rgb(46, 64, 83);</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="BT_zoom_mas">
+    <property name="geometry">
+     <rect>
+      <x>400</x>
+      <y>580</y>
+      <width>88</width>
+      <height>34</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+      <italic>false</italic>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="text">
+     <string>Zoom +</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="BT_zoom_menos">
+    <property name="geometry">
+     <rect>
+      <x>500</x>
+      <y>580</y>
+      <width>88</width>
+      <height>34</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+      <italic>false</italic>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="text">
+     <string>- Zoom</string>
+    </property>
+   </widget>
+   <widget class="QGraphicsView" name="text_area">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>80</y>
+      <width>781</width>
+      <height>461</height>
      </rect>
     </property>
     <property name="styleSheet">
