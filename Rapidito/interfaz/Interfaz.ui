@@ -1698,7 +1698,7 @@ color: rgb(0, 0, 0);</string>
          <rect>
           <x>40</x>
           <y>50</y>
-          <width>401</width>
+          <width>411</width>
           <height>192</height>
          </rect>
         </property>
@@ -1730,8 +1730,8 @@ background-color: rgb(46, 64, 83);</string>
        <widget class="QPushButton" name="BT_ver_topviajes">
         <property name="geometry">
          <rect>
-          <x>60</x>
-          <y>310</y>
+          <x>100</x>
+          <y>320</y>
           <width>88</width>
           <height>34</height>
          </rect>
@@ -1743,27 +1743,11 @@ background-color: rgb(46, 64, 83);</string>
          <string>Ver</string>
         </property>
        </widget>
-       <widget class="QPushButton" name="graficar_topviajes">
-        <property name="geometry">
-         <rect>
-          <x>180</x>
-          <y>310</y>
-          <width>88</width>
-          <height>34</height>
-         </rect>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">background-color: rgb(255, 85, 0);</string>
-        </property>
-        <property name="text">
-         <string>Graficar</string>
-        </property>
-       </widget>
        <widget class="QTextEdit" name="estado_topviajes">
         <property name="geometry">
          <rect>
-          <x>290</x>
-          <y>310</y>
+          <x>260</x>
+          <y>320</y>
           <width>151</width>
           <height>41</height>
          </rect>
@@ -1771,6 +1755,26 @@ background-color: rgb(46, 64, 83);</string>
         <property name="styleSheet">
          <string notr="true">color: rgb(255, 255, 255);
 background-color: rgb(46, 64, 83);</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_33">
+        <property name="geometry">
+         <rect>
+          <x>130</x>
+          <y>10</y>
+          <width>211</width>
+          <height>21</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>12</pointsize>
+          <italic>false</italic>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="text">
+         <string>Top 5 de viajes mas largos</string>
         </property>
        </widget>
       </widget>
@@ -1782,7 +1786,7 @@ background-color: rgb(46, 64, 83);</string>
         <property name="geometry">
          <rect>
           <x>10</x>
-          <y>20</y>
+          <y>50</y>
           <width>451</width>
           <height>261</height>
          </rect>
@@ -1825,8 +1829,8 @@ background-color: rgb(46, 64, 83);</string>
        <widget class="QTextEdit" name="estado_topganancias">
         <property name="geometry">
          <rect>
-          <x>310</x>
-          <y>320</y>
+          <x>280</x>
+          <y>330</y>
           <width>141</width>
           <height>41</height>
          </rect>
@@ -1839,8 +1843,8 @@ background-color: rgb(46, 64, 83);</string>
        <widget class="QPushButton" name="BT_ver_topganancias">
         <property name="geometry">
          <rect>
-          <x>40</x>
-          <y>320</y>
+          <x>110</x>
+          <y>330</y>
           <width>88</width>
           <height>34</height>
          </rect>
@@ -1852,20 +1856,24 @@ background-color: rgb(46, 64, 83);</string>
          <string>Ver</string>
         </property>
        </widget>
-       <widget class="QPushButton" name="graficar_topganancias">
+       <widget class="QLabel" name="label_34">
         <property name="geometry">
          <rect>
-          <x>170</x>
-          <y>320</y>
-          <width>88</width>
-          <height>34</height>
+          <x>130</x>
+          <y>10</y>
+          <width>211</width>
+          <height>21</height>
          </rect>
         </property>
-        <property name="styleSheet">
-         <string notr="true">background-color: rgb(255, 85, 0);</string>
+        <property name="font">
+         <font>
+          <pointsize>12</pointsize>
+          <italic>false</italic>
+          <bold>true</bold>
+         </font>
         </property>
         <property name="text">
-         <string>Graficar</string>
+         <string>Top 5 de viajes mas caros</string>
         </property>
        </widget>
       </widget>
@@ -1876,9 +1884,9 @@ background-color: rgb(46, 64, 83);</string>
        <widget class="QTableWidget" name="Table_clientes">
         <property name="geometry">
          <rect>
-          <x>40</x>
-          <y>50</y>
-          <width>401</width>
+          <x>80</x>
+          <y>70</y>
+          <width>311</width>
           <height>192</height>
          </rect>
         </property>
@@ -1886,11 +1894,6 @@ background-color: rgb(46, 64, 83);</string>
          <string notr="true">color: rgb(255, 255, 255);
 background-color: rgb(46, 64, 83);</string>
         </property>
-        <column>
-         <property name="text">
-          <string>Id</string>
-         </property>
-        </column>
         <column>
          <property name="text">
           <string>DPI</string>
@@ -1937,20 +1940,24 @@ background-color: rgb(46, 64, 83);</string>
          <string>Ver</string>
         </property>
        </widget>
-       <widget class="QPushButton" name="graficar_topclientes">
+       <widget class="QLabel" name="label_35">
         <property name="geometry">
          <rect>
-          <x>150</x>
-          <y>320</y>
-          <width>88</width>
-          <height>34</height>
+          <x>110</x>
+          <y>20</y>
+          <width>261</width>
+          <height>21</height>
          </rect>
         </property>
-        <property name="styleSheet">
-         <string notr="true">background-color: rgb(255, 85, 0);</string>
+        <property name="font">
+         <font>
+          <pointsize>12</pointsize>
+          <italic>false</italic>
+          <bold>true</bold>
+         </font>
         </property>
         <property name="text">
-         <string>Graficar</string>
+         <string>Top 5 de  clientes con mas viajes</string>
         </property>
        </widget>
       </widget>
@@ -1961,9 +1968,9 @@ background-color: rgb(46, 64, 83);</string>
        <widget class="QTableWidget" name="Table_vehiculos">
         <property name="geometry">
          <rect>
-          <x>40</x>
-          <y>40</y>
-          <width>401</width>
+          <x>90</x>
+          <y>80</y>
+          <width>311</width>
           <height>192</height>
          </rect>
         </property>
@@ -1971,11 +1978,6 @@ background-color: rgb(46, 64, 83);</string>
          <string notr="true">color: rgb(255, 255, 255);
 background-color: rgb(46, 64, 83);</string>
         </property>
-        <column>
-         <property name="text">
-          <string>Id</string>
-         </property>
-        </column>
         <column>
          <property name="text">
           <string>Placa</string>
@@ -1995,8 +1997,8 @@ background-color: rgb(46, 64, 83);</string>
        <widget class="QPushButton" name="BT_ver_topvehiculos">
         <property name="geometry">
          <rect>
-          <x>30</x>
-          <y>310</y>
+          <x>100</x>
+          <y>320</y>
           <width>88</width>
           <height>34</height>
          </rect>
@@ -2008,27 +2010,11 @@ background-color: rgb(46, 64, 83);</string>
          <string>Ver</string>
         </property>
        </widget>
-       <widget class="QPushButton" name="graficar_topvehiculos">
-        <property name="geometry">
-         <rect>
-          <x>140</x>
-          <y>310</y>
-          <width>88</width>
-          <height>34</height>
-         </rect>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">background-color: rgb(255, 85, 0);</string>
-        </property>
-        <property name="text">
-         <string>Graficar</string>
-        </property>
-       </widget>
        <widget class="QTextEdit" name="estado_topvehiculos">
         <property name="geometry">
          <rect>
-          <x>270</x>
-          <y>310</y>
+          <x>250</x>
+          <y>320</y>
           <width>161</width>
           <height>41</height>
          </rect>
@@ -2036,6 +2022,26 @@ background-color: rgb(46, 64, 83);</string>
         <property name="styleSheet">
          <string notr="true">color: rgb(255, 255, 255);
 background-color: rgb(46, 64, 83);</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_36">
+        <property name="geometry">
+         <rect>
+          <x>110</x>
+          <y>30</y>
+          <width>281</width>
+          <height>21</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>12</pointsize>
+          <italic>false</italic>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="text">
+         <string>Top 5 de  vehiculos con mas viajes</string>
         </property>
        </widget>
       </widget>
@@ -2046,8 +2052,8 @@ background-color: rgb(46, 64, 83);</string>
        <widget class="QPushButton" name="BT_buscar_rutaviaje">
         <property name="geometry">
          <rect>
-          <x>250</x>
-          <y>20</y>
+          <x>260</x>
+          <y>70</y>
           <width>88</width>
           <height>34</height>
          </rect>
@@ -2079,8 +2085,8 @@ background-color: rgb(0, 0, 255);</string>
        <widget class="QLineEdit" name="obtener_id">
         <property name="geometry">
          <rect>
-          <x>90</x>
-          <y>20</y>
+          <x>100</x>
+          <y>70</y>
           <width>113</width>
           <height>32</height>
          </rect>
@@ -2107,14 +2113,34 @@ background-color: rgb(46, 64, 83);</string>
        <widget class="QLabel" name="label_32">
         <property name="geometry">
          <rect>
-          <x>40</x>
-          <y>30</y>
+          <x>60</x>
+          <y>70</y>
           <width>21</width>
           <height>20</height>
          </rect>
         </property>
         <property name="text">
          <string>ID</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_37">
+        <property name="geometry">
+         <rect>
+          <x>160</x>
+          <y>20</y>
+          <width>141</width>
+          <height>21</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>12</pointsize>
+          <italic>false</italic>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="text">
+         <string>Ruta de un Viaje</string>
         </property>
        </widget>
       </widget>

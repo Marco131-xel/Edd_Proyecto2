@@ -69,6 +69,11 @@ class Lista_Sviaje:
         while aux is not None:
             print(aux.viaje)
             aux = aux.siguiente
+    def __iter__(self):
+        actual = self.primero
+        while actual is not None:
+            yield actual.viaje
+            actual = actual.siguiente
 
     # Funcion para graficar la Estructura con Graphviz
     def graficar(self, filename='lista_viajes'):

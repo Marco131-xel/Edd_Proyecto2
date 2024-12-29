@@ -5,6 +5,7 @@ from interfaz.Funct_Cliente import Funct_Cliente
 from interfaz.Funct_Rutas import Funct_Rutas
 from interfaz.Funct_Vehiculos import Funct_Vehiculos
 from interfaz.Funct_Viajes import Funct_Viajes
+from interfaz.Funct_Reportes import Funct_Reportes
 
 #Iniciar mi interfaz
 class MainWindow(QMainWindow):
@@ -20,6 +21,8 @@ class MainWindow(QMainWindow):
         self.funct_vehiculos = Funct_Vehiculos(self.ui)
         self.funct_viajes = Funct_Viajes(self.ui,self.funct_cliente.lista_clientes, self.funct_vehiculos.arbol,
                                          self.funct_rutas.lista_adyacencia)
+        self.funct_reportes = Funct_Reportes(self.ui, self.funct_cliente.lista_clientes, self.funct_vehiculos.arbol,
+                                             self.funct_rutas.lista_adyacencia, self.funct_viajes.lista_Sviaje)
         # Bloquear edicio text_Area
         self.ui.text_area.setReadOnly(True)
         self.ui.ESTADOS.setReadOnly(True)
