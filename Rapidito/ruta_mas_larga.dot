@@ -1,10 +1,23 @@
 graph Ruta {
+  label="Ruta Mas Larga";
+  labelloc="t";
+  fontsize=20;
+  fontcolor="white";
   bgcolor="#17202a";
   node [style=filled, fillcolor="#145a32", fontcolor="white", shape=circle, width=1.4, fixedsize=true];
   edge [color="white", fontcolor="white"];
-  "Santa Rosa" -- "Santa Rosa" [label="40 segundos"];
-  "San Marcos" -- "San Marcos" [label="20 segundos"];
-  "Quetzaltenango" -- "Quetzaltenango" [label="20 segundos"];
-  "Retalhuleu" -- "Retalhuleu" [label="20 segundos"];
-  "Guatemala" -- "Guatemala" [label="50 segundos"];
+  rankdir="LR";
+  "Quetzaltenango";
+  "Quetzaltenango";
+  "Quetzaltenango" -- "San Marcos" [label="20 segundos"];
+  "San Marcos";
+  "San Marcos";
+  "San Marcos" -- "Santa Rosa" [label="40 segundos"];
+  "Santa Rosa";
+  "Santa Rosa";
+  "Santa Rosa" -- "Guatemala" [label="30 segundos"];
+  "Guatemala";
+  "Guatemala";
+  "Guatemala" -- "Retalhuleu" [label="20 segundos"];
+  "Retalhuleu";
 }

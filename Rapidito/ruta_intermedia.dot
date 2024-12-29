@@ -1,9 +1,20 @@
 graph Ruta {
+  label="Ruta Intermedia";
+  labelloc="t";
+  fontsize=20;
+  fontcolor="white";
   bgcolor="#17202a";
   node [style=filled, fillcolor="#145a32", fontcolor="white", shape=circle, width=1.4, fixedsize=true];
   edge [color="white", fontcolor="white"];
-  "Santa Rosa" -- "Santa Rosa" [label="30 segundos"];
-  "Guatemala" -- "Guatemala" [label="20 segundos"];
-  "Retalhuleu" -- "Retalhuleu" [label="20 segundos"];
-  "Quetzaltenango" -- "Quetzaltenango" [label="10 segundos"];
+  rankdir="LR";
+  "Quetzaltenango";
+  "Quetzaltenango";
+  "Quetzaltenango" -- "Totonicapán" [label="10 segundos"];
+  "Totonicapán";
+  "Totonicapán";
+  "Totonicapán" -- "Guatemala" [label="50 segundos"];
+  "Guatemala";
+  "Guatemala";
+  "Guatemala" -- "Retalhuleu" [label="20 segundos"];
+  "Retalhuleu";
 }

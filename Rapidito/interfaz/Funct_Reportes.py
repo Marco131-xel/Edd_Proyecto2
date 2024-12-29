@@ -1,6 +1,7 @@
 from PyQt6.QtCore import Qt
 from PyQt6.QtWidgets import *
 from PyQt6.QtGui import QPixmap
+import os
 
 class Funct_Reportes:
     def __init__(self, ui, clientes, vehiculos, rutas, viajes):
@@ -10,13 +11,15 @@ class Funct_Reportes:
         self.lista_vehiculos = vehiculos
         self.lista_rutas = rutas
         self.lista_viajes = viajes
+
+        self.ruta_actual = None
         # Iniciar los botones
         self.ui.BT_ver_topviajes.clicked.connect(self.top_Viajes)
         self.ui.BT_ver_topganancias.clicked.connect(self.top_Ganancias)
         self.ui.BT_ver_topclientes.clicked.connect(self.top_Clientes)
         self.ui.BT_ver_topvehiculos.clicked.connect(self.top_Vehiculos)
         self.ui.BT_buscar_rutaviaje.clicked.connect(self.buscar_rutaViaje)
-        self.ui.graficar_rutaviaje.clicked.connect(self.graficar_rutaViaje)
+        self.ui.graficar_rutaviaje.clicked.connect(self.mostrar_grafica)
 
         # Bloquear edicion
         self.ui.estado_topviajes.setReadOnly(True)
@@ -24,6 +27,7 @@ class Funct_Reportes:
         self.ui.estado_topclientes.setReadOnly(True)
         self.ui.estado_topvehiculos.setReadOnly(True)
         self.ui.estado_rutaviaje.setReadOnly(True)
+        self.ui.CONTENIDO_RUTAVIAJE.setReadOnly(True)
 
     # Funcion para ver tabla top viajes
     def top_Viajes(self):
@@ -49,7 +53,42 @@ class Funct_Reportes:
 
     def top_Ganancias(self):
         #Table_ganancias
-        pass
+        datos_ganancias = []
+        # iterar sobre la lista de viajes
+        for viaje in self.lista_viajes:
+            id = viaje.get_ID()
+            origen = viaje.get_LugarOrigen()
+            destino = viaje.get_LugarDestino()
+            precio = viaje.get_Vehiculo().get_Precio()
+            tiempo = viaje.get_Ruta_Tomada().get_Tiempo()
+            total = tiempo * precio
+
+            # agregar los datos
+            datos_ganancias.append({
+                'id': id,
+                'origen': origen,
+                'destino': destino,
+                'tiempo': tiempo,
+                'precio': precio,
+                'total': total
+            })
+        # Ordenar por total en orden descendente
+        datos_ganancias = sorted(datos_ganancias, key=lambda x: x['total'], reverse=True)[:5]
+
+        # configurar la tabla
+        self.ui.Table_ganancias.setRowCount(len(datos_ganancias))
+        self.ui.Table_ganancias.setColumnCount(6)
+        # Llenar la tabla con los datos
+        for row, data in enumerate(datos_ganancias):
+            self.ui.Table_ganancias.setItem(row, 0, QTableWidgetItem(str(data['id'])))
+            self.ui.Table_ganancias.setItem(row, 1, QTableWidgetItem(data['origen']))
+            self.ui.Table_ganancias.setItem(row, 2, QTableWidgetItem(data['destino']))
+            self.ui.Table_ganancias.setItem(row, 3, QTableWidgetItem(str(data['tiempo'])))
+            self.ui.Table_ganancias.setItem(row, 4, QTableWidgetItem(f"{data['precio']:.2f}"))
+            self.ui.Table_ganancias.setItem(row, 5, QTableWidgetItem(f"{data['total']:.2f}"))
+        # ajustar la tabla
+        self.ui.Table_ganancias.resizeColumnsToContents()
+        self.ui.estado_topganancias.setPlainText('Datos Encontrados')
     # Funcion para mostrar el top 5 de los clientes
     def top_Clientes(self):
         #Table_clientes
@@ -113,26 +152,102 @@ class Funct_Reportes:
             self.ui.estado_topvehiculos.setPlainText('No hay Datos')
     # Funcion para encontrar un viaje por el id
     def buscar_rutaViaje(self):
-        #obtener_id
+        # Obtener ID del viaje
         id = self.ui.obtener_id.text().strip()
         viaje = self.lista_viajes.buscar_viaje(id)
-    # Funcion para mostrar grafica por ruta viaje
-    def graficar_rutaViaje(self):
-        dialog = QDialog(parent=None)
-        dialog.setWindowTitle('Grafica Ruta Viaje')
 
-        label = QLabel()
-        pixmap = QPixmap("/home/marco/Documentos/Diciembre/edd/Edd_Proyecto2/Rapidito/ArbolB.png")
-        label.setPixmap(pixmap)
+        if viaje is None:
+            self.ui.estado_rutaviaje.setPlainText('No se encontró el ID del viaje')
+            self.ruta_actual = None
+            return
 
-        label.setAlignment(Qt.AlignmentFlag.AlignCenter)
+        # Obtener los datos del cliente
+        cliente_info = viaje.get_Cliente()
+        dpi = cliente_info['DPI']
+        nombre = cliente_info['Nombre']
 
-        scroll_area = QScrollArea()
-        scroll_area.setWidget(label)
+        # Obtener los datos del vehículo
+        vehiculo_info = viaje.get_Vehiculo()
+        placa = vehiculo_info['Placa']
+        marca = vehiculo_info['Marca']
 
-        layout = QVBoxLayout(dialog)
-        layout.addWidget(scroll_area)
+        # Obtener los datos de origen y destino
+        origen = viaje.get_LugarOrigen()
+        destino = viaje.get_LugarDestino()
 
-        dialog.resize(1200, 600)
+        # Mostrar los datos en la interfaz
+        self.ui.CONTENIDO_RUTAVIAJE.setPlainText(
+            f"ID: {viaje.get_ID()}\n"
+            f"DPI: {dpi}\n"
+            f"Nombre: {nombre}\n"
+            f"Placa: {placa}\n"
+            f"Marca: {marca}\n"
+            f"Origen: {origen}\n"
+            f"Destino: {destino}"
+        )
+        self.ui.estado_rutaviaje.clear()
+        self.ui.estado_rutaviaje.setPlainText('ID Encontrado')
+        # Guardar la ruta seleccionada
+        self.ruta_actual = viaje.get_Ruta_Tomada()
 
-        dialog.exec()
+    def mostrar_grafica(self):
+        pass
+
+    def graficar_rutaViaje(self, ruta, filename):
+        if not ruta:
+            print("No hay ruta para graficar.")
+            return
+
+        # Título del gráfico según el tipo de ruta tomada
+        if "corta" in ruta:
+            titulo = "Ruta Más Corta"
+        elif "intermedia" in ruta:
+            titulo = "Ruta Intermedia"
+        elif "larga" in ruta:
+            titulo = "Ruta Más Larga"
+        else:
+            titulo = "Ruta Desconocida"
+
+        # Construir contenido del archivo DOT con orientación horizontal
+        dot = [
+            "graph Ruta {",
+            f'  label="{titulo}";',
+            '  labelloc="t";',
+            '  fontsize=20;',
+            '  fontcolor="white";',
+            '  bgcolor="#17202a";',
+            '  node [style=filled, fillcolor="#145a32", fontcolor="white", shape=circle, width=1.4, fixedsize=true];',
+            '  edge [color="white", fontcolor="white"];',
+            '  rankdir="LR";',  # Configurar para graficar de izquierda a derecha (horizontal)
+        ]
+
+        # Asumimos que la ruta es una lista de cadenas (lugares o destinos)
+        for i in range(len(ruta) - 1):
+            origen = ruta[i]
+            destino = ruta[i + 1]
+            tiempo = 10  # Si no tienes tiempo específico, puedes usar un valor predeterminado, o derivarlo de alguna otra manera
+
+            # Agregar nodo actual al DOT
+            dot.append(f'  "{origen}";')
+
+            # Si hay un destino y no es el mismo nodo, añadir la conexión
+            if destino and origen != destino:  # Evitar conexiones a sí mismos
+                try:
+                    dot.append(f'  "{origen}" -- "{destino}" [label="{tiempo} segundos"];')
+                except ValueError:
+                    print(f"Error al agregar la ruta entre {origen} y {destino}")
+
+        # Cerrar el gráfico DOT
+        dot.append("}")
+
+        # Guardar el archivo DOT
+        dot_file = f"{filename}.dot"
+        with open(dot_file, "w") as file:
+            file.write("\n".join(dot))
+
+        # Generar la imagen PNG usando Graphviz
+        result = os.system(f"dot -Tpng {dot_file} -o {filename}.png")
+        if result == 0:
+            print(f"Gráfico generado exitosamente: {filename}.png")
+        else:
+            print(f"Error al generar el gráfico: {filename}.png")

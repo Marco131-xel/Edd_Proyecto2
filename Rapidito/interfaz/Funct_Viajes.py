@@ -22,6 +22,7 @@ class Funct_Viajes:
         self.ui.BT_buscar_DPI_viaje.clicked.connect(self.buscar_DPI)
         self.ui.BT_buscar_RUTA_viaje.clicked.connect(self.buscar_RUTA)
         self.ui.BT_buscar_PLACA_viaje.clicked.connect(self.buscar_PLACA)
+        self.ui.BT_VER_RUTA.clicked.connect(self.ver_ruta_seleccionada)
         # Boton para limpiar los campos de viaje
         self.ui.BT_limpiar_viaje.clicked.connect(self.limpiar_contenido)
         # Boton para graficar la estructura lista simple
@@ -96,7 +97,7 @@ class Funct_Viajes:
         scroll.setWidget(label)
         layout = QVBoxLayout(dialog)
         layout.addWidget(scroll)
-        dialog.resize(1200, 600)
+        dialog.resize(1100, 400)
         dialog.exec()
 
     # Funcion para buscar el DPI
@@ -185,6 +186,7 @@ class Funct_Viajes:
         print(f"Tiempo total: {max_ruta[1]}")
     # Funcion para limpiar los campos que se ingresaron
     def limpiar_contenido(self):
+        self.ui.SUPER_ESTADO.clear()
         self.ui.crear_ID.clear()
         self.ui.crear_FECHA.clear()
         self.ui.MI_DPI.clear()
@@ -195,38 +197,86 @@ class Funct_Viajes:
     # Funcion para graficar la rutas movidas
     def graficar_ruta(self, ruta, filename):
         if not ruta:
-            print("No hay ruta para graficar.")
+            print("No hay ruta para graficar")
             return
+        # Titulo
+        if "corta" in filename:
+            titulo = "Ruta Mas Corta"
+        elif "intermedia" in filename:
+            titulo = "Ruta Intermedia"
+        elif "larga" in filename:
+            titulo = "Ruta Mas Larga"
+        else:
+            titulo = "Ruta Desconocida"
 
+        # Construir dot
         dot = [
             "graph Ruta {",
+            f'  label="{titulo}";',
+            '  labelloc="t";',
+            '  fontsize=20;',
+            '  fontcolor="white";',
             '  bgcolor="#17202a";',
             '  node [style=filled, fillcolor="#145a32", fontcolor="white", shape=circle, width=1.4, fixedsize=true];',
             '  edge [color="white", fontcolor="white"];',
+            '  rankdir="LR";',
         ]
 
+        # Recorrer la lista
         aux = ruta.primero
-        while aux is not None and aux.siquiente is not None:
+        while aux is not None:
             origen = aux.ruta.get_Origen()
-            destino = aux.siquiente.ruta.get_Origen()
-            tiempo = aux.siquiente.ruta.get_Tiempo()
-
-            # Asegurarse de que tiempo sea un numero y mayor que 0
-            try:
-                tiempo = int(tiempo)
-                if destino and tiempo > 0:
-                    dot.append(f'  "{origen}" -- "{destino}" [label="{tiempo} segundos"];')
-                else:
-                    print(f"Conexion invalida: origen={origen}, destino={destino}, tiempo={tiempo}")
-            except ValueError:
-                print(f"Valor no valido para tiempo: {tiempo} (origen={origen}, destino={destino})")
+            destino = aux.siquiente.ruta.get_Origen() if aux.siquiente else None
+            tiempo = aux.ruta.get_Tiempo()
+            # Agregar nodo actual al DOT
+            dot.append(f'  "{origen}";')
+            # Si hay un destino y no es el mismo nodo
+            if destino and origen != destino:
+                try:
+                    tiempo = int(tiempo)
+                    if tiempo > 0:
+                        dot.append(f'  "{origen}" -- "{destino}" [label="{tiempo} segundos"];')
+                except ValueError:
+                    print(f"Tiempo no válido: {tiempo} (origen={origen}, destino={destino})")
             aux = aux.siquiente
-
         dot.append("}")
-        # Guardar archivo DOT
+        # Guardar el archivo DOT
         dot_file = f"{filename}.dot"
         with open(dot_file, "w") as file:
             file.write("\n".join(dot))
-        # Generar imagen PNG usando dot
-        os.system(f"dot -Tpng {dot_file} -o {filename}.png")
-        print(f"Grafico generado: {filename}.png")
+        # Generar la imagen PNG usando Graphviz
+        result = os.system(f"dot -Tpng {dot_file} -o {filename}.png")
+        if result == 0:
+            print(f"Grafico generado exitosamente: {filename}.png")
+        else:
+            print(f"Error al generar el grafico: {filename}.png")
+
+    # Funcion ver ruta seleccionada del comboBox
+    def ver_ruta_seleccionada(self):
+        seleccion = self.ui.comboRutaTomada.currentText()
+
+        if "Corta" in seleccion:
+            archivo = "ruta_mas_corta.png"
+        elif "Intermedia" in seleccion:
+            archivo = "ruta_intermedia.png"
+        elif "Larga" in seleccion:
+            archivo = "ruta_mas_larga.png"
+        else:
+            self.ui.SUPER_ESTADO.setPlainText("Selecciona una ruta valida")
+            return
+
+        # Mostrar la imagen seleccionada en un diálogo
+        dialog = QDialog(parent=None)
+        dialog.setWindowTitle('Grafica de Ruta Seleccionada')
+
+        label = QLabel()
+        pixmap = QPixmap(archivo)
+        label.setPixmap(pixmap)
+        label.setAlignment(Qt.AlignmentFlag.AlignCenter)
+
+        scroll = QScrollArea()
+        scroll.setWidget(label)
+        layout = QVBoxLayout(dialog)
+        layout.addWidget(scroll)
+        dialog.resize(1100, 400)
+        dialog.exec()

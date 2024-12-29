@@ -266,5 +266,5 @@ class Funct_Cliente:
         layout = QVBoxLayout(dialog)
         layout.addWidget(scroll_area)
 
-        dialog.resize(1200, 600)
+        dialog.resize(1100, 400)
         dialog.exec()
