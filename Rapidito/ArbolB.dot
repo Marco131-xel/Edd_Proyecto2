@@ -5,6 +5,6 @@ edge [color="white"];
 nodo0 [label="<p0> |Placa: mpc136 - Marca: Honda| <p1>"];
 nodo5 [label="<p0> |Placa: btr634 - Marca: Toyota|Placa: dsp781 - Marca: Ford|Placa: ghj678 - Marca: BMW|Placa: jhs533 - Marca: Nissan|Placa: kpl892 - Marca: Chevrolet| <p5>"];
 nodo0:p0 -> nodo5;
-nodo7 [label="<p0> |Placa: mrt456 - Marca: Kia|Placa: nxt789 - Marca: Volkswagen|Placa: plc147 - Marca: Mazda|Placa: qws123 - Marca: Hyundai|Placa: tgh901 - Marca: Mercedes|Placa: vfr345 - Marca: Jeep|Placa: zxc012 - Marca: Subaru| <p7>"];
+nodo7 [label="<p0> |Placa: mrt456 - Marca: Kia|Placa: nxt789 - Marca: Volkswagen|Placa: pl1307 - Marca: Tesla|Placa: plc147 - Marca: Mazda|Placa: qws123 - Marca: Hyundai|Placa: tgh901 - Marca: Mercedes|Placa: vfr345 - Marca: Jeep|Placa: zxc012 - Marca: Subaru| <p8>"];
 nodo0:p1 -> nodo7;
 }

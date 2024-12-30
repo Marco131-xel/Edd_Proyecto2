@@ -7,6 +7,9 @@ graph Ruta {
   node [style=filled, fillcolor="#145a32", fontcolor="white", shape=circle, width=1.4, fixedsize=true];
   edge [color="white", fontcolor="white"];
   rankdir="LR";
+  "Retalhuleu";
+  "Retalhuleu";
+  "Retalhuleu" -- "Quetzaltenango" [label="20 segundos"];
   "Quetzaltenango";
   "Quetzaltenango";
   "Quetzaltenango" -- "Totonicapán" [label="10 segundos"];
@@ -15,9 +18,6 @@ graph Ruta {
   "Totonicapán" -- "Guatemala" [label="50 segundos"];
   "Guatemala";
   "Guatemala";
-  "Guatemala" -- "Baja Verapaz" [label="10 segundos"];
-  "Baja Verapaz";
-  "Baja Verapaz";
-  "Baja Verapaz" -- "Petén" [label="40 segundos"];
-  "Petén";
+  "Guatemala" -- "Santa Rosa" [label="30 segundos"];
+  "Santa Rosa";
 }

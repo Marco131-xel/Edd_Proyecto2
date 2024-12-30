@@ -75,7 +75,7 @@ class Funct_Viajes:
             self.ui.SUPER_ESTADO.setPlainText('No se encontro Placa')
             return
 
-        dato_vehiculo = {'Placa': vehiculo.get_Placa(),'Marca': vehiculo.get_Marca()}
+        dato_vehiculo = {'Placa': vehiculo.get_Placa(),'Marca': vehiculo.get_Marca(), 'Precio': vehiculo.get_Precio()}
         # Crear Viajes
         viajes = Viajes(id, origen, destino, fecha, dato_cliente, dato_vehiculo, ruta)
         self.lista_Sviaje.crear_viaje(viajes)

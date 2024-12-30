@@ -1,5 +1,5 @@
 graph Ruta {
-  label="Ruta Mas Corta";
+  label="Ruta mas Corta";
   labelloc="t";
   fontsize=20;
   fontcolor="white";
@@ -7,11 +7,11 @@ graph Ruta {
   node [style=filled, fillcolor="#145a32", fontcolor="white", shape=circle, width=1.4, fixedsize=true];
   edge [color="white", fontcolor="white"];
   rankdir="LR";
-  "Santa Rosa";
-  "Santa Rosa";
-  "Santa Rosa" -- "Guatemala" [label="30 segundos"];
-  "Guatemala";
-  "Guatemala";
-  "Guatemala" -- "Quiché" [label="30 segundos"];
-  "Quiché";
+  "Totonicapán";
+  "Totonicapán";
+  "Totonicapán" -- "Quetzaltenango" [label="10 segundos"];
+  "Quetzaltenango";
+  "Quetzaltenango";
+  "Quetzaltenango" -- "Retalhuleu" [label="20 segundos"];
+  "Retalhuleu";
 }

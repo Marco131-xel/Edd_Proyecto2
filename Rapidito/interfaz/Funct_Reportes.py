@@ -54,32 +54,57 @@ class Funct_Reportes:
 
     # Funcion para mostrar el top 5 de los viajes mas caros
     def top_Ganancias(self):
-        # Ordenar los viajes por 'total' (precio * tiempo)
-        viajes_ordenados = sorted(self.lista_viajes, key=lambda v: v.get_Precio() * v.get_Tiempo(), reverse=True)
-        top_viajes = viajes_ordenados[:5]
+        # Table_ganancias
+        datos_ganancias = []
 
-        # Configurar la tabla
-        if top_viajes:
-            self.ui.Table_ganancias.setRowCount(len(top_viajes))
-            self.ui.Table_ganancias.setColumnCount(6)  # Ahora agregamos una columna para el total
+        # Iterar sobre la lista de viajes
+        for viaje in self.lista_viajes:
+            id = viaje.get_ID()
+            origen = viaje.get_LugarOrigen()
+            destino = viaje.get_LugarDestino()
+            vehiculo = viaje.get_Vehiculo()
+            if isinstance(vehiculo, dict):
+                precio = vehiculo.get('Precio', 0)
+            else:
+                precio = vehiculo.get_Precio()
+            precio = float(precio)
+            ruta_tomada = viaje.get_Ruta_Tomada()
+            tiempo = int(ruta_tomada.split(":")[1].split()[0])
+            total = float(tiempo * precio)
 
-            # Rellenar la tabla
-            for row, viaje in enumerate(top_viajes):
-                self.ui.Table_ganancias.setItem(row, 0, QTableWidgetItem(str(viaje.get_ID())))
-                self.ui.Table_ganancias.setItem(row, 1, QTableWidgetItem(viaje.get_LugarOrigen()))
-                self.ui.Table_ganancias.setItem(row, 2, QTableWidgetItem(viaje.get_LugarDestino()))
-                self.ui.Table_ganancias.setItem(row, 3, QTableWidgetItem(str(viaje.get_Tiempo())))
-                self.ui.Table_ganancias.setItem(row, 4, QTableWidgetItem(str(viaje.get_Precio())))
-                # Agregar el total (precio * tiempo) en la nueva columna
-                total = viaje.get_Precio() * viaje.get_Tiempo()
-                self.ui.Table_ganancias.setItem(row, 5, QTableWidgetItem(str(total)))
+            # Agregar los datos
+            datos_ganancias.append({
+                'id': id,
+                'origen': origen,
+                'destino': destino,
+                'tiempo': tiempo,
+                'precio': precio,
+                'total': total
+            })
 
-            # Ajustar las columnas al contenido
+        # Ordenar por total en orden descendente
+        datos_ganancias = sorted(datos_ganancias, key=lambda x: x['total'], reverse=True)[:5]
+
+        if datos_ganancias:
+            # Configurar la tabla
+            self.ui.Table_ganancias.setRowCount(len(datos_ganancias))
+            self.ui.Table_ganancias.setColumnCount(6)
+
+            # Llenar la tabla con los datos
+            for row, data in enumerate(datos_ganancias):
+                self.ui.Table_ganancias.setItem(row, 0, QTableWidgetItem(str(data['id'])))
+                self.ui.Table_ganancias.setItem(row, 1, QTableWidgetItem(data['origen']))
+                self.ui.Table_ganancias.setItem(row, 2, QTableWidgetItem(data['destino']))
+                self.ui.Table_ganancias.setItem(row, 3, QTableWidgetItem(str(data['tiempo'])))
+                self.ui.Table_ganancias.setItem(row, 4, QTableWidgetItem(
+                    f"{data['precio']:.2f}"))
+                self.ui.Table_ganancias.setItem(row, 5, QTableWidgetItem(f"{data['total']:.2f}"))
+
+            # Ajustar la tabla
             self.ui.Table_ganancias.resizeColumnsToContents()
             self.ui.estado_topganancias.setPlainText('Datos Encontrados')
         else:
             self.ui.estado_topganancias.setPlainText('No hay Datos')
-
     # Funcion para mostrar el top 5 de los clientes
     def top_Clientes(self):
         #Table_clientes
@@ -174,7 +199,8 @@ class Funct_Reportes:
             f"Placa: {placa}\n"
             f"Marca: {marca}\n"
             f"Origen: {origen}\n"
-            f"Destino: {destino}"
+            f"Destino: {destino}\n"
+            f"Ruta: {viaje.get_Ruta_Tomada()}\n"
         )
         self.ui.estado_rutaviaje.clear()
         self.ui.estado_rutaviaje.setPlainText('ID Encontrado')

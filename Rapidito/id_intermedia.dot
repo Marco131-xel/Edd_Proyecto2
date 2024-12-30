@@ -7,6 +7,12 @@ graph Ruta {
   node [style=filled, fillcolor="#145a32", fontcolor="white", shape=circle, width=1.4, fixedsize=true];
   edge [color="white", fontcolor="white"];
   rankdir="LR";
+  "Quetzaltenango";
+  "Quetzaltenango";
+  "Quetzaltenango" -- "Retalhuleu" [label="20 segundos"];
+  "Retalhuleu";
+  "Retalhuleu";
+  "Retalhuleu" -- "Guatemala" [label="20 segundos"];
   "Guatemala";
   "Guatemala";
   "Guatemala" -- "Quiché" [label="30 segundos"];
@@ -14,4 +20,7 @@ graph Ruta {
   "Quiché";
   "Quiché" -- "Petén" [label="10 segundos"];
   "Petén";
+  "Petén";
+  "Petén" -- "Baja Verapaz" [label="40 segundos"];
+  "Baja Verapaz";
 }

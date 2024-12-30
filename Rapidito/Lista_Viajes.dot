@@ -4,8 +4,14 @@ bgcolor="#17202a";
 node [shape=record, style=filled, fillcolor="#145a32", fontcolor="white"];
 edge [color="white"];
 nodo0 [label="ID: 01\nFecha: 29/12/24\nCliente: DPI: 3357975470901\nNombre:  Marco\nVehiculo: Placa: jhs533\nMarca: Nissan\nOrigen: Quetzaltenango\nDestino: Retalhuleu\nRuta: Corta: 20 segundos"];
-nodo1 [label="ID: 02\nFecha: 29/12/24\nCliente: DPI: 1234567890123\nNombre:  Juan\nVehiculo: Placa: dsp781\nMarca: Ford\nOrigen: Santa Rosa\nDestino: Quiché\nRuta: Corta: 60 segundos"];
-nodo2 [label="ID: 03\nFecha: 29/12/24\nCliente: DPI: 9876543210987\nNombre:  Maria\nVehiculo: Placa: btr634\nMarca: Toyota\nOrigen: Quetzaltenango\nDestino: Petén\nRuta: Corta: 80 segundos"];
+nodo1 [label="ID: 02\nFecha: 29/12/24\nCliente: DPI: 8888\nNombre: Paola\nVehiculo: Placa: pl1307\nMarca: Tesla\nOrigen: Totonicapán\nDestino: Baja Verapaz\nRuta: Corta: 60 segundos"];
+nodo2 [label="ID: 03\nFecha: 29/12/24\nCliente: DPI: 1234567890123\nNombre:  Juan\nVehiculo: Placa: jhs533\nMarca: Nissan\nOrigen: Santa Rosa\nDestino: Quiché\nRuta: Corta: 60 segundos"];
+nodo3 [label="ID: 04\nFecha: 29/12/24\nCliente: DPI: 9876543210987\nNombre:  Maria\nVehiculo: Placa: btr634\nMarca: Toyota\nOrigen: Quetzaltenango\nDestino: Santa Rosa\nRuta: Corta: 60 segundos"];
+nodo4 [label="ID: 05\nFecha: 29/12/24\nCliente: DPI: 8888\nNombre: Paola\nVehiculo: Placa: jhs533\nMarca: Nissan\nOrigen: San Marcos\nDestino: Quiché\nRuta: Corta: 90 segundos"];
+nodo5 [label="ID: 06\nFecha: 29/12/24\nCliente: DPI: 3357975470901\nNombre:  Marco\nVehiculo: Placa: btr634\nMarca: Toyota\nOrigen: Retalhuleu\nDestino: Santa Rosa\nRuta: Corta: 50 segundos"];
 nodo0 -> nodo1;
 nodo1 -> nodo2;
+nodo2 -> nodo3;
+nodo3 -> nodo4;
+nodo4 -> nodo5;
 }
