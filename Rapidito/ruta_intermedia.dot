@@ -15,6 +15,9 @@ graph Ruta {
   "Totonicapán" -- "Guatemala" [label="50 segundos"];
   "Guatemala";
   "Guatemala";
-  "Guatemala" -- "Retalhuleu" [label="20 segundos"];
-  "Retalhuleu";
+  "Guatemala" -- "Baja Verapaz" [label="10 segundos"];
+  "Baja Verapaz";
+  "Baja Verapaz";
+  "Baja Verapaz" -- "Petén" [label="40 segundos"];
+  "Petén";
 }

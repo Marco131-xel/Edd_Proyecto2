@@ -688,7 +688,7 @@ class Ui_MainWindow(object):
         self.label_37.setFont(font)
         self.label_37.setObjectName("label_37")
         self.CONTENIDO_RUTAVIAJE = QtWidgets.QTextEdit(parent=self.tab_Top5)
-        self.CONTENIDO_RUTAVIAJE.setGeometry(QtCore.QRect(120, 130, 241, 141))
+        self.CONTENIDO_RUTAVIAJE.setGeometry(QtCore.QRect(90, 130, 321, 151))
         font = QtGui.QFont()
         font.setPointSize(14)
         font.setBold(True)

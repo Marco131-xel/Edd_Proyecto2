@@ -2,6 +2,7 @@ from PyQt6.QtCore import Qt
 from PyQt6.QtWidgets import *
 from PyQt6.QtGui import QPixmap
 import os
+from rutas.Grafo import Grafo
 
 class Funct_Reportes:
     def __init__(self, ui, clientes, vehiculos, rutas, viajes):
@@ -51,44 +52,34 @@ class Funct_Reportes:
         else:
             self.ui.estado_topviajes.setPlainText('No hay Datos')
 
+    # Funcion para mostrar el top 5 de los viajes mas caros
     def top_Ganancias(self):
-        #Table_ganancias
-        datos_ganancias = []
-        # iterar sobre la lista de viajes
-        for viaje in self.lista_viajes:
-            id = viaje.get_ID()
-            origen = viaje.get_LugarOrigen()
-            destino = viaje.get_LugarDestino()
-            precio = viaje.get_Vehiculo().get_Precio()
-            tiempo = viaje.get_Ruta_Tomada().get_Tiempo()
-            total = tiempo * precio
+        # Ordenar los viajes por 'total' (precio * tiempo)
+        viajes_ordenados = sorted(self.lista_viajes, key=lambda v: v.get_Precio() * v.get_Tiempo(), reverse=True)
+        top_viajes = viajes_ordenados[:5]
 
-            # agregar los datos
-            datos_ganancias.append({
-                'id': id,
-                'origen': origen,
-                'destino': destino,
-                'tiempo': tiempo,
-                'precio': precio,
-                'total': total
-            })
-        # Ordenar por total en orden descendente
-        datos_ganancias = sorted(datos_ganancias, key=lambda x: x['total'], reverse=True)[:5]
+        # Configurar la tabla
+        if top_viajes:
+            self.ui.Table_ganancias.setRowCount(len(top_viajes))
+            self.ui.Table_ganancias.setColumnCount(6)  # Ahora agregamos una columna para el total
 
-        # configurar la tabla
-        self.ui.Table_ganancias.setRowCount(len(datos_ganancias))
-        self.ui.Table_ganancias.setColumnCount(6)
-        # Llenar la tabla con los datos
-        for row, data in enumerate(datos_ganancias):
-            self.ui.Table_ganancias.setItem(row, 0, QTableWidgetItem(str(data['id'])))
-            self.ui.Table_ganancias.setItem(row, 1, QTableWidgetItem(data['origen']))
-            self.ui.Table_ganancias.setItem(row, 2, QTableWidgetItem(data['destino']))
-            self.ui.Table_ganancias.setItem(row, 3, QTableWidgetItem(str(data['tiempo'])))
-            self.ui.Table_ganancias.setItem(row, 4, QTableWidgetItem(f"{data['precio']:.2f}"))
-            self.ui.Table_ganancias.setItem(row, 5, QTableWidgetItem(f"{data['total']:.2f}"))
-        # ajustar la tabla
-        self.ui.Table_ganancias.resizeColumnsToContents()
-        self.ui.estado_topganancias.setPlainText('Datos Encontrados')
+            # Rellenar la tabla
+            for row, viaje in enumerate(top_viajes):
+                self.ui.Table_ganancias.setItem(row, 0, QTableWidgetItem(str(viaje.get_ID())))
+                self.ui.Table_ganancias.setItem(row, 1, QTableWidgetItem(viaje.get_LugarOrigen()))
+                self.ui.Table_ganancias.setItem(row, 2, QTableWidgetItem(viaje.get_LugarDestino()))
+                self.ui.Table_ganancias.setItem(row, 3, QTableWidgetItem(str(viaje.get_Tiempo())))
+                self.ui.Table_ganancias.setItem(row, 4, QTableWidgetItem(str(viaje.get_Precio())))
+                # Agregar el total (precio * tiempo) en la nueva columna
+                total = viaje.get_Precio() * viaje.get_Tiempo()
+                self.ui.Table_ganancias.setItem(row, 5, QTableWidgetItem(str(total)))
+
+            # Ajustar las columnas al contenido
+            self.ui.Table_ganancias.resizeColumnsToContents()
+            self.ui.estado_topganancias.setPlainText('Datos Encontrados')
+        else:
+            self.ui.estado_topganancias.setPlainText('No hay Datos')
+
     # Funcion para mostrar el top 5 de los clientes
     def top_Clientes(self):
         #Table_clientes
@@ -187,28 +178,79 @@ class Funct_Reportes:
         )
         self.ui.estado_rutaviaje.clear()
         self.ui.estado_rutaviaje.setPlainText('ID Encontrado')
-        # Guardar la ruta seleccionada
-        self.ruta_actual = viaje.get_Ruta_Tomada()
+        # Crear grafica
+        grafo = Grafo(self.lista_rutas.obtener_adyacencia())
+        rutas = grafo.encontrar_rutas(origen, destino)
 
-    def mostrar_grafica(self):
-        pass
-
-    def graficar_rutaViaje(self, ruta, filename):
-        if not ruta:
-            print("No hay ruta para graficar.")
+        # Verificar si no existen rutas
+        if not rutas:
+            self.ui.SUPER_ESTADO.setPlainText('No existe una ruta seleccionada')
             return
+        # Calcular tiempos para las rutas encontradas
+        tiempos = grafo.calcular_tiempos(rutas)
+        min_ruta, max_ruta = grafo.obtener_ruta_min_max(tiempos)
+        # Calcular el tiempo promedio
+        tiempos_totales = [tiempo[1] for tiempo in tiempos]
+        promedio_tiempo = sum(tiempos_totales) / len(tiempos_totales)
+        # Encontrar la ruta intermedia
+        ruta_intermedia = min(tiempos, key=lambda x: abs(x[1] - promedio_tiempo))
+        # Determinar cuál ruta fue tomada (corta, intermedia o larga)
+        ruta_tomada = viaje.get_Ruta_Tomada()
+        ruta_tomada_palabra = ruta_tomada.split(":")[0].strip()
+        self.seleccion = ruta_tomada_palabra
+        # Determinar eleccino
+        if ruta_tomada_palabra == "Corta":
+            self.graficar_ruta(min_ruta[0], "id_corta")
+        elif ruta_tomada_palabra == "Intermedia":
+            self.graficar_ruta(ruta_intermedia[0], "id_intermedia")
+        elif ruta_tomada_palabra == "Larga":
+            self.graficar_ruta(max_ruta[0], "id_larga")
+        else:
+            self.ui.SUPER_ESTADO.setPlainText('Ruta tomada desconocida')
 
-        # Título del gráfico según el tipo de ruta tomada
-        if "corta" in ruta:
-            titulo = "Ruta Más Corta"
-        elif "intermedia" in ruta:
+    # Funcion mostar grafica id
+    def mostrar_grafica(self):
+        if not hasattr(self, 'seleccion') or not self.seleccion:
+            self.ui.SUPER_ESTADO.setPlainText("Selecciona una ruta valida")
+            return
+        if "Corta" in self.seleccion:
+            archivo = "id_corta.png"
+        elif "Intermedia" in self.seleccion:
+            archivo = "id_intermedia.png"
+        elif "Larga" in self.seleccion:
+            archivo = "id_larga.png"
+        else:
+            self.ui.SUPER_ESTADO.setPlainText("Ruta seleccionada no valida")
+            return
+        # Mostrar la imagen seleccionada en un diálogo
+        dialog = QDialog(parent=None)
+        dialog.setWindowTitle('Grafica de Ruta Viaje')
+        label = QLabel()
+        pixmap = QPixmap(archivo)
+        label.setPixmap(pixmap)
+        label.setAlignment(Qt.AlignmentFlag.AlignCenter)
+
+        scroll = QScrollArea()
+        scroll.setWidget(label)
+        layout = QVBoxLayout(dialog)
+        layout.addWidget(scroll)
+        dialog.resize(1100, 400)
+        dialog.exec()
+    # Función para graficar la ruta del viaje
+    def graficar_ruta(self, ruta, filename):
+        if not ruta:
+            print("No hay ruta para graficar")
+            return
+        # Titulo
+        if "corta" in filename:
+            titulo = "Ruta mas Corta"
+        elif "intermedia" in filename:
             titulo = "Ruta Intermedia"
-        elif "larga" in ruta:
-            titulo = "Ruta Más Larga"
+        elif "larga" in filename:
+            titulo = "Ruta mas Larga"
         else:
             titulo = "Ruta Desconocida"
-
-        # Construir contenido del archivo DOT con orientación horizontal
+        # Construir dot
         dot = [
             "graph Ruta {",
             f'  label="{titulo}";',
@@ -218,36 +260,34 @@ class Funct_Reportes:
             '  bgcolor="#17202a";',
             '  node [style=filled, fillcolor="#145a32", fontcolor="white", shape=circle, width=1.4, fixedsize=true];',
             '  edge [color="white", fontcolor="white"];',
-            '  rankdir="LR";',  # Configurar para graficar de izquierda a derecha (horizontal)
+            '  rankdir="LR";',
         ]
 
-        # Asumimos que la ruta es una lista de cadenas (lugares o destinos)
-        for i in range(len(ruta) - 1):
-            origen = ruta[i]
-            destino = ruta[i + 1]
-            tiempo = 10  # Si no tienes tiempo específico, puedes usar un valor predeterminado, o derivarlo de alguna otra manera
-
+        # Recorrer la lista
+        aux = ruta.primero
+        while aux is not None:
+            origen = aux.ruta.get_Origen()
+            destino = aux.siquiente.ruta.get_Origen() if aux.siquiente else None
+            tiempo = aux.ruta.get_Tiempo()
             # Agregar nodo actual al DOT
             dot.append(f'  "{origen}";')
-
-            # Si hay un destino y no es el mismo nodo, añadir la conexión
-            if destino and origen != destino:  # Evitar conexiones a sí mismos
+            # Si hay un destino y no es el mismo nodo
+            if destino and origen != destino:
                 try:
-                    dot.append(f'  "{origen}" -- "{destino}" [label="{tiempo} segundos"];')
+                    tiempo = int(tiempo)
+                    if tiempo > 0:
+                        dot.append(f'  "{origen}" -- "{destino}" [label="{tiempo} segundos"];')
                 except ValueError:
-                    print(f"Error al agregar la ruta entre {origen} y {destino}")
-
-        # Cerrar el gráfico DOT
+                    print(f"Tiempo no valido: {tiempo} (origen={origen}, destino={destino})")
+            aux = aux.siquiente
         dot.append("}")
-
         # Guardar el archivo DOT
         dot_file = f"{filename}.dot"
         with open(dot_file, "w") as file:
             file.write("\n".join(dot))
-
         # Generar la imagen PNG usando Graphviz
         result = os.system(f"dot -Tpng {dot_file} -o {filename}.png")
         if result == 0:
-            print(f"Gráfico generado exitosamente: {filename}.png")
+            print(f"Grafico generado exitosamente: {filename}.png")
         else:
-            print(f"Error al generar el gráfico: {filename}.png")
+            print(f"Error al generar el grafico: {filename}.png")
