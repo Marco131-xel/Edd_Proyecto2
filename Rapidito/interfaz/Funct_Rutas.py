@@ -54,7 +54,7 @@ class Funct_Rutas:
 
     # Funcion para abrir el mapa en la interfaz
     def abrir_mapa(self):
-        ruta_imagen = "/home/marco/Documentos/Diciembre/edd/Edd_Proyecto2/Rapidito/Mapa.png"
+        ruta_imagen = "Mapa.png"
 
         # Cargar imagen
         pixmap = QPixmap(ruta_imagen)

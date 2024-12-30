@@ -69,6 +69,9 @@ class Funct_Vehiculos:
         modelo = self.ui.crear_MODELO.text()
         precio = self.ui.crear_PRECIO.text()
 
+        if self.arbol.buscar(placa):
+            self.ui.estado_CREAR_vehiculo.append('Error: Ya existe un viaje con este ID')
+            return
         # Crear Vehiculos
         vehiculo = Vehiculos(placa, marca, modelo, precio)
         self.arbol.insertar(vehiculo)
@@ -203,9 +206,9 @@ class Funct_Vehiculos:
     def graficar_vehiculo(self):
         dialog = QDialog(parent=None)
         dialog.setWindowTitle('Grafica Estructura de Vehiculos')
-
+        archivo = "ArbolB.png"
         label = QLabel()
-        pixmap = QPixmap("/home/marco/Documentos/Diciembre/edd/Edd_Proyecto2/Rapidito/ArbolB.png")
+        pixmap = QPixmap(archivo)
         label.setPixmap(pixmap)
 
         label.setAlignment(Qt.AlignmentFlag.AlignCenter)

@@ -87,9 +87,9 @@ class Funct_Viajes:
     def graficar_viajes(self):
         dialog = QDialog(parent=None)
         dialog.setWindowTitle('Grafica Estructura Viajes')
-
+        archivo = "Lista_Viajes.png"
         label = QLabel()
-        pixmap = QPixmap("/home/marco/Documentos/Diciembre/edd/Edd_Proyecto2/Rapidito/Lista_Viajes.png")
+        pixmap = QPixmap(archivo)
         label.setPixmap(pixmap)
         label.setAlignment(Qt.AlignmentFlag.AlignCenter)
 

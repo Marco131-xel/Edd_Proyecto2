@@ -7,11 +7,20 @@ graph Ruta {
   node [style=filled, fillcolor="#145a32", fontcolor="white", shape=circle, width=1.4, fixedsize=true];
   edge [color="white", fontcolor="white"];
   rankdir="LR";
-  "Retalhuleu";
-  "Retalhuleu";
-  "Retalhuleu" -- "Guatemala" [label="20 segundos"];
-  "Guatemala";
-  "Guatemala";
-  "Guatemala" -- "Santa Rosa" [label="30 segundos"];
-  "Santa Rosa";
+  "Vigo";
+  "Vigo";
+  "Vigo" -- "Valladolid" [label="356 segundos"];
+  "Valladolid";
+  "Valladolid";
+  "Valladolid" -- "Madrid" [label="193 segundos"];
+  "Madrid";
+  "Madrid";
+  "Madrid" -- "Zaragoza" [label="325 segundos"];
+  "Zaragoza";
+  "Zaragoza";
+  "Zaragoza" -- "Barcelona" [label="296 segundos"];
+  "Barcelona";
+  "Barcelona";
+  "Barcelona" -- "Gerona" [label="100 segundos"];
+  "Gerona";
 }

@@ -7,11 +7,11 @@ graph Ruta {
   node [style=filled, fillcolor="#145a32", fontcolor="white", shape=circle, width=1.4, fixedsize=true];
   edge [color="white", fontcolor="white"];
   rankdir="LR";
-  "Totonicapán";
-  "Totonicapán";
-  "Totonicapán" -- "Quetzaltenango" [label="10 segundos"];
-  "Quetzaltenango";
-  "Quetzaltenango";
-  "Quetzaltenango" -- "Retalhuleu" [label="20 segundos"];
-  "Retalhuleu";
+  "Jaen";
+  "Jaen";
+  "Jaen" -- "Madrid" [label="335 segundos"];
+  "Madrid";
+  "Madrid";
+  "Madrid" -- "Zaragoza" [label="325 segundos"];
+  "Zaragoza";
 }

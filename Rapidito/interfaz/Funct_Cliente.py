@@ -80,6 +80,9 @@ class Funct_Cliente:
         telefono = self.ui.crear_TELEFONO.text()
         direccion = self.ui.crear_DIRECCION.text()
 
+        if self.lista_clientes.buscar_cliente(dpi):
+            self.ui.estado_crear.append('Error: Ya existe un cliente con este DPI')
+            return
         # crear los clientes
         cliente = Clientes(dpi, nombre, apellido, genero, telefono, direccion)
         self.lista_clientes.agregar_cliente(cliente)
@@ -253,9 +256,9 @@ class Funct_Cliente:
     def graficar_clientes(self):
         dialog = QDialog(parent=None)
         dialog.setWindowTitle("Grafica Estructura de Clientes")
-
+        archivo = "Lista_Dob.png"
         label = QLabel()
-        pixmap = QPixmap("/home/marco/Documentos/Diciembre/edd/Edd_Proyecto2/Rapidito/Lista_Dob.png")
+        pixmap = QPixmap(archivo)
         label.setPixmap(pixmap)
 
         label.setAlignment(Qt.AlignmentFlag.AlignCenter)

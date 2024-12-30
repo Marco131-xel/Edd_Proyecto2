@@ -32,23 +32,39 @@ class Funct_Reportes:
 
     # Funcion para ver tabla top viajes
     def top_Viajes(self):
-        #Table_Viajes
-        viajes_ordenados = sorted(self.lista_viajes, key=lambda v: v.get_Ruta_Tomada(), reverse=True)
-        top_viajes = viajes_ordenados[:5]
-        # configurar la tabla
-        if top_viajes:
-            self.ui.Table_Viajes.setRowCount(len(top_viajes))
-            self.ui.Table_Viajes.setColumnCount(4)
+        # Lista para almacenar datos de los viajes
+        datos_viajes = []
 
-            # Rellenar la tabla
-            for row, viaje in enumerate(top_viajes):
-                self.ui.Table_Viajes.setItem(row, 0, QTableWidgetItem(str(viaje.get_ID())))
-                self.ui.Table_Viajes.setItem(row, 1, QTableWidgetItem(viaje.get_LugarOrigen()))
-                self.ui.Table_Viajes.setItem(row, 2, QTableWidgetItem(viaje.get_LugarDestino()))
-                self.ui.Table_Viajes.setItem(row, 3, QTableWidgetItem(str(viaje.get_Ruta_Tomada())))
+        # Iterar sobre la lista de viajes
+        for viaje in self.lista_viajes:
+            id = viaje.get_ID()
+            origen = viaje.get_LugarOrigen()
+            destino = viaje.get_LugarDestino()
+            ruta_tomada = viaje.get_Ruta_Tomada()
+            tiempo = int(ruta_tomada.split(":")[1].split()[0])
+            datos_viajes.append({
+                'id': id,
+                'origen': origen,
+                'destino': destino,
+                'tiempo': tiempo
+            })
+        # Ordenar por tiempo en orden descendente
+        datos_viajes = sorted(datos_viajes, key=lambda x: x['tiempo'], reverse=True)[:5]
+
+        if datos_viajes:
+            # Configurar la tabla
+            self.ui.Table_Viajes.setRowCount(len(datos_viajes))
+            self.ui.Table_Viajes.setColumnCount(4)
+            # Rellenar la tabla con los datos
+            for row, data in enumerate(datos_viajes):
+                self.ui.Table_Viajes.setItem(row, 0, QTableWidgetItem(str(data['id'])))
+                self.ui.Table_Viajes.setItem(row, 1, QTableWidgetItem(data['origen']))
+                self.ui.Table_Viajes.setItem(row, 2, QTableWidgetItem(data['destino']))
+                self.ui.Table_Viajes.setItem(row, 3, QTableWidgetItem(str(data['tiempo'])))
+
             # Ajustar las columnas al contenido
             self.ui.Table_Viajes.resizeColumnsToContents()
-            self.ui.estado_topviajes.setPlainText('Datos Encotrados')
+            self.ui.estado_topviajes.setPlainText('Datos Encontrados')
         else:
             self.ui.estado_topviajes.setPlainText('No hay Datos')
 
